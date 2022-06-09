@@ -8,19 +8,26 @@ public class DropController : MonoBehaviour
     private Vector3 moveDirection;
     private float _directionY;
     private bool _canDoubleJump = false;
+    private bool _canBoxDash = false;
+    public static bool IsInputEnabled = true;
+    private GameObject player;
     private GameObject playerModel;
     private Transform pivot;
+    private Transform endBoxDash;
 
     public float gravityScale;
     public float jumpForce;
     public float rotateSpeed;
     public float moveSpeed;
+    public float towardSpeed;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        player = GameObject.Find("Player");
         playerModel = GameObject.Find("playerModel");
         pivot = GameObject.Find("pivot").GetComponent<Transform>();
+        endBoxDash = GameObject.Find("endBoxDash").GetComponent<Transform>();
     }
 
     void Update()
@@ -69,6 +76,34 @@ public class DropController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
             playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+        }
+
+        //Mover The Player To The Target
+        var step = towardSpeed;
+        if (_canBoxDash == true)
+        {
+            player.transform.position = Vector3.MoveTowards(player.transform.position, endBoxDash.position, step);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //boxJump
+        if(other.gameObject.tag == "boxJump")
+        {
+            _directionY = jumpForce * 2.0f;
+            moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+            controller.Move(moveDirection * Time.deltaTime);
+        }
+
+        //boxDash
+        if (other.gameObject.tag == "boxDash")
+        {
+            _canBoxDash = true;
+        }
+        else
+        {
+            _canBoxDash = false;
         }
     }
 }
