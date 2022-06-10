@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - boxJump
   - boxDash
+  - boxDash02
   layers:
   - Default
   - TransparentFX
