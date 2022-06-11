@@ -47,7 +47,7 @@ public class DropController : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump") && _canDoubleJump)
             {
-                _directionY = jumpForce * 1.5f;
+                _directionY = jumpForce * 1.0f;
                 _canDoubleJump = false;
             }
 
@@ -79,9 +79,16 @@ public class DropController : MonoBehaviour
         //boxJump
         if(other.gameObject.tag == "boxJump")
         {
-            _directionY = jumpForce * 2.0f;
+            _directionY = jumpForce * 1.0f;
             moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
             controller.Move(moveDirection * Time.deltaTime);
         }
+    }
+
+    public void boxCibleJump()
+    {
+        _directionY = jumpForce * 1f;
+        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);
     }
 }
