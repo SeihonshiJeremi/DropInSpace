@@ -12,6 +12,10 @@ public class DropController : MonoBehaviour
     private GameObject playerModel;
     private Transform pivot;
 
+    public float knockBackForce;
+    public float knockBackTime;
+    private float knockBackCounter;
+
     public float gravityScale;
     public float jumpForce;
     public float rotateSpeed;
@@ -53,25 +57,36 @@ public class DropController : MonoBehaviour
 
         }
 
-        //Move The Player
-        float yStore = moveDirection.y;
-        moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
-        moveDirection = moveDirection.normalized * moveSpeed;
-        moveDirection.y = yStore;
+        if (knockBackCounter <= 0)
+        {
+            //Move The Player
+            float yStore = moveDirection.y;
+            moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
+            moveDirection = moveDirection.normalized * moveSpeed;
+            moveDirection.y = yStore;
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(horizontalInput, 0, verticalInput);
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 direction = new Vector3(horizontalInput, 0, verticalInput);
 
-        //Move the player in different directions based on camera look direction
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-        {            
-            moveSpeed = moveSpeed * 1.0f;
+            //Move the player in different directions based on camera look direction
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            {
+                moveSpeed = moveSpeed * 1.0f;
 
-            transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
-            Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
-            playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
-        }
+                transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
+                Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
+                playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+            }
+        }else knockBackCounter -= Time.deltaTime;
+    }
+
+    //Quand je reçois un dégat 
+    public void Knockback(Vector3 direction)
+    {        
+        knockBackCounter = knockBackTime;
+        moveDirection = direction * knockBackForce;
+        moveDirection.y = knockBackForce;
     }
 
     private void OnTriggerEnter(Collider other)
