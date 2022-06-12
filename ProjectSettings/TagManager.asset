@@ -11,6 +11,7 @@ TagManager:
   - colliderRampe01
   - colliderRampe02
   - colliderRampe03
+  - piece
   layers:
   - Default
   - TransparentFX
