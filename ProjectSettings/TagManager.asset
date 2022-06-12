@@ -8,6 +8,9 @@ TagManager:
   - boxJump
   - boxDash
   - boxDash02
+  - colliderRampe01
+  - colliderRampe02
+  - colliderRampe03
   layers:
   - Default
   - TransparentFX
