@@ -5,9 +5,8 @@ using UnityEngine;
 public class boxRampe : MonoBehaviour
 {
     public GameObject Cible;
-    public GameObject BoxRampe;
     private bool _canAttackCible = false;
-    private float moveSpeed = 2.0f;
+    private float moveSpeed = 60.0f;
     private float boxDashTime;
     private GameObject player;
     private CharacterController controller;
@@ -16,7 +15,7 @@ public class boxRampe : MonoBehaviour
     {
         player = GameObject.Find("Player");
         controller = player.GetComponent<CharacterController>();
-        BoxRampe.SetActive(false);
+        Cible.GetComponent<BoxCollider>().enabled = false;
     }
 
     void Update()
@@ -32,9 +31,9 @@ public class boxRampe : MonoBehaviour
         boxDashTime -= Time.deltaTime;
         if(boxDashTime > 0)
         {
-            BoxRampe.SetActive(true);
+            Cible.GetComponent<BoxCollider>().enabled = true;
         }
-        else BoxRampe.SetActive(false);
+        else Cible.GetComponent<BoxCollider>().enabled = false; _canAttackCible = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,14 +42,6 @@ public class boxRampe : MonoBehaviour
         {
             _canAttackCible = true;
             boxDashTime = 1.0f;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            _canAttackCible = false;
         }
     }
 }
