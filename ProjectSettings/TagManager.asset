@@ -12,6 +12,7 @@ TagManager:
   - colliderRampe02
   - colliderRampe03
   - piece
+  - elevator
   layers:
   - Default
   - TransparentFX

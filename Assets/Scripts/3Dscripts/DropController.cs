@@ -20,6 +20,7 @@ public class DropController : MonoBehaviour
     public float jumpForce;
     public float rotateSpeed;
     public float moveSpeed;
+    public float velocitySpeed;
 
     void Start()
     {
@@ -35,7 +36,7 @@ public class DropController : MonoBehaviour
         moveDirection.y = _directionY;
         _directionY -= gravityScale * Time.deltaTime;
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
-        controller.Move(moveDirection * Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);       
 
         //Saut
         if (controller.isGrounded)
@@ -79,6 +80,29 @@ public class DropController : MonoBehaviour
                 playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
             }
         }else knockBackCounter -= Time.deltaTime;
+
+        //Velocity
+        if(!controller.isGrounded)
+        {
+            if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+            {
+                Vector3 horizontalVelocity = controller.velocity;
+                horizontalVelocity = new Vector3(controller.velocity.x, 0, controller.velocity.z);
+
+                // The speed on the x-z plane ignoring any speed
+                float horizontalSpeed = horizontalVelocity.magnitude;
+                // The speed from gravity or jumping
+                float verticalSpeed = controller.velocity.y;
+                // The overall speed
+                float overallSpeed = controller.velocity.magnitude;
+
+                moveDirection = horizontalVelocity;
+                moveDirection = moveDirection.normalized * velocitySpeed;
+
+                Debug.Log("Velocity");
+            }
+
+        }
     }
 
     //Quand je reçois un dégat 
