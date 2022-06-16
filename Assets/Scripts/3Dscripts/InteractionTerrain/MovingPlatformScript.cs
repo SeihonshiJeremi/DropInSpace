@@ -16,6 +16,8 @@ public class MovingPlatformScript : MonoBehaviour
 
     public bool automatic;
 
+    public GameObject Player;
+
     void Start()
     {
         if (points.Length > 0)
@@ -29,6 +31,12 @@ public class MovingPlatformScript : MonoBehaviour
     {
         if (transform.position != current_target) MovePlatform();
         else UpdateTarget();
+
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            Player.GetComponent<DropController>().enabled = true;
+        }
+
     }
 
     void MovePlatform()
@@ -55,12 +63,28 @@ public class MovingPlatformScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
 	{
-        other.transform.parent = transform;
+        if(other.gameObject == Player)
+        {
+            Player.transform.parent = transform;
+            Player.GetComponent<DropController>().enabled = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == Player)
+        {
+            Player.transform.parent = transform;
+            Player.GetComponent<DropController>().enabled = false;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.transform.parent = null;
+        if (other.gameObject == Player)
+        {
+            Player.transform.parent = null;
+        }
 
     }
 
