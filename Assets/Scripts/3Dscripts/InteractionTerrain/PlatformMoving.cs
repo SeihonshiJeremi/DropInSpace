@@ -10,7 +10,7 @@ public class PlatformMoving : MonoBehaviour
 	private Rigidbody rb;
 	private Vector3 currentPos;
 
-	CharacterController cc;
+	CharacterController controller;
 
 	private void Start()
 	{
@@ -19,18 +19,19 @@ public class PlatformMoving : MonoBehaviour
 	void FixedUpdate()
 	{
 		currentPos = Vector3.Lerp(startPoint.position, endPoint.position,
-			Mathf.Cos(Time.time / travelTime * Mathf.PI * 2) * -.5f + .5f);
+			Mathf.Cos(Time.time / travelTime * Mathf.PI * 0.1f) * -.5f + .5f);
 		rb.MovePosition(currentPos);
 	}
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player")
-			cc = other.GetComponent<CharacterController>();
+			controller = other.GetComponent<CharacterController>();
 	}
 	/*private void OnTriggerStay(Collider other)
 	{
 		if (other.tag == "Player")
-			cc.Move(rb.velocity * Time.deltaTime); 
+			controller.Move(rb.velocity * Time.deltaTime);
+
 		Debug.Log("stay");
 	}*/
 }
