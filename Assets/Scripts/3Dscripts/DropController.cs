@@ -149,7 +149,7 @@ public class DropController : MonoBehaviour
     public void movingPlatform()
     {
         _directionY = jumpForce * 0.5f;
-        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
-        controller.Move(moveDirection * Time.deltaTime);
+       /* moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);*/
     }
 }

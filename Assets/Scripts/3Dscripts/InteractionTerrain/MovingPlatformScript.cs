@@ -39,7 +39,7 @@ public class MovingPlatformScript : MonoBehaviour
         {
             this.GetComponent<BoxCollider>().isTrigger = false;
             Player.GetComponent<DropController>().enabled = true;
-            Player.transform.parent = null;
+           // Player.transform.parent = null;
             _desacMoving = false;
         }
         else this.GetComponent<BoxCollider>().isTrigger = true;
@@ -49,7 +49,7 @@ public class MovingPlatformScript : MonoBehaviour
             this.GetComponent<BoxCollider>().enabled = false;
             Player.GetComponent<DropController>().boxCibleJump();
             _desacTrigger = false;
-            Player.transform.parent = null;
+           // Player.transform.parent = null;
         }
         else this.GetComponent<BoxCollider>().enabled = true; // mettre un timer de reactuivation
 
