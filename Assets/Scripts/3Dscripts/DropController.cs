@@ -8,7 +8,7 @@ public class DropController : MonoBehaviour
     private Vector3 moveDirection;
     private float _directionY;
     public float currentSpeed = 0.0f;
-    private bool _canDoubleJump = false;
+    public bool _canDoubleJump = false;
     private GameObject player;
     private GameObject playerModel;
     private Transform pivot;
@@ -53,9 +53,9 @@ public class DropController : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Jump") && _canDoubleJump)
+            if (Input.GetButtonDown("Jump") && _canDoubleJump == true)
             {
-                _directionY = jumpForce * 1.0f;
+                _directionY = jumpForce * 1.2f;
                 _canDoubleJump = false;
             }
 
@@ -127,15 +127,28 @@ public class DropController : MonoBehaviour
         //boxJump
         if(other.gameObject.tag == "boxJump")
         {
-            _directionY = jumpForce * 1.0f;
+            _directionY = jumpForce * 1.2f;
             moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
             controller.Move(moveDirection * Time.deltaTime);
+        }
+
+        //moveSpeed20 movingPlatform
+        if (other.gameObject.tag == "movingPlatform")
+        {
+            currentSpeed = 20.0f;
         }
     }
 
     public void boxCibleJump()
     {
         _directionY = jumpForce * 1f;
+        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void movingPlatform()
+    {
+        _directionY = jumpForce * 0.5f;
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
     }

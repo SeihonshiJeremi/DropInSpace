@@ -13,6 +13,7 @@ TagManager:
   - colliderRampe03
   - piece
   - elevator
+  - movingPlatform
   layers:
   - Default
   - TransparentFX

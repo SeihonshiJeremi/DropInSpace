@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.03727851, g: 0.066151254, b: 0.1438509, a: 1}
+  m_IndirectSpecularColor: {r: 0.08884734, g: 0.1508279, b: 0.3162068, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -356,8 +356,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1, z: 0.8}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!114 &51618879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +379,7 @@ MonoBehaviour:
   delay_time: 2
   automatic: 1
   Player: {fileID: 1273573432}
+  _desacTrigger: 0
 --- !u!65 &51618880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2391,6 +2392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 0
+  _canDoubleJump: 0
   knockBackForce: 20
   knockBackTime: 0.2
   gravityScale: 20
@@ -2812,6 +2814,7 @@ MonoBehaviour:
   delay_time: 2
   automatic: 1
   Player: {fileID: 1273573432}
+  _desacTrigger: 0
 --- !u!65 &1379039380
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2886,8 +2889,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1, z: 0.8}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!54 &1379039384
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5092,6 +5095,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 0
   damageToGive: 10
+--- !u!65 &2144811729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144811726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 41.98868, z: 10}
+  m_Center: {x: 0, y: -20, z: 0}
 --- !u!1 &1581759429180394
 GameObject:
   m_ObjectHideFlags: 0

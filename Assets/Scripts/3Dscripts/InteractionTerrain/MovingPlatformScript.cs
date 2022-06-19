@@ -18,6 +18,9 @@ public class MovingPlatformScript : MonoBehaviour
 
     public GameObject Player;
 
+    public bool _desacTrigger = false;
+    public bool _desacMoving = false;
+
     void Start()
     {
         if (points.Length > 0)
@@ -27,15 +30,28 @@ public class MovingPlatformScript : MonoBehaviour
         tolerance = speed * Time.deltaTime;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (transform.position != current_target) MovePlatform();
         else UpdateTarget();
 
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (_desacMoving == true && Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 || Input.GetButtonDown("Jump"))
         {
+            this.GetComponent<BoxCollider>().isTrigger = false;
             Player.GetComponent<DropController>().enabled = true;
+            Player.transform.parent = null;
+            _desacMoving = false;
         }
+        else this.GetComponent<BoxCollider>().isTrigger = true;
+
+        if (_desacTrigger == true && Input.GetButtonDown("Jump"))
+        {
+            this.GetComponent<BoxCollider>().enabled = false;
+            Player.GetComponent<DropController>().boxCibleJump();
+            _desacTrigger = false;
+            Player.transform.parent = null;
+        }
+        else this.GetComponent<BoxCollider>().enabled = true; // mettre un timer de reactuivation
 
     }
 
@@ -66,7 +82,7 @@ public class MovingPlatformScript : MonoBehaviour
         if(other.gameObject == Player)
         {
             Player.transform.parent = transform;
-            Player.GetComponent<DropController>().enabled = false;
+            //Player.GetComponent<DropController>().enabled = false;            
         }
     }
 
@@ -76,6 +92,8 @@ public class MovingPlatformScript : MonoBehaviour
         {
             Player.transform.parent = transform;
             Player.GetComponent<DropController>().enabled = false;
+            _desacTrigger = true;
+            _desacMoving = true;
         }
     }
 
@@ -84,7 +102,13 @@ public class MovingPlatformScript : MonoBehaviour
         if (other.gameObject == Player)
         {
             Player.transform.parent = null;
+            
         }
+
+    }
+
+    void jumpExit()
+    {
 
     }
 

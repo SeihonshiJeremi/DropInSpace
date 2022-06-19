@@ -24,8 +24,8 @@ public class BoxDash : MonoBehaviour
         {
             player.transform.position = Vector3.MoveTowards(player.transform.position, endBoxDash.transform.position, moveSpeed * Time.deltaTime);
 
-            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | 
-                RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+           /* player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | 
+                RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;*/
             controller.enabled = false;
         }
         else controller.enabled = true;
