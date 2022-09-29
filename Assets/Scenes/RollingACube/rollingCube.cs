@@ -13,7 +13,7 @@ public class rollingCube : MonoBehaviour
     [SerializeField] private float _rollSpeed = 3;
     private bool _isMoving;
 
-    void Update()
+    void FixedUpdate()
     {
         if (_isMoving) return;
 
@@ -24,7 +24,7 @@ public class rollingCube : MonoBehaviour
 
         void Assemble(Vector3 dir)
         {
-            var anchor = transform.position + (Vector3.down + dir) * 0.5f;
+            var anchor = transform.position + (Vector3.down + dir) * 1.085f;
             var axis = Vector3.Cross(Vector3.up, dir);
             StartCoroutine(Roll(anchor, axis));
         }
@@ -38,6 +38,8 @@ public class rollingCube : MonoBehaviour
         {
             transform.RotateAround(anchor, axis, _rollSpeed);
             yield return new WaitForSeconds(0.01f);
+
+            GetComponent<AudioSource>().Play();
         }
 
         _isMoving = false;
