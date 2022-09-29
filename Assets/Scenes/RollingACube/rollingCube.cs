@@ -12,6 +12,28 @@ public class rollingCube : MonoBehaviour
 
     [SerializeField] private float _rollSpeed = 3;
     private bool _isMoving;
+    public bool _collisionOK = false;
+
+    public float x;
+    public float z;
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        x = this.transform.position.x;
+        z = this.transform.position.z;
+        roundValeurX();
+        roundValeurZ();     
+        
+        if(_isMoving == false && _collisionOK == true)
+        {
+            this.transform.position = new Vector3(x, 1.0f, z);
+        }
+    }
 
     void FixedUpdate()
     {
@@ -26,7 +48,7 @@ public class rollingCube : MonoBehaviour
         {
             var anchor = transform.position + (Vector3.down + dir) * 1.085f;
             var axis = Vector3.Cross(Vector3.up, dir);
-            StartCoroutine(Roll(anchor, axis));
+            StartCoroutine(Roll(anchor, axis));            
         }
     }
 
@@ -45,9 +67,33 @@ public class rollingCube : MonoBehaviour
         _isMoving = false;
     }
 
+    void roundValeurX()
+    {
+        x = Mathf.Round(x);
+        Debug.Log(Mathf.Round(x));
+    }
 
+    void roundValeurZ()
+    {
+        z = Mathf.Round(z);
+        Debug.Log(Mathf.Round(z));
+    }
 
-       
+    private void OnTriggerEnter(Collider other)
+    {
 
+        if (other.gameObject.tag == "changeCubeMaterial")
+        {
+            _collisionOK = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (other.gameObject.tag == "changeCubeMaterial")
+        {
+            _collisionOK = false;
+        }
+    }
 
 }
