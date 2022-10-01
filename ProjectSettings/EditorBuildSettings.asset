@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TestNewPlayer/New Scene.unity
     guid: a3b0979fd297936428b21a906e7d25b1
   - enabled: 1
-    path: Assets/Scenes/RollingACube/rollingAcube.unity
+    path: Assets/Scenes/RollingACube/Scene/rollingAcube.unity
     guid: 66a10e36790755d4492536d6bc3756cf
   m_configObjects: {}

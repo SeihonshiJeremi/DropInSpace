@@ -16,6 +16,9 @@ TagManager:
   - movingPlatform
   - changeCubeMaterial
   - destructorPlatform
+  - planeTeleportation
+  - Monster
+  - Monster02
   layers:
   - Default
   - TransparentFX
