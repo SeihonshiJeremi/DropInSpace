@@ -17,9 +17,9 @@ public class monsterZoom : MonoBehaviour
     public bool _collisionOK = false;
     public bool _collisionAvecMonster = false;
 
+
     public float x;
     public float z;
-
 
     public float tempsAvantDeplacement;
     public float tempsAvantDeplacementOrigine;
@@ -32,10 +32,13 @@ public class monsterZoom : MonoBehaviour
 
     public LayerMask whatIsMonster;
 
+    public Transform bulletPrefab;
+
 
     void Start()
     {
-
+        Transform bullet = bulletPrefab as Transform;
+        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     void Update()
@@ -55,34 +58,34 @@ public class monsterZoom : MonoBehaviour
     {
         tempsAvantDeplacement -= Time.deltaTime;
         choixDirection = Random.Range(1, 5);
-        choixDirectionHorizontal = Random.Range(1, 2);
-        choixDirectionVertical = Random.Range(1, 2);
+        choixDirectionHorizontal = Random.Range(1, 3);
+        choixDirectionVertical = Random.Range(1, 3);
 
         if (_isMoving) return;
 
-        else if ( _collisionAvecMonster == false && tempsAvantDeplacement < 0 && choixDirection == 1)
+        else if (tempsAvantDeplacement < 0 && choixDirection == 2)
         {
             Assemble(Vector3.left);
             tempsAvantDeplacement = tempsAvantDeplacementOrigine;
         }
 
-        else if ( _collisionAvecMonster == false && tempsAvantDeplacement < 0 && choixDirection == 2)
-        {
-            Assemble(Vector3.right);
-            tempsAvantDeplacement = tempsAvantDeplacementOrigine;
-        }
+        else if (tempsAvantDeplacement < 0 && choixDirection == 2)
+         {
+             Assemble(Vector3.right);
+             tempsAvantDeplacement = tempsAvantDeplacementOrigine;          
+         }
 
-        else if (_collisionAvecMonster == false && tempsAvantDeplacement < 0 && choixDirection == 3)
-        {
-            Assemble(Vector3.forward);
-            tempsAvantDeplacement = tempsAvantDeplacementOrigine;
-        }
+         else if (tempsAvantDeplacement < 0 && choixDirection == 3)
+         {
+             Assemble(Vector3.forward);
+             tempsAvantDeplacement = tempsAvantDeplacementOrigine;           
+         }
 
-        else if (_collisionAvecMonster == false && tempsAvantDeplacement < 0 && choixDirection == 4)
-        {
-            Assemble(Vector3.back);
-            tempsAvantDeplacement = tempsAvantDeplacementOrigine;
-        }
+         else if (tempsAvantDeplacement < 0 && choixDirection == 4)
+         {
+             Assemble(Vector3.back);
+             tempsAvantDeplacement = tempsAvantDeplacementOrigine;           
+         }
 
         void Assemble(Vector3 dir)
         {
@@ -104,26 +107,27 @@ public class monsterZoom : MonoBehaviour
         Ray rayRight = new Ray(transform.position, Vector3.right);
         Ray rayLeft = new Ray(transform.position, Vector3.left);
 
+
         //forward
         if (Physics.Raycast(rayForward, out hit))
         {
-            if(hit.transform.tag == "Monster02")
+            if (hit.transform.tag == "Monster02")
             {
                 Debug.Log("touche");
                 _collisionAvecMonster = true;
 
-                if (_collisionAvecMonster == true && tempsAvantDeplacement < 0 &&  choixDirectionHorizontal == 1)
+                if (_collisionAvecMonster == true && choixDirectionHorizontal == 1)
                 {
-                    Assemble(Vector3.left);                  
-                } 
+                    Assemble(Vector3.left);
+                }
 
-                if (_collisionAvecMonster == true && tempsAvantDeplacement < 0 &&  choixDirectionHorizontal == 2)
+                if (_collisionAvecMonster == true && choixDirectionHorizontal == 2)
                 {
-                    Assemble(Vector3.right);                
-                } 
+                    Assemble(Vector3.right);
+                }
             }
             else _collisionAvecMonster = false;
-        } 
+        }
 
         //back
         if (Physics.Raycast(rayBack, out hit))
@@ -133,15 +137,15 @@ public class monsterZoom : MonoBehaviour
                 Debug.Log("touche");
                 _collisionAvecMonster = true;
 
-                if (_collisionAvecMonster == true && tempsAvantDeplacement < 0 &&  choixDirectionHorizontal == 1)
+                if (_collisionAvecMonster == true && choixDirectionHorizontal == 1)
                 {
-                    Assemble(Vector3.left);                   
-                } 
+                    Assemble(Vector3.left);
+                }
 
-                if (_collisionAvecMonster == true && tempsAvantDeplacement < 0 &&  choixDirectionHorizontal == 2)
+                if (_collisionAvecMonster == true && choixDirectionHorizontal == 2)
                 {
-                    Assemble(Vector3.right);                 
-                } 
+                    Assemble(Vector3.right);
+                }
             }
             else _collisionAvecMonster = false;
         }
@@ -154,12 +158,12 @@ public class monsterZoom : MonoBehaviour
                 Debug.Log("touche");
                 _collisionAvecMonster = true;
 
-                if (_collisionAvecMonster == true && tempsAvantDeplacement < 0 && choixDirectionVertical == 1)
+                if (_collisionAvecMonster == true && choixDirectionVertical == 1)
                 {
                     Assemble(Vector3.forward);
                 }
 
-                if (_collisionAvecMonster == true && tempsAvantDeplacement < 0 && choixDirectionVertical == 2)
+                if (_collisionAvecMonster == true && choixDirectionVertical == 2)
                 {
                     Assemble(Vector3.back);
                 }
@@ -175,19 +179,18 @@ public class monsterZoom : MonoBehaviour
                 Debug.Log("touche");
                 _collisionAvecMonster = true;
 
-                if (_collisionAvecMonster == true && tempsAvantDeplacement < 0 && choixDirectionVertical == 1)
+                if (_collisionAvecMonster == true && choixDirectionVertical == 1)
                 {
                     Assemble(Vector3.forward);
                 }
 
-                if (_collisionAvecMonster == true && tempsAvantDeplacement < 0 && choixDirectionVertical == 2)
+                if (_collisionAvecMonster == true && choixDirectionVertical == 2)
                 {
                     Assemble(Vector3.back);
                 }
             }
             else _collisionAvecMonster = false;
         }
-
     }
 
     IEnumerator Roll(Vector3 anchor, Vector3 axis)
@@ -206,73 +209,34 @@ public class monsterZoom : MonoBehaviour
     void roundValeurX()
     {
         x = Mathf.Round(x);
-        //Debug.Log(Mathf.Round(x));
     }
 
     void roundValeurZ()
     {
         z = Mathf.Round(z);
-        //Debug.Log(Mathf.Round(z));
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "changeCubeMaterial") _collisionOK = true;
 
-        if (other.gameObject.tag == "changeCubeMaterial")
-        {
-            _collisionOK = true;
-        }
-
-        if (other.gameObject.tag == "Player")
-        {
-            Destroy(Player);
-        }
-
-        if (other.gameObject.tag == "Monster")
-        {
-            //Destroy(Monster01);
-            //  Instantiate(Monster01);
-           // this.GetComponent<BoxCollider>().isTrigger = true;
-            //this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-        }
+        if (other.gameObject.tag == "Player") Destroy(Player);
 
         if (other.gameObject.tag == "Monster02")
         {
-            // Destroy(Monster02);
-            // Instantiate(Monster02);
-           // this.GetComponent<BoxCollider>().isTrigger = true;
-           // this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+            _collisionAvecMonster = true;
+            Monster02.GetComponent<monsterZoom021>().enabled = false;
         }
-
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.tag == "changeCubeMaterial") _collisionOK = false;
 
-        if (other.gameObject.tag == "changeCubeMaterial")
+        if (other.gameObject.tag == "Monster02")
         {
-            _collisionOK = false;
+            _collisionAvecMonster = false;
+            Monster02.GetComponent<monsterZoom021>().enabled = true;
         }
-
-       // this.GetComponent<BoxCollider>().isTrigger = false;
-       // this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        /*if (collision.collider.tag == "Player")
-        {
-            Destroy(Player);
-        }*/
-
-       /* if (collision.collider.tag == "Monster")
-        {
-            this.GetComponent<BoxCollider>().isTrigger = true;
-        } else this.GetComponent<BoxCollider>().isTrigger = false;
-
-        if (collision.collider.tag == "Monster02")
-        {
-            this.GetComponent<BoxCollider>().isTrigger = true;
-        } else this.GetComponent<BoxCollider>().isTrigger = false;*/
     }
 }

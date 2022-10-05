@@ -70,13 +70,13 @@ public class rollingCube : MonoBehaviour
     void roundValeurX()
     {
         x = Mathf.Round(x);
-        Debug.Log(Mathf.Round(x));
+        //Debug.Log(Mathf.Round(x));
     }
 
     void roundValeurZ()
     {
         z = Mathf.Round(z);
-        Debug.Log(Mathf.Round(z));
+        //Debug.Log(Mathf.Round(z));
     }
 
     private void OnTriggerEnter(Collider other)

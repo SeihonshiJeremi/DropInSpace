@@ -16,7 +16,7 @@ public class changeColorCube : MonoBehaviour
         if (collision.collider.tag == "Player" && changeColorOK == false)
         {
             GetComponent<Renderer>().material = m_Material02;
-            Debug.Log("changeCubeMaterial");
+            //Debug.Log("changeCubeMaterial");
 
 
             zoomManager.GetComponent<zoomManager>().finLevel(value);
@@ -27,7 +27,7 @@ public class changeColorCube : MonoBehaviour
         {
 
             GetComponent<Renderer>().material = m_Material02;
-            Debug.Log("changeCubeMaterial");
+            //Debug.Log("changeCubeMaterial");
             //valeur qui augmente pour finir le niveau
             //zoomManager.GetComponent<zoomManager>().reduceFinLevel(value);
         }

@@ -50,7 +50,7 @@ public class monsterZoom021 : MonoBehaviour
     void FixedUpdate()
     {
         tempsAvantDeplacement -= Time.deltaTime;
-        choixDirection = Random.Range(1, 5);
+        choixDirection = Random.Range(1,5);
         choixDirectionHorizontal = Random.Range(1, 2);
         choixDirectionVertical = Random.Range(1, 2);
 
