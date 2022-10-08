@@ -19,6 +19,10 @@ TagManager:
   - planeTeleportation
   - Monster
   - Monster02
+  - orientationChangerDroite
+  - orientationChangerGauche
+  - orientationChangerAv
+  - orientationChangerArr
   layers:
   - Default
   - TransparentFX

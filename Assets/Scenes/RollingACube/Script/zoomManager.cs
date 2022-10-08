@@ -26,6 +26,7 @@ public class zoomManager : MonoBehaviour
         if(valueFinLevel == nbFinLevel)
         {
             Debug.Log("go fin level");
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
         }
     }
 

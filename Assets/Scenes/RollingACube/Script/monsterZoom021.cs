@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class monsterZoom021 : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class monsterZoom021 : MonoBehaviour
     public int choixDirectionHorizontal;
     public int choixDirectionVertical;
 
+    //en eattendan
+    int reset;
+
 
 
     void Start()
@@ -44,6 +48,12 @@ public class monsterZoom021 : MonoBehaviour
         if (_isMoving == false && _collisionOK == true)
         {
             this.transform.position = new Vector3(x, 1.0f, z);
+        }
+
+        //en attendant
+        if (reset == 1)
+        {
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
         }
     }
 
@@ -223,6 +233,8 @@ public class monsterZoom021 : MonoBehaviour
         {
             Destroy(Player);
         }
+
+        if (other.gameObject.tag == "Player") reset = 1;
 
         if (other.gameObject.tag == "Monster")
         {
