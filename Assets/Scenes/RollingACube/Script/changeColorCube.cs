@@ -7,7 +7,11 @@ public class changeColorCube : MonoBehaviour
     public Material m_Material02;
 
     public GameObject zoomManager;
-    public int value;
+    public int valueDalle;
+    private int valueScore = 10;
+    private int valueScoreDouble = 20;
+
+    private int activeDouble = 1;
 
     public bool changeColorOK = false;
 
@@ -16,21 +20,18 @@ public class changeColorCube : MonoBehaviour
         if (collision.collider.tag == "Player" && changeColorOK == false)
         {
             GetComponent<Renderer>().material = m_Material02;
-            //Debug.Log("changeCubeMaterial");
-
-
-            zoomManager.GetComponent<zoomManager>().finLevel(value);
+            zoomManager.GetComponent<zoomManager>().reduceFinLevel(valueDalle);
+            zoomManager.GetComponent<zoomManager>().scoreAdd(valueScore);
+            zoomManager.GetComponent<zoomManager>().scoreDoubleTrue(activeDouble);
             changeColorOK = true;
-        }
+            GetComponent<AudioSource>().Play();
+        } else zoomManager.GetComponent<zoomManager>().scoreDoubleFalse(activeDouble);
 
-        if (collision.collider.tag == "Player" && changeColorOK == true)
+        /*if (collision.collider.tag == "Player" && changeColorOK == true)
         {
-
-            GetComponent<Renderer>().material = m_Material02;
-            //Debug.Log("changeCubeMaterial");
-            //valeur qui augmente pour finir le niveau
-            //zoomManager.GetComponent<zoomManager>().reduceFinLevel(value);
-        }
+            //zoomManager.GetComponent<zoomManager>().scoreDoubleFalse(activeDouble);
+            Debug.Log("salut");
+        }*/
 
         if (collision.collider.tag == "destructorPlatform")
         {
