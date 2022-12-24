@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.00007962655, b: 0.00010549047, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.00008901616, b: 0.00013898034, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6910,7 +6910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &539748802
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7607,7 +7607,7 @@ Transform:
   m_GameObject: {fileID: 712343271}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8, y: -0.5, z: 8}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -10770,6 +10770,9 @@ MonoBehaviour:
   score: 0
   doubleScore: 0
   activDoubleScore: 0
+  timerStartOrigine: 5
+  timerStart: 5
+  ObjectTimerStart: {fileID: 2143517188}
 --- !u!4 &1586856966
 Transform:
   m_ObjectHideFlags: 0
@@ -11326,7 +11329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ec55307034f3d64b93ab537683c2891, type: 2}
+  - {fileID: 2100000, guid: ea3ffa26467e1f84fb1fa83a95eb9bcd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12710,9 +12713,13 @@ MonoBehaviour:
   arrowUp: 273
   arrowDown: 274
   _rollSpeed: 5
+  _isMoving: 0
   _collisionOK: 0
   x: 0
   z: 0
+  y: 0
+  desacTouche: 0
+  timeDesacTouche: 5
 --- !u!65 &2143517190
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12958,7 +12965,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e10160ce0e5892b4ba9c6d2c91d61de5, type: 2}
+  - {fileID: 2100000, guid: e266a18b530f5204fab771504a110ebd, type: 2}
   - {fileID: 2100000, guid: ce3f87a7f85d21e4eacaabced0a1520a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

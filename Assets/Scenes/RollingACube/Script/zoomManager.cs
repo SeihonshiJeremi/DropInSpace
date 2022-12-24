@@ -20,10 +20,14 @@ public class zoomManager : MonoBehaviour
 
     public int activDoubleScore;
 
+    public float timerStartOrigine;
+    public float timerStart;
+    public GameObject ObjectTimerStart;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+       // ObjectTimerStart.GetComponent<rollingCube>().enabled = false;
     }
 
     // Update is called once per frame
@@ -42,7 +46,7 @@ public class zoomManager : MonoBehaviour
         text_score.text = " " + score;
 
         if (activDoubleScore >= 1) doubleScore = true;
-        else doubleScore = false;
+        else doubleScore = false;        
     }
 
     //valeur level
@@ -67,7 +71,7 @@ public class zoomManager : MonoBehaviour
     public void scoreAdd(int scoreToAdd)
     {
         score += scoreToAdd;
-        if(doubleScore == true) score += scoreToAdd * 2; 
+        if (doubleScore == true) score += scoreToAdd * 2;
 
     }
 

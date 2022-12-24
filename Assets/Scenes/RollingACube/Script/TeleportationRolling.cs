@@ -18,9 +18,10 @@ public class TeleportationRolling : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
+            GameObject.Find("Player").GetComponent<rollingCube>().tDesacTouche();
             Vector3 newPosition;
             newPosition = pointTP.position;
-            Player.transform.position = newPosition;
+            Player.transform.position = newPosition;            
         }
 
         if (other.gameObject.tag == "Monster")

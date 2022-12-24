@@ -11,11 +11,15 @@ public class rollingCube : MonoBehaviour
     public KeyCode arrowDown = KeyCode.Space;
 
     [SerializeField] private float _rollSpeed = 3;
-    private bool _isMoving;
+    public bool _isMoving;
     public bool _collisionOK = false;
 
     public float x;
     public float z;
+    public float y;
+
+    public bool desacTouche = false;
+    public float timeDesacTouche = 5.0f;
 
     void Start()
     {
@@ -26,6 +30,7 @@ public class rollingCube : MonoBehaviour
     {
         x = this.transform.position.x;
         z = this.transform.position.z;
+        y = this.transform.position.y;
         roundValeurX();
         roundValeurZ();     
         
@@ -33,23 +38,32 @@ public class rollingCube : MonoBehaviour
         {
             this.transform.position = new Vector3(x, 1.0f, z);
         }
+
+        //activation object start party
+        timeDesacTouche -= Time.deltaTime;
+        if (timeDesacTouche <= 0.0f) activTouche();
+        if (timeDesacTouche >= 0.0f) desactivationTouche(); 
     }
 
     void FixedUpdate()
     {
-        if (_isMoving) return;
-
-        else if (Input.GetKey(arrowLeft)) Assemble(Vector3.left);
-        else if (Input.GetKey(arrowRight)) Assemble(Vector3.right);
-        else if (Input.GetKey(arrowUp)) Assemble(Vector3.forward);
-        else if (Input.GetKey(arrowDown)) Assemble(Vector3.back);
-
-        void Assemble(Vector3 dir)
+        if(desacTouche == false)
         {
-            var anchor = transform.position + (Vector3.down + dir) * 1.085f;
-            var axis = Vector3.Cross(Vector3.up, dir);
-            StartCoroutine(Roll(anchor, axis));            
+            if (_isMoving) return;
+
+            else if (Input.GetKey(arrowLeft)) Assemble(Vector3.left);
+            else if (Input.GetKey(arrowRight)) Assemble(Vector3.right);
+            else if (Input.GetKey(arrowUp)) Assemble(Vector3.forward);
+            else if (Input.GetKey(arrowDown)) Assemble(Vector3.back);
+
+            void Assemble(Vector3 dir)
+            {
+                var anchor = transform.position + (Vector3.down + dir) * 1.085f;
+                var axis = Vector3.Cross(Vector3.up, dir);
+                StartCoroutine(Roll(anchor, axis));
+            }
         }
+
     }
 
     IEnumerator Roll(Vector3 anchor, Vector3 axis)
@@ -59,7 +73,8 @@ public class rollingCube : MonoBehaviour
         for(int i = 0; i < (90 / _rollSpeed); i++)
         {
             transform.RotateAround(anchor, axis, _rollSpeed);
-            yield return new WaitForSeconds(0.01f);
+            //yield return new WaitForSeconds(0.01f);
+            yield return new WaitForFixedUpdate();
 
             GetComponent<AudioSource>().Play();
         }
@@ -96,4 +111,19 @@ public class rollingCube : MonoBehaviour
         }
     }
 
+    public void desactivationTouche()
+    {
+        desacTouche = true;
+        this.transform.position = new Vector3(8, y, 8);
+    }
+
+    public void activTouche()
+    {
+        desacTouche = false;
+    }
+
+    public void tDesacTouche()
+    {
+        timeDesacTouche = 5.0f;
+    }
 }
