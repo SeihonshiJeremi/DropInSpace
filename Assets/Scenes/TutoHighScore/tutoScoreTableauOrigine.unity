@@ -961,7 +961,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tableau des scores
+  m_text: 'Tableau des scores Origine
 
 '
   m_isRightToLeft: 0
