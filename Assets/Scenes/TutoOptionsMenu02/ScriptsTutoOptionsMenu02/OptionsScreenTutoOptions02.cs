@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class OptionsScreenTutoOptions02 : MonoBehaviour
 {
@@ -13,18 +14,43 @@ public class OptionsScreenTutoOptions02 : MonoBehaviour
 
     public TMP_Text resolutionLabel;
 
+    public AudioMixer theMixer;
+
+    public TMP_Text mastLabel, musicLabel, sfxLabel;
+    public Slider mastSlider, musicSlider, sfxSlider;
+
+    public int activVsync;
+
     // Start is called before the first frame update
     void Start()
     {
         fullscreenTog.isOn = Screen.fullScreen;
 
-        if(QualitySettings.vSyncCount == 0)
+        /*if(QualitySettings.vSyncCount == 0)
         {
             vsyncTog.isOn = false;
         } else
         {
             vsyncTog.isOn = true;
+        }*/
+
+        if (PlayerPrefs.HasKey("vsync"))
+        {
+            activVsync = PlayerPrefs.GetInt("vsync", activVsync); 
+            
+            if (activVsync == 1)
+            {
+                QualitySettings.vSyncCount = 1;
+                vsyncTog.isOn = true;
+            }
+            else
+            {
+                QualitySettings.vSyncCount = 0;
+                vsyncTog.isOn = false;
+            }
         }
+
+
 
         //UpdateResLabel();
 
@@ -52,12 +78,27 @@ public class OptionsScreenTutoOptions02 : MonoBehaviour
 
             UpdateResLabel();
         }
+
+        float vol = 0f;
+        theMixer.GetFloat("MasterVol", out vol);
+        mastSlider.value = vol;
+
+        theMixer.GetFloat("MusicVolume", out vol);
+        musicSlider.value = vol;
+
+        theMixer.GetFloat("SFXvolume", out vol);
+        sfxSlider.value = vol;
+
+        mastLabel.text = Mathf.RoundToInt(mastSlider.value + 80).ToString();
+        musicLabel.text = Mathf.RoundToInt(musicSlider.value + 80).ToString();
+        sfxLabel.text = Mathf.RoundToInt(sfxSlider.value + 80).ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (QualitySettings.vSyncCount == 0) Debug.Log("vsyns false");
+        if (QualitySettings.vSyncCount == 1) Debug.Log("vsyns true");
     }
 
     public void ResLeft()
@@ -94,13 +135,44 @@ public class OptionsScreenTutoOptions02 : MonoBehaviour
         if(vsyncTog.isOn)
         {
             QualitySettings.vSyncCount = 1;
+            activVsync = 1;
+            PlayerPrefs.SetInt("vsync", activVsync);
         }
         else
         {
             QualitySettings.vSyncCount = 0;
+            activVsync = 0;
+            PlayerPrefs.SetInt("vsync", activVsync);
         }
 
         Screen.SetResolution(resolutions[selectedResolution].horizontal, resolutions[selectedResolution].vertical, fullscreenTog.isOn);
+    }
+
+    public void SetMasterVol()
+    {
+        mastLabel.text = Mathf.RoundToInt(mastSlider.value + 80).ToString();
+
+        theMixer.SetFloat("MasterVol", mastSlider.value);
+
+        PlayerPrefs.SetFloat("MasterVol", mastSlider.value);
+    }
+
+    public void SetMusicVol()
+    {
+        musicLabel.text = Mathf.RoundToInt(musicSlider.value + 80).ToString();
+
+        theMixer.SetFloat("MusicVolume", musicSlider.value);
+
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+    }
+
+    public void SetSFXVol()
+    {
+        sfxLabel.text = Mathf.RoundToInt(sfxSlider.value + 80).ToString();
+
+        theMixer.SetFloat("SFXvolume", sfxSlider.value);
+
+        PlayerPrefs.SetFloat("SFXvolume", sfxSlider.value);
     }
 }
 
