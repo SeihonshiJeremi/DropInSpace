@@ -34,11 +34,12 @@ public class monsterZoom : MonoBehaviour
     public int choixDirectionVertical;
 
     public GameObject Monster01;
+    public GameObject ModelMonster01;
     public GameObject Monster02;
 
     public LayerMask whatIsMonster;
 
-    public Transform bulletPrefab;
+    //public Transform bulletPrefab;    
 
     //en eattendan
     int reset;
@@ -46,8 +47,8 @@ public class monsterZoom : MonoBehaviour
 
     void Start()
     {
-        Transform bullet = bulletPrefab as Transform;
-        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+       // Transform bullet = bulletPrefab as Transform;
+        //Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     void Update()
@@ -72,7 +73,7 @@ public class monsterZoom : MonoBehaviour
     void FixedUpdate()
     {
         tempsAvantDeplacement -= Time.deltaTime;
-        choixDirection = Random.Range(1, 5);
+        choixDirection = Random.Range(1, 2);
 
         if (_collisionAvecChangerOrientationGauche == true) choixDirection = 1;
         if (_collisionAvecChangerOrientationDroite == true) choixDirection = 2;
@@ -88,24 +89,28 @@ public class monsterZoom : MonoBehaviour
         {
             Assemble(Vector3.left);
             tempsAvantDeplacement = tempsAvantDeplacementOrigine;
+            ModelMonster01.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
 
         else if (tempsAvantDeplacement < 0 && choixDirection == 2)
          {
              Assemble(Vector3.right);
              tempsAvantDeplacement = tempsAvantDeplacementOrigine;
+            ModelMonster01.transform.rotation = Quaternion.Euler(new Vector3(0, -180, 0));
         }
 
          else if (tempsAvantDeplacement < 0 && choixDirection == 3)
          {
              Assemble(Vector3.forward);
              tempsAvantDeplacement = tempsAvantDeplacementOrigine;
+            ModelMonster01.transform.rotation = Quaternion.Euler(new Vector3(0, -270, 0));
         }
 
          else if (tempsAvantDeplacement < 0 && choixDirection == 4)
          {
              Assemble(Vector3.back);
              tempsAvantDeplacement = tempsAvantDeplacementOrigine;
+            ModelMonster01.transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
         }
 
         void Assemble(Vector3 dir)

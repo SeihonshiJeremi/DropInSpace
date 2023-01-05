@@ -15,6 +15,11 @@ public class changeColorCube : MonoBehaviour
 
     public bool changeColorOK = false;
 
+     void Awake()
+    {
+        zoomManager = GameObject.Find("ZoomManager");
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Player" && changeColorOK == false)
