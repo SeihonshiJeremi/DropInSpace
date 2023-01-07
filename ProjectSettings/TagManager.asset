@@ -23,6 +23,7 @@ TagManager:
   - orientationChangerGauche
   - orientationChangerAv
   - orientationChangerArr
+  - MonsterChangeColor
   layers:
   - Default
   - TransparentFX

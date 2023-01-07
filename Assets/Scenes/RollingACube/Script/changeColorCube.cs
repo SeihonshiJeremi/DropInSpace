@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class changeColorCube : MonoBehaviour
 {
+    public Material m_Material01;
     public Material m_Material02;
 
     public GameObject zoomManager;
@@ -15,7 +16,7 @@ public class changeColorCube : MonoBehaviour
 
     public bool changeColorOK = false;
 
-     void Awake()
+    void Awake()
     {
         zoomManager = GameObject.Find("ZoomManager");
     }
@@ -30,7 +31,10 @@ public class changeColorCube : MonoBehaviour
             zoomManager.GetComponent<zoomManager>().scoreDoubleTrue(activeDouble);
             changeColorOK = true;
             GetComponent<AudioSource>().Play();
-        } else zoomManager.GetComponent<zoomManager>().scoreDoubleFalse(activeDouble);
+        }
+        else zoomManager.GetComponent<zoomManager>().scoreDoubleFalse(activeDouble);
+
+
 
         /*if (collision.collider.tag == "Player" && changeColorOK == true)
         {
@@ -39,6 +43,25 @@ public class changeColorCube : MonoBehaviour
         }*/
 
         if (collision.collider.tag == "destructorPlatform")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.tag == "MonsterChangeColor" && changeColorOK == true)
+        {
+            GetComponent<Renderer>().material = m_Material01;
+            zoomManager.GetComponent<zoomManager>().addFinLevel(valueDalle);
+            changeColorOK = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.tag == "destructorPlatform")
         {
             Destroy(gameObject);
         }

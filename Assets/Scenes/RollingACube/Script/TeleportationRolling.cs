@@ -13,6 +13,8 @@ public class TeleportationRolling : MonoBehaviour
     public Transform pointTPMonster02;
     public GameObject Monster02;
 
+    public string tag;
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -31,7 +33,7 @@ public class TeleportationRolling : MonoBehaviour
             Monster.transform.position = newPosition;
         }
 
-        if (other.gameObject.tag == "Monster02")
+        if (other.gameObject.tag == tag)
         {
             Vector3 newPosition;
             newPosition = pointTPMonster02.position;

@@ -32,10 +32,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TutoOptionsMenu01/tutoOptions.unity
     guid: 2ffd9831335b82a4b822f477a4c9a827
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutoOptionsMenu02/tutoOptions02.unity
     guid: 41f1fdd3bda408b4086f11d5ba81b22c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutoOptionsMenu02/pauseMenuTutoOptions02.unity
     guid: 136966505b73995448bb29423574ca99
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/StartDropInSpace.unity
+    guid: 8b14e76d985cf4746a4486c674905e3e
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Level01DIP.unity
+    guid: 70f11dc0ebd84b349b6e1249df51c801
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Level02DIP.unity
+    guid: a0a0254f1b524ef4ab97d5887ab7931e
   m_configObjects: {}

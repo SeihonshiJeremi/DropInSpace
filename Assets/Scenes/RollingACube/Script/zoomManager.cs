@@ -24,6 +24,8 @@ public class zoomManager : MonoBehaviour
     public float timerStart;
     public GameObject ObjectTimerStart;
 
+    public string scene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,14 +59,21 @@ public class zoomManager : MonoBehaviour
 
     }
 
+
     public void reduceFinLevel(int finLevelToAdd)
     {
         valueFinLevel -= finLevelToAdd;
         if (valueFinLevel == 0)
         {
             Debug.Log("go fin level");
-            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene(scene);
         }
+    }
+
+    public void addFinLevel(int finLevelToAdd)
+    {
+        valueFinLevel += finLevelToAdd;
     }
 
     //valeur score

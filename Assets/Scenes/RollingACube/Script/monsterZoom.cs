@@ -23,7 +23,6 @@ public class monsterZoom : MonoBehaviour
     public bool _collisionAvecChangerOrientationAv = false;
     public bool _collisionAvecChangerOrientationArr = false;
 
-
     public float x;
     public float z;
 
@@ -39,16 +38,23 @@ public class monsterZoom : MonoBehaviour
 
     public LayerMask whatIsMonster;
 
-    //public Transform bulletPrefab;    
+    public bool DirectionAleatoire;
+    public bool DirectionHorizontale;
+    public bool DirectionHorizontaleSingle;
+    public bool DirectionVertical;
+    public bool DirectionVerticalSingle;
+
+    public string tagMonster;
+
+    public Transform ignoreCollision;    
 
     //en eattendan
     int reset;
 
-
     void Start()
     {
-       // Transform bullet = bulletPrefab as Transform;
-        //Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+        Transform ignore = ignoreCollision as Transform;
+        Physics.IgnoreCollision(ignore.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     void Update()
@@ -72,16 +78,21 @@ public class monsterZoom : MonoBehaviour
 
     void FixedUpdate()
     {
-        tempsAvantDeplacement -= Time.deltaTime;
-        choixDirection = Random.Range(1, 2);
 
+        tempsAvantDeplacement -= Time.deltaTime;
+
+        //direction en fonction du monstre
+        if (DirectionAleatoire == true) choixDirection = Random.Range(1, 5);
+        if (DirectionHorizontale == true) choixDirection = Random.Range(1, 3);
+        if (DirectionVertical == true) choixDirection = Random.Range(3, 5);
+        if (DirectionHorizontaleSingle == true) choixDirection = Random.Range(1, 2);
+        if (DirectionVerticalSingle == true) choixDirection = Random.Range(3, 4);
+
+        //direction lors de collision avec changer
         if (_collisionAvecChangerOrientationGauche == true) choixDirection = 1;
         if (_collisionAvecChangerOrientationDroite == true) choixDirection = 2;
         if (_collisionAvecChangerOrientationAv == true) choixDirection = 3;
         if (_collisionAvecChangerOrientationArr == true) choixDirection = 4;
-
-        // choixDirectionHorizontal = Random.Range(1, 3);
-        //choixDirectionVertical = Random.Range(1, 3);
 
         if (_isMoving) return;
 
@@ -119,9 +130,6 @@ public class monsterZoom : MonoBehaviour
             var axis = Vector3.Cross(Vector3.up, dir);
             StartCoroutine(Roll(anchor, axis));
         }
-
-
-
         /* //view ray
          Debug.DrawRay(transform.position, Vector3.forward * 10, Color.red);
          Debug.DrawRay(transform.position, Vector3.back * 10, Color.blue);
@@ -218,9 +226,7 @@ public class monsterZoom : MonoBehaviour
                  }
              }
              else _collisionAvecMonster = false;
-         }*/
-
-
+         }*///code masquer
     }
 
     IEnumerator Roll(Vector3 anchor, Vector3 axis)
@@ -253,10 +259,10 @@ public class monsterZoom : MonoBehaviour
         if (other.gameObject.tag == "Player") Destroy(Player);
         if (other.gameObject.tag == "Player") reset = 1;
 
-        if (other.gameObject.tag == "Monster02")
+        if (other.gameObject.tag == tagMonster)
         {
             _collisionAvecMonster = true;
-            Monster02.GetComponent<monsterZoom021>().enabled = false;
+            Monster02.GetComponent<monsterZoom>().enabled = false;
         }
 
         if (other.gameObject.tag == "orientationChangerDroite") _collisionAvecChangerOrientationDroite = true;
@@ -269,10 +275,10 @@ public class monsterZoom : MonoBehaviour
     {
         if (other.gameObject.tag == "changeCubeMaterial") _collisionOK = false;
 
-        if (other.gameObject.tag == "Monster02")
+        if (other.gameObject.tag == tagMonster)
         {
             _collisionAvecMonster = false;
-            Monster02.GetComponent<monsterZoom021>().enabled = true;
+            Monster02.GetComponent<monsterZoom>().enabled = true;
         }
 
         if (other.gameObject.tag == "orientationChangerDroite") _collisionAvecChangerOrientationDroite = false;

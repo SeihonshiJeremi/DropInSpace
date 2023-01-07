@@ -19,7 +19,10 @@ public class rollingCube : MonoBehaviour
     public float y;
 
     public bool desacTouche = false;
-    public float timeDesacTouche = 5.0f;
+    public float timeDesacTouche = 3.0f;
+
+    public float horizontal;
+    public float vertical;
 
     void Start()
     {
@@ -43,6 +46,9 @@ public class rollingCube : MonoBehaviour
         timeDesacTouche -= Time.deltaTime;
         if (timeDesacTouche <= 0.0f) activTouche();
         if (timeDesacTouche >= 0.0f) desactivationTouche(); 
+
+        horizontal = Input.GetAxis("DPAD-Horizontal");
+        vertical = Input.GetAxis("DPAD-Vertical");
     }
 
     void FixedUpdate()
@@ -55,6 +61,11 @@ public class rollingCube : MonoBehaviour
             else if (Input.GetKey(arrowRight)) Assemble(Vector3.right);
             else if (Input.GetKey(arrowUp)) Assemble(Vector3.forward);
             else if (Input.GetKey(arrowDown)) Assemble(Vector3.back);
+
+            else if (horizontal < 0) Assemble(Vector3.left);
+            else if (horizontal > 0) Assemble(Vector3.right);
+            else if (vertical < 0) Assemble(Vector3.forward);
+            else if (vertical > 0) Assemble(Vector3.back);
 
             void Assemble(Vector3 dir)
             {
@@ -124,6 +135,6 @@ public class rollingCube : MonoBehaviour
 
     public void tDesacTouche()
     {
-        timeDesacTouche = 5.0f;
+        timeDesacTouche = 3.0f;
     }
 }
