@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.00013321129, b: 0.00016719261, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.00014566786, b: 0.00024519002, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9142,6 +9142,7 @@ MonoBehaviour:
   timerStart: 5
   ObjectTimerStart: {fileID: 2153138481201620122}
   scene: StartDropInSpace
+  sceneGameOver: StartDropInSpace
 --- !u!65 &2153138480684419492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10292,6 +10293,8 @@ MonoBehaviour:
   y: 0
   desacTouche: 0
   timeDesacTouche: 3
+  horizontal: 0
+  vertical: 0
 --- !u!1 &2153138481208641650
 GameObject:
   m_ObjectHideFlags: 0

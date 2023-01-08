@@ -11,8 +11,8 @@ public class changementSceneDynamax : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(scene);
-            // SceneManager.LoadSceneAsync(scene);
+            //SceneManager.LoadScene(scene);
+             SceneManager.LoadSceneAsync(scene);
         }
     }
 }

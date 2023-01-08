@@ -22,17 +22,21 @@ public class GridManager : MonoBehaviour
     public bool pos70, pos71, pos72, pos73, pos74, pos75, pos76, pos77, pos78, pos79;
     public bool pos80, pos81;
 
+    //public Transform Parent;
 
     void Start()
     {
+        //defini nouvelle gravité parce que mis à zero à cause du hub
+        Physics.gravity = new Vector3(0, -9.81f, 0);
+
         //cubeGrid
-        for(int i = 0; i < columnLength * forwardLength; i++)
+        for (int i = 0; i < columnLength * forwardLength; i++)
         {
             Instantiate(cubeGrid, new Vector3(x_Space * (i % columnLength), 0, z_Space * (i / columnLength)), Quaternion.identity);
         }
 
         //cubeDestructGrid
-        if (pos01 == true) { GameObject newGameObject = Instantiate(cubeDestructGrid); newGameObject.transform.position = position01; }
+        if (pos01 == true) { GameObject newGameObject = Instantiate(cubeDestructGrid /*,Parent*/); newGameObject.transform.position = position01; }
         if (pos02 == true) { GameObject newGameObject = Instantiate(cubeDestructGrid); newGameObject.transform.position = position02; }
         if (pos03 == true) { GameObject newGameObject = Instantiate(cubeDestructGrid); newGameObject.transform.position = position03; }
         if (pos04 == true) { GameObject newGameObject = Instantiate(cubeDestructGrid); newGameObject.transform.position = position04; }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+//[RequireComponent(typeof(AudioSource))]
 public class zoomManager : MonoBehaviour
 {
     public int valueFinLevel;
@@ -25,11 +26,18 @@ public class zoomManager : MonoBehaviour
     public GameObject ObjectTimerStart;
 
     public string scene;
+    public string sceneGameOver;
+
+    //audio
+    AudioSource m_MyAudioSource;
+    public AudioClip clipNoTime;
+    bool chAudio = false;
 
     // Start is called before the first frame update
     void Start()
     {
-       // ObjectTimerStart.GetComponent<rollingCube>().enabled = false;
+        m_MyAudioSource = GetComponent<AudioSource>();
+        // ObjectTimerStart.GetComponent<rollingCube>().enabled = false;
     }
 
     // Update is called once per frame
@@ -40,9 +48,15 @@ public class zoomManager : MonoBehaviour
         timerNiveau -= Time.deltaTime;
         tempsint = Mathf.RoundToInt(timerNiveau);
 
+        if(timerNiveau <= 0) SceneManager.LoadScene(sceneGameOver);
+        if (timerNiveau <= 10 && chAudio == false)
+        {
+            changementAudio();
+            chAudio = true;
+        }
 
-        //decompte dalle
-        text_finirLevel.text = " " + valueFinLevel;
+            //decompte dalle
+            text_finirLevel.text = " " + valueFinLevel;
 
         //score
         text_score.text = " " + score;
@@ -95,5 +109,12 @@ public class zoomManager : MonoBehaviour
         activDoubleScore = activDoubleScore * 0;
         Debug.Log("quand je bouge sur le rouge ");
 
+    }
+
+    //audio
+    public void changementAudio()
+    {
+        m_MyAudioSource.clip = clipNoTime;
+        m_MyAudioSource.Play();
     }
 }

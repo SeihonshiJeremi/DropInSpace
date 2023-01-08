@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Niveau3D.unity
     guid: 14bf0a45de91aa94dad3b064b517f8c8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SpaceHub.unity
     guid: d09f2891ce9465541b38fbcde013884c
   - enabled: 0
@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/RollingACube/Scene/buttonStart.unity
     guid: 3405913bbf9e12c4c8b5b037fd129bdc
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/RollingACube/Scene/rollingAcube.unity
     guid: 66a10e36790755d4492536d6bc3756cf
   - enabled: 0
@@ -41,10 +41,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameDropInSpace/SceneDIP/StartDropInSpace.unity
     guid: 8b14e76d985cf4746a4486c674905e3e
-  - enabled: 1
+  - enabled: 0
+    path: Assets/GameDropInSpace/SceneDIP/HubDIP.unity
+    guid: 7f7dc0de2c1740e4a833562b0832232c
+  - enabled: 0
     path: Assets/GameDropInSpace/SceneDIP/Level01DIP.unity
     guid: 70f11dc0ebd84b349b6e1249df51c801
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameDropInSpace/SceneDIP/Level02DIP.unity
     guid: a0a0254f1b524ef4ab97d5887ab7931e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

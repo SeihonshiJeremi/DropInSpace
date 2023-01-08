@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.00021044622, b: 0.00027024918, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.00014566786, b: 0.00024519002, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9136,6 +9136,7 @@ MonoBehaviour:
   timerStart: 5
   ObjectTimerStart: {fileID: 2153138481201620122}
   scene: Level02DIP
+  sceneGameOver: StartDropInSpace
 --- !u!65 &2153138480684419492
 BoxCollider:
   m_ObjectHideFlags: 0

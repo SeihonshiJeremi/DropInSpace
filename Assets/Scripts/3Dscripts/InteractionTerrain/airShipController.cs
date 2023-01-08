@@ -15,6 +15,11 @@ public class airShipController : MonoBehaviour
 
     Vector3 newPosition;
 
+    void Start()
+    {
+        Physics.gravity = new Vector3(0, 0, 0);
+    }
+
     void Update()
     {
             rollInput = Mathf.Lerp(rollInput, Input.GetAxisRaw("Horizontal"), rollAcceleration * Time.deltaTime);
