@@ -69,7 +69,7 @@ Material:
     - _Speed: 1.25
     m_Colors:
     - _BoxDims: {r: 5, g: 5, b: 5, a: 1}
-    - _Color: {r: 3253.322, g: 3253.322, b: 3253.322, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColor: {r: 0.10065861, g: 0.33776495, b: 0.735849, a: 1}
     - _Emission1: {r: 2.56, g: 0, b: 0, a: 1}
     - _Emission2: {r: 0, g: 1.95, b: 2.52, a: 1}

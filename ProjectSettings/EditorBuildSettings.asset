@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Niveau3D.unity
     guid: 14bf0a45de91aa94dad3b064b517f8c8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SpaceHub.unity
     guid: d09f2891ce9465541b38fbcde013884c
   - enabled: 0
@@ -38,7 +38,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TutoOptionsMenu02/pauseMenuTutoOptions02.unity
     guid: 136966505b73995448bb29423574ca99
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameDropInSpace/SceneDIP/StartDropInSpace.unity
     guid: 8b14e76d985cf4746a4486c674905e3e
   - enabled: 0

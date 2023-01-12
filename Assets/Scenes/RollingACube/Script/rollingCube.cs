@@ -24,10 +24,18 @@ public class rollingCube : MonoBehaviour
     public float horizontal;
     public float vertical;
 
-    void Start()
-    {
+    /*//pour le tactile
+    public Vector2 startPos;
+    public Vector2 direction;
+    public bool directionChosen;
+    public float screenWidth = Screen.width;
+    public float screenHeight = Screen.height;*/
 
-    }
+    /*void Awake()
+    {
+       QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        Application.targetFrameRate = 10;
+    }*/
 
     void Update()
     {
@@ -57,21 +65,46 @@ public class rollingCube : MonoBehaviour
         {
             if (_isMoving) return;
 
+            //touche clavier
             else if (Input.GetKey(arrowLeft)) Assemble(Vector3.left);
             else if (Input.GetKey(arrowRight)) Assemble(Vector3.right);
             else if (Input.GetKey(arrowUp)) Assemble(Vector3.forward);
             else if (Input.GetKey(arrowDown)) Assemble(Vector3.back);
 
+            //touche manette xbox
             else if (horizontal < 0) Assemble(Vector3.left);
             else if (horizontal > 0) Assemble(Vector3.right);
             else if (vertical < 0) Assemble(Vector3.forward);
             else if (vertical > 0) Assemble(Vector3.back);
+
+           /* //tactile
+            // Track a single touch as a direction control.
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                startPos = new Vector2(screenWidth / 2, screenHeight / 2);
+                direction = touch.position - startPos;
+            }
+            else if (direction.x < 0) Assemble(Vector3.left); 
+            else if (direction.x > 0) Assemble(Vector3.right);
+            else if (direction.y > 0 && direction.y > direction.x) Assemble(Vector3.forward);
+            else if (direction.y < 0) Assemble(Vector3.back);
+             
+
+            if (directionChosen)
+            {
+                // Something that uses the chosen direction...
+
+            }*/
 
             void Assemble(Vector3 dir)
             {
                 var anchor = transform.position + (Vector3.down + dir) * 1.085f;
                 var axis = Vector3.Cross(Vector3.up, dir);
                 StartCoroutine(Roll(anchor, axis));
+
+               /* direction = new Vector2(0, 0);
+                /*startPos = new Vector2(0, 0);*/
             }
         }
 
@@ -136,5 +169,53 @@ public class rollingCube : MonoBehaviour
     public void tDesacTouche()
     {
         timeDesacTouche = 3.0f;
+    }
+
+    public void AssembleLeft()
+    {
+        Assemble(Vector3.left);
+
+        void Assemble(Vector3 dir)
+        {
+            var anchor = transform.position + (Vector3.down + dir) * 1.085f;
+            var axis = Vector3.Cross(Vector3.up, dir);
+            StartCoroutine(Roll(anchor, axis));
+        }
+    }
+
+    public void AssembleRight()
+    {
+        Assemble(Vector3.right);
+
+        void Assemble(Vector3 dir)
+        {
+            var anchor = transform.position + (Vector3.down + dir) * 1.085f;
+            var axis = Vector3.Cross(Vector3.up, dir);
+            StartCoroutine(Roll(anchor, axis));
+        }
+    }
+
+    public void AssembleForward()
+    {
+        Assemble(Vector3.forward);
+
+        void Assemble(Vector3 dir)
+        {
+            var anchor = transform.position + (Vector3.down + dir) * 1.085f;
+            var axis = Vector3.Cross(Vector3.up, dir);
+            StartCoroutine(Roll(anchor, axis));
+        }
+    }
+
+    public void AssembleBack()
+    {
+        Assemble(Vector3.back);
+
+        void Assemble(Vector3 dir)
+        {
+            var anchor = transform.position + (Vector3.down + dir) * 1.085f;
+            var axis = Vector3.Cross(Vector3.up, dir);
+            StartCoroutine(Roll(anchor, axis));
+        }
     }
 }

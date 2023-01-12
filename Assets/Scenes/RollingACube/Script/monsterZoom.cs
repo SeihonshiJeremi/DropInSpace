@@ -289,7 +289,8 @@ public class monsterZoom : MonoBehaviour
         for (int i = 0; i < (90 / _rollSpeed); i++)
         {
             transform.RotateAround(anchor, axis, _rollSpeed);
-            yield return new WaitForSeconds(0.01f);
+           // yield return new WaitForSeconds(0.01f);
+            yield return new WaitForFixedUpdate();
         }
 
         _isMoving = false;
@@ -318,10 +319,10 @@ public class monsterZoom : MonoBehaviour
             Monster02.GetComponent<monsterZoom>().enabled = false;
         }
 
-        if (other.gameObject.tag == "orientationChangerDroite") _collisionAvecChangerOrientationDroite = true;
-        if (other.gameObject.tag == "orientationChangerGauche") _collisionAvecChangerOrientationGauche = true;
-        if (other.gameObject.tag == "orientationChangerAv") _collisionAvecChangerOrientationAv = true;
-        if (other.gameObject.tag == "orientationChangerArr") _collisionAvecChangerOrientationArr = true;
+        if (other.gameObject.tag == "orientationChangerDroite" && followMonster == true) _collisionAvecChangerOrientationDroite = true;
+        if (other.gameObject.tag == "orientationChangerGauche" && followMonster == true) _collisionAvecChangerOrientationGauche = true;
+        if (other.gameObject.tag == "orientationChangerAv" && followMonster == true) _collisionAvecChangerOrientationAv = true;
+        if (other.gameObject.tag == "orientationChangerArr" && followMonster == true) _collisionAvecChangerOrientationArr = true;
     }
 
     private void OnTriggerExit(Collider other)
