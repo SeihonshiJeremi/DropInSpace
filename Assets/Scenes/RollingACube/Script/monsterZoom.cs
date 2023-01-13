@@ -63,6 +63,12 @@ public class monsterZoom : MonoBehaviour
     public float assemblePtForEast;
     public float assemblePtForWest;
 
+    //pour item
+    public GameObject item;
+    public GameObject scriptZoomManager;
+    public float durationItem = 10.0f;
+    public float durationItemOrigine = 10.0f;
+
     //pour le monstre qui se tp
     public bool MonsterTP;
 
@@ -79,11 +85,6 @@ public class monsterZoom : MonoBehaviour
     public bool pos60, pos61, pos62, pos63, pos64, pos65, pos66, pos67, pos68, pos69;
     public bool pos70, pos71, pos72, pos73, pos74, pos75, pos76, pos77, pos78, pos79;
     public bool pos80, pos81;
-
-    //pour item
-    public GameObject item;
-
-
 
     //en eattendan
     int reset;
@@ -117,6 +118,14 @@ public class monsterZoom : MonoBehaviour
     {
 
         tempsAvantDeplacement -= Time.deltaTime;
+        durationItem -= Time.deltaTime;
+
+        //pour reinitialiser temps origine lors pouvoir
+        if (durationItem < 0)
+        {
+            durationItem = durationItemOrigine;
+            tempsAvantDeplacementOrigine = 2.0f;
+        } 
 
         //direction en fonction du monstre
         if (DirectionAleatoire == true) choixDirection = Random.Range(1, 5);
@@ -358,6 +367,20 @@ public class monsterZoom : MonoBehaviour
         if (other.gameObject.tag == "orientationChangerGauche") _collisionAvecChangerOrientationGauche = false;
         if (other.gameObject.tag == "orientationChangerAv") _collisionAvecChangerOrientationAv = false;
         if (other.gameObject.tag == "orientationChangerArr") _collisionAvecChangerOrientationArr = false;
+    }
+
+    //pourvoir des items
+    public void tAvDepX2()
+    {
+        tempsAvantDeplacement = 4.0f;
+        tempsAvantDeplacementOrigine = 4.0f;
+        scriptZoomManager.GetComponent<zoomManager>().audioItemTimeDiv2();
+    }
+
+    public void powerStop()
+    {
+        tempsAvantDeplacement = 10.0f;
+        scriptZoomManager.GetComponent<zoomManager>().audioItemTStop();
     }
 
 

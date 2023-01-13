@@ -34,11 +34,11 @@ public class rollingCube : MonoBehaviour
     public float screenWidth = Screen.width;
     public float screenHeight = Screen.height;*/
 
-    /*void Awake()
+    void Awake()
     {
-       QualitySettings.vSyncCount = 0;  // VSync must be disabled
-        Application.targetFrameRate = 10;
-    }*/
+       /*QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        Application.targetFrameRate = 60;*/
+    }
 
     void Update()
     {

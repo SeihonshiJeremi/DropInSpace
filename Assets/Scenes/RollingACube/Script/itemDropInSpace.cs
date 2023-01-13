@@ -55,6 +55,9 @@ public class itemDropInSpace : MonoBehaviour
     public bool pos70, pos71, pos72, pos73, pos74, pos75, pos76, pos77, pos78, pos79;
     public bool pos80, pos81;
 
+    //pouvoir des items
+    public GameObject scriptPouvoirItem;
+
 
 
 
@@ -84,6 +87,8 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function div2");
         Destroy(newItem);
         itemDetruit = true;
+
+        scriptPouvoirItem.GetComponent<monsterZoom>().tAvDepX2();
     }
 
     public void itemTimeStopF()
@@ -91,6 +96,8 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function stop");
         Destroy(newItem);
         itemDetruit = true;
+
+        scriptPouvoirItem.GetComponent<monsterZoom>().powerStop();
     }
 
     public void itemInvincibiltyF()
@@ -131,6 +138,8 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function div202");
         Destroy(newItem02);
         itemDetruit02 = true;
+
+        scriptPouvoirItem.GetComponent<monsterZoom>().tAvDepX2();
     }
 
     public void itemTimeStopF02()
@@ -138,6 +147,8 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function stop02");
         Destroy(newItem02);
         itemDetruit02 = true;
+
+        scriptPouvoirItem.GetComponent<monsterZoom>().powerStop();
     }
 
     public void itemInvincibiltyF02()

@@ -30,8 +30,16 @@ public class zoomManager : MonoBehaviour
 
     //audio
     AudioSource m_MyAudioSource;
+    public AudioClip audioStage;
     public AudioClip clipNoTime;
-    bool chAudio = false;
+    public bool chAudio = false;
+
+    //pour audio power
+    public bool itemAudio = false;
+    public float durationItem;
+    public float durationItemOrigine;
+    public AudioClip ItemTimeDiv2;
+    public AudioClip ItemStop;
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +51,31 @@ public class zoomManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //timer item
+        if(itemAudio == true)
+        {
+            durationItem -= Time.deltaTime;
+          
+            if (durationItem < 0)
+            {
+                audioOrigine();
+                itemAudio = false;
+                if(chAudio == true)
+                {
+                    changementAudio();
+                    //chAudio = true;
+                }
+            }
+        }
+
+
         //timer
         text_timer.text = " " + tempsint;
         timerNiveau -= Time.deltaTime;
         tempsint = Mathf.RoundToInt(timerNiveau);
 
         if(timerNiveau <= 0) SceneManager.LoadScene(sceneGameOver);
-        if (timerNiveau <= 10 && chAudio == false)
+        if (timerNiveau <= 20 && chAudio == false)
         {
             changementAudio();
             chAudio = true;
@@ -112,9 +138,31 @@ public class zoomManager : MonoBehaviour
     }
 
     //audio
+    public void audioOrigine()
+    {
+        m_MyAudioSource.clip = audioStage;
+        m_MyAudioSource.Play();
+    }
+
     public void changementAudio()
     {
         m_MyAudioSource.clip = clipNoTime;
         m_MyAudioSource.Play();
+    }
+
+    public void audioItemTimeDiv2()
+    {
+        m_MyAudioSource.clip = ItemTimeDiv2;
+        m_MyAudioSource.Play();
+        itemAudio = true;
+        durationItem = 5.0f;
+    }
+
+    public void audioItemTStop()
+    {
+        m_MyAudioSource.clip = ItemStop;
+        m_MyAudioSource.Play();
+        itemAudio = true;
+        durationItem = 10.0f;
     }
 }
