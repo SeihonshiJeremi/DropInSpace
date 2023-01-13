@@ -24,6 +24,18 @@ TagManager:
   - orientationChangerAv
   - orientationChangerArr
   - MonsterChangeColor
+  - itemTimeDiv2
+  - itemTimeStop
+  - itemInvincibilty
+  - itemBonbonScoreRouge
+  - itemBonbonScoreVert
+  - itemRandom
+  - itemTimeDiv202
+  - itemTimeStop02
+  - itemInvincibilty02
+  - itemBonbonScoreRouge02
+  - itemBonbonScoreVert02
+  - itemRandom02
   layers:
   - Default
   - TransparentFX

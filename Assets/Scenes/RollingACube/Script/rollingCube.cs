@@ -24,6 +24,9 @@ public class rollingCube : MonoBehaviour
     public float horizontal;
     public float vertical;
 
+    //pour les item
+    public GameObject item;
+
     /*//pour le tactile
     public Vector2 startPos;
     public Vector2 direction;
@@ -140,12 +143,28 @@ public class rollingCube : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //1er item
+        if (other.gameObject.tag == "itemTimeDiv2") item.GetComponent<itemDropInSpace>().itemTimeDiv2F();
+        if (other.gameObject.tag == "itemTimeStop") item.GetComponent<itemDropInSpace>().itemTimeStopF();
+        if (other.gameObject.tag == "itemInvincibilty") item.GetComponent<itemDropInSpace>().itemInvincibiltyF();
+        if (other.gameObject.tag == "itemBonbonScoreRouge") item.GetComponent<itemDropInSpace>().itemBonbonScoreRougeF();
+        if (other.gameObject.tag == "itemBonbonScoreVert") item.GetComponent<itemDropInSpace>().itemBonbonScoreVertF();
+        if (other.gameObject.tag == "itemRandom") item.GetComponent<itemDropInSpace>().itemRandomF();
+
+        //2eme item
+        if (other.gameObject.tag == "itemTimeDiv202") item.GetComponent<itemDropInSpace>().itemTimeDiv2F02();
+        if (other.gameObject.tag == "itemTimeStop02") item.GetComponent<itemDropInSpace>().itemTimeStopF02();
+        if (other.gameObject.tag == "itemInvincibilty02") item.GetComponent<itemDropInSpace>().itemInvincibiltyF02();
+        if (other.gameObject.tag == "itemBonbonScoreRouge02") item.GetComponent<itemDropInSpace>().itemBonbonScoreRougeF02();
+        if (other.gameObject.tag == "itemBonbonScoreVert02") item.GetComponent<itemDropInSpace>().itemBonbonScoreVertF02();
+        if (other.gameObject.tag == "itemRandom02") item.GetComponent<itemDropInSpace>().itemRandomF02();
 
         if (other.gameObject.tag == "changeCubeMaterial")
         {
             _collisionOK = true;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
 

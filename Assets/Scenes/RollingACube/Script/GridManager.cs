@@ -226,14 +226,14 @@ public class GridManager : MonoBehaviour
     Vector3 position81 = new Vector3(16, 20, 16);
 }
 
-[System.Serializable]
+/*[System.Serializable]
 public class Coordinate
 {
 
     
 
    
-}
+}*/
 
 
 

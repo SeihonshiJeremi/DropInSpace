@@ -80,6 +80,9 @@ public class monsterZoom : MonoBehaviour
     public bool pos70, pos71, pos72, pos73, pos74, pos75, pos76, pos77, pos78, pos79;
     public bool pos80, pos81;
 
+    //pour item
+    public GameObject item;
+
 
 
     //en eattendan
@@ -323,6 +326,22 @@ public class monsterZoom : MonoBehaviour
         if (other.gameObject.tag == "orientationChangerGauche" && followMonster == true) _collisionAvecChangerOrientationGauche = true;
         if (other.gameObject.tag == "orientationChangerAv" && followMonster == true) _collisionAvecChangerOrientationAv = true;
         if (other.gameObject.tag == "orientationChangerArr" && followMonster == true) _collisionAvecChangerOrientationArr = true;
+
+        //destruction de l'item si le monstre rentre dedans
+        if (other.gameObject.tag == "itemTimeDiv202") item.GetComponent<itemDropInSpace>().itemDetruitF();
+        if (other.gameObject.tag == "itemTimeStop02") item.GetComponent<itemDropInSpace>().itemDetruitF();
+        if (other.gameObject.tag == "itemInvincibilty02") item.GetComponent<itemDropInSpace>().itemDetruitF();
+        if (other.gameObject.tag == "itemBonbonScoreRouge02") item.GetComponent<itemDropInSpace>().itemDetruitF();
+        if (other.gameObject.tag == "itemBonbonScoreVert02") item.GetComponent<itemDropInSpace>().itemDetruitF();
+        if (other.gameObject.tag == "itemRandom02") item.GetComponent<itemDropInSpace>().itemDetruitF();
+
+        if (other.gameObject.tag == "itemTimeDiv2") item.GetComponent<itemDropInSpace>().itemDetruitMonsterF();
+        if (other.gameObject.tag == "itemTimeStop") item.GetComponent<itemDropInSpace>().itemDetruitMonsterF();
+        if (other.gameObject.tag == "itemInvincibilty") item.GetComponent<itemDropInSpace>().itemDetruitMonsterF();
+        if (other.gameObject.tag == "itemBonbonScoreRouge") item.GetComponent<itemDropInSpace>().itemDetruitMonsterF();
+        if (other.gameObject.tag == "itemBonbonScoreVert") item.GetComponent<itemDropInSpace>().itemDetruitMonsterF();
+        if (other.gameObject.tag == "itemRandom") item.GetComponent<itemDropInSpace>().itemDetruitMonsterF();
+
     }
 
     private void OnTriggerExit(Collider other)
