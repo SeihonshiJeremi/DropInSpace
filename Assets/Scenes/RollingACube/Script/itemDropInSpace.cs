@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class itemDropInSpace : MonoBehaviour
 {
+    //durationItem
+    public float durationItem;
+    public float durationItemOrigine;
+
     //les items
     public bool itemTimeDiv2;
     public bool itemTimeStop;
@@ -23,6 +27,9 @@ public class itemDropInSpace : MonoBehaviour
     //recreation de l'item
     public bool itemDetruit = false;
     public bool itemDetruit02 = false;
+
+    //itemInvincibility
+    public MeshRenderer ObjetFaireClignoter;
 
     //apparition de l'item
     public int choixPlatform;
@@ -106,6 +113,9 @@ public class itemDropInSpace : MonoBehaviour
         Destroy(newItem);
         itemDetruit = true;
 
+        scriptPouvoirItem.GetComponent<monsterZoom>().powerInvincibilty();
+        durationItem = 10.0f;
+
     }
 
     public void itemBonbonScoreRougeF()
@@ -157,6 +167,9 @@ public class itemDropInSpace : MonoBehaviour
         Destroy(newItem02);
         itemDetruit02 = true;
 
+        scriptPouvoirItem.GetComponent<monsterZoom>().powerInvincibilty();
+        durationItem = 10.0f;
+
     }
 
     public void itemBonbonScoreRougeF02()
@@ -198,9 +211,25 @@ public class itemDropInSpace : MonoBehaviour
         itemDetruit = true;
     }
 
+    IEnumerator Clignotement()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            ObjetFaireClignoter.enabled = false;
+            yield return new WaitForSeconds(.25f); // or 0.125f if it shall take 0.25 in total
+            ObjetFaireClignoter.enabled = true;
+            yield return new WaitForSeconds(.25f); // or 0.125f if it shall take 0.25 in total
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        //pour itemInvincibility
+        durationItem -= Time.deltaTime;
+        if (durationItem > 0) StartCoroutine(Clignotement());
+
+
         //pour apparition
         tAvAppItem -= Time.deltaTime;
         tAvAppItem02 -= Time.deltaTime;

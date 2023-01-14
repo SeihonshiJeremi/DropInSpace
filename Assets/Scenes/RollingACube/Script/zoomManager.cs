@@ -40,6 +40,7 @@ public class zoomManager : MonoBehaviour
     public float durationItemOrigine;
     public AudioClip ItemTimeDiv2;
     public AudioClip ItemStop;
+    public AudioClip ItemInvincibility;
 
     // Start is called before the first frame update
     void Start()
@@ -161,6 +162,14 @@ public class zoomManager : MonoBehaviour
     public void audioItemTStop()
     {
         m_MyAudioSource.clip = ItemStop;
+        m_MyAudioSource.Play();
+        itemAudio = true;
+        durationItem = 10.0f;
+    }
+
+    public void audioItemTInvincibility()
+    {
+        m_MyAudioSource.clip = ItemInvincibility;
         m_MyAudioSource.Play();
         itemAudio = true;
         durationItem = 10.0f;

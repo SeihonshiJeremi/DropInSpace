@@ -69,6 +69,10 @@ public class monsterZoom : MonoBehaviour
     public float durationItem = 10.0f;
     public float durationItemOrigine = 10.0f;
 
+    //pour item invincibility
+    bool boolIgnoreCollisionPlayer = false;
+    public Transform ignoreCollisionPlayer;
+
     //pour le monstre qui se tp
     public bool MonsterTP;
 
@@ -125,7 +129,20 @@ public class monsterZoom : MonoBehaviour
         {
             durationItem = durationItemOrigine;
             tempsAvantDeplacementOrigine = 2.0f;
+
+            //pour remettre collision item invincibility
+            Transform ignorePlayer = ignoreCollision as Transform;
+            Physics.IgnoreCollision(ignorePlayer.GetComponent<Collider>(), GetComponent<Collider>());
+            boolIgnoreCollisionPlayer = false;
+
         } 
+
+        //pour item invincibility
+        if(durationItem > 0 && boolIgnoreCollisionPlayer == true)
+        {
+            Transform ignorePlayer = ignoreCollisionPlayer as Transform;
+            Physics.IgnoreCollision(ignorePlayer.GetComponent<Collider>(), GetComponent<Collider>());
+        }
 
         //direction en fonction du monstre
         if (DirectionAleatoire == true) choixDirection = Random.Range(1, 5);
@@ -322,8 +339,11 @@ public class monsterZoom : MonoBehaviour
     {
         if (other.gameObject.tag == "changeCubeMaterial") _collisionOK = true;
 
-        if (other.gameObject.tag == "Player") Destroy(Player);
-        if (other.gameObject.tag == "Player") reset = 1;
+        if (other.gameObject.tag == "Player" && boolIgnoreCollisionPlayer == false)
+        {
+            Destroy(Player);
+            reset = 1;
+        }        
 
         if (other.gameObject.tag == tagMonster)
         {
@@ -381,6 +401,13 @@ public class monsterZoom : MonoBehaviour
     {
         tempsAvantDeplacement = 10.0f;
         scriptZoomManager.GetComponent<zoomManager>().audioItemTStop();
+    }
+
+    public void powerInvincibilty()
+    {
+        boolIgnoreCollisionPlayer = true;
+        durationItem = 10.0f;
+        scriptZoomManager.GetComponent<zoomManager>().audioItemTInvincibility();
     }
 
 
