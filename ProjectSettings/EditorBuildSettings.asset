@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/RollingACube/Scene/buttonStart.unity
     guid: 3405913bbf9e12c4c8b5b037fd129bdc
   - enabled: 1
+    path: Assets/Scenes/TutoSceneTransition/sceneTransition.unity
+    guid: 96b3fca5bf90c5a4f8fcc8bf24cf8ea8
+  - enabled: 1
     path: Assets/Scenes/RollingACube/Scene/rollingAcube.unity
     guid: 66a10e36790755d4492536d6bc3756cf
   - enabled: 0

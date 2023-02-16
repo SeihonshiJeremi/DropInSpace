@@ -27,7 +27,7 @@ public class highScoreTable : MonoBehaviour
             new HighScoreEntry { score = 000000, name = "AAA"},
         };*/
 
-        //AddHighScoreEntry(10, "JER"); /*a partir de là je peux créer une fonction qui me fera un nouveau score*/
+        AddHighScoreEntry(10, "JER"); /*a partir de là je peux créer une fonction qui me fera un nouveau score*/
 
         string jsonString = PlayerPrefs.GetString("highScoreTable");
         HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
