@@ -140,6 +140,7 @@ public class itemDropInSpace : MonoBehaviour
         Destroy(newItem);
         itemDetruit = true;
 
+        scriptPouvoirItem.GetComponent<monsterZoom>().powerItemRandom();
     }
 
     //fonction 2éme item
@@ -193,6 +194,8 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function random02");
         Destroy(newItem02);
         itemDetruit02 = true;
+
+        scriptPouvoirItem.GetComponent<monsterZoom>().powerItemRandom();
 
     }
 
@@ -435,6 +438,11 @@ public class itemDropInSpace : MonoBehaviour
 
             tAvAppItem02 = tAvAppItemOringine02;
         }
+    }
+
+    public void activClignoOtherScript()
+    {
+        durationItem = 10.0f;
     }
 
 

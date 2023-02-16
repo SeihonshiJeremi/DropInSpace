@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.0011907998, b: 0.0013694918, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.0020986234, b: 0.0023324082, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -244,6 +244,7 @@ MonoBehaviour:
   durationItem: 5
   durationItemOrigine: 5
   ignoreCollisionPlayer: {fileID: 0}
+  choixItemRandom: 0
   MonsterTP: 0
   Monster01Vector: {fileID: 0}
   choixPlatform: 0
@@ -6447,6 +6448,7 @@ MonoBehaviour:
   durationItem: 10
   durationItemOrigine: 10
   ignoreCollisionPlayer: {fileID: 2143517193}
+  choixItemRandom: 0
   MonsterTP: 0
   Monster01Vector: {fileID: 1931168899}
   choixPlatform: 0
@@ -8146,16 +8148,16 @@ MonoBehaviour:
   durationItemOrigine: 10
   itemTimeDiv2: 0
   itemTimeStop: 0
-  itemInvincibilty: 1
+  itemInvincibilty: 0
   itemBonbonScoreRouge: 0
   itemBonbonScoreVert: 0
-  itemRandom: 0
+  itemRandom: 1
   itemTimeDiv202: 0
   itemTimeStop02: 0
-  itemInvincibilty02: 1
+  itemInvincibilty02: 0
   itemBonbonScoreRouge02: 0
   itemBonbonScoreVert02: 0
-  itemRandom02: 0
+  itemRandom02: 1
   itemDetruit: 0
   itemDetruit02: 0
   ObjetFaireClignoter: {fileID: 2143517191}

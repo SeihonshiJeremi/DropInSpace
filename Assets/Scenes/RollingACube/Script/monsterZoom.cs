@@ -73,6 +73,9 @@ public class monsterZoom : MonoBehaviour
     bool boolIgnoreCollisionPlayer = false;
     public Transform ignoreCollisionPlayer;
 
+    //pour item random
+    public int choixItemRandom;
+
     //pour le monstre qui se tp
     public bool MonsterTP;
 
@@ -143,6 +146,9 @@ public class monsterZoom : MonoBehaviour
             Transform ignorePlayer = ignoreCollisionPlayer as Transform;
             Physics.IgnoreCollision(ignorePlayer.GetComponent<Collider>(), GetComponent<Collider>());
         }
+
+        //pour itemRandom
+        choixItemRandom = Random.Range(1, 4);
 
         //direction en fonction du monstre
         if (DirectionAleatoire == true) choixDirection = Random.Range(1, 5);
@@ -408,6 +414,17 @@ public class monsterZoom : MonoBehaviour
         boolIgnoreCollisionPlayer = true;
         durationItem = 10.0f;
         scriptZoomManager.GetComponent<zoomManager>().audioItemTInvincibility();
+    }
+
+    public void powerItemRandom()
+    {
+        if (choixItemRandom == 1) tAvDepX2();
+        if (choixItemRandom == 2) powerStop();
+        if (choixItemRandom == 3)
+        {
+            powerInvincibilty();
+            item.GetComponent<itemDropInSpace>().activClignoOtherScript();
+        } 
     }
 
 
