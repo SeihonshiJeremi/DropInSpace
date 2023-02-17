@@ -15,9 +15,17 @@ public class airShipController : MonoBehaviour
 
     Vector3 newPosition;
 
+    //pour effet de vitesse
+    public Camera Camera;
+    public float fov = 60.0f;
+    //pour effet particule
+    public GameObject particle;
+
     void Start()
     {
         Physics.gravity = new Vector3(0, 0, 0);
+        particle.SetActive(false);
+
     }
 
     void Update()
@@ -44,14 +52,26 @@ public class airShipController : MonoBehaviour
             ChangePhysicGravityExit();            
         }
 
-        if (Input.GetButtonDown("Dash"))
+        if (Input.GetButton("Dash"))
+        {
+            Camera.main.fieldOfView += Time.deltaTime * 5;
+            forwardSpeed += Time.deltaTime * 5;
+            if (Camera.main.fieldOfView > 130) Camera.main.fieldOfView = 130;
+            if (forwardSpeed > 200) forwardSpeed = 200;
+            particle.SetActive(true);
+        }
+
+        /*if (Input.GetButtonDown("Dash"))
         {
             forwardSpeed = forwardSpeed * 2;
-        }
+        }*/
 
         if (Input.GetButtonUp("Dash"))
         {
-            forwardSpeed = forwardSpeed / 2;
+            //forwardSpeed = forwardSpeed / 2;
+            forwardSpeed = 100;
+            Camera.main.fieldOfView = 60.0f;
+            particle.SetActive(false);
         }
     }
 
