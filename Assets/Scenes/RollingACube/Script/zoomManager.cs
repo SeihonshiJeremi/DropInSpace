@@ -16,6 +16,7 @@ public class zoomManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI text_score;
     public int score;
+    public int scoreSetIn;
 
     public bool doubleScore = false;
 
@@ -42,6 +43,12 @@ public class zoomManager : MonoBehaviour
     public AudioClip ItemStop;
     public AudioClip ItemInvincibility;
 
+    //pour score
+    string scoreFinLevel;
+    int newScore;
+    public GameObject pourTableauDesScores;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +56,24 @@ public class zoomManager : MonoBehaviour
         // ObjectTimerStart.GetComponent<rollingCube>().enabled = false;
     }
 
+    /*void Getint()
+    {
+        
+        newScore = PlayerPrefs.GetInt(scoreFinLevel);
+        
+        
+    }*/
+
     // Update is called once per frame
     void Update()
     {
+        //ici que je fais appel au script, la fonction des tableaux des scores        
+        PlayerPrefs.SetInt(scoreFinLevel, score);
+        /*Getint();
+        Debug.Log("The key " + newScore + " exists");*/
+
         //timer item
-        if(itemAudio == true)
+        if (itemAudio == true)
         {
             durationItem -= Time.deltaTime;
           
@@ -106,6 +126,8 @@ public class zoomManager : MonoBehaviour
         valueFinLevel -= finLevelToAdd;
         if (valueFinLevel == 0)
         {
+            pourTableauDesScores.GetComponent<highScoreTable>().Getint();
+
             Debug.Log("go fin level");
             //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
             SceneManager.LoadScene(scene);

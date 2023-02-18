@@ -10,24 +10,42 @@ public class highScoreTable : MonoBehaviour
     //private List<HighScoreEntry> highScoreEntryList;
     private List<Transform> highScoreEntryTransformList;
 
+    //fonction pour entrer nouveau score depuis niveau
+    string scoreFinLevel;
+    int newScore;
+    public void Getint()
+    {
+        newScore = PlayerPrefs.GetInt(scoreFinLevel);
+        AddHighScoreEntry(newScore, "SFL");
+    }
+
     private void Awake() 
     {
+        //Getint();
+        //
+        //
+
         entryContainer = transform.Find("HighScoreEntryContainer");
         entryTemplate = entryContainer.Find("HighScoreEntryTemplate");
 
         entryTemplate.gameObject.SetActive(false);
 
-       /* highScoreEntryList = new List<HighScoreEntry>() {
-            new HighScoreEntry { score = 000000, name = "AAA"},
-            new HighScoreEntry { score = 000000, name = "AAA"},
-            new HighScoreEntry { score = 000000, name = "AAA"},
-            new HighScoreEntry { score = 000000, name = "AAA"},
-            new HighScoreEntry { score = 000000, name = "AAA"},
-            new HighScoreEntry { score = 000000, name = "AAA"},
-            new HighScoreEntry { score = 000000, name = "AAA"},
-        };*/
+        /* highScoreEntryList = new List<HighScoreEntry>() {
+             new HighScoreEntry { score = 000000, name = "AAA"},
+             new HighScoreEntry { score = 000000, name = "AAA"},
+             new HighScoreEntry { score = 000000, name = "AAA"},
+             new HighScoreEntry { score = 000000, name = "AAA"},
+             new HighScoreEntry { score = 000000, name = "AAA"},
+             new HighScoreEntry { score = 000000, name = "AAA"},
+             new HighScoreEntry { score = 000000, name = "AAA"},
+         };*/
 
-        AddHighScoreEntry(10, "JER"); /*a partir de là je peux créer une fonction qui me fera un nouveau score*/
+        //AddHighScoreEntry(10, "JER"); /*a partir de là je peux créer une fonction qui me fera un nouveau score*/
+
+        
+            /*
+            */
+        
 
         string jsonString = PlayerPrefs.GetString("highScoreTable");
         HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);

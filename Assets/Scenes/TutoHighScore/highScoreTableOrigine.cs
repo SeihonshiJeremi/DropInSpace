@@ -10,8 +10,15 @@ public class highScoreTableOrigine : MonoBehaviour
     private List<HighScoreEntry> highScoreEntryList;
     private List<Transform> highScoreEntryTransformList;
 
+    //
+    string scoreFinLevel;    
+
     private void Awake()
     {
+        //pour remmettre à zero score level
+        PlayerPrefs.SetInt(scoreFinLevel, 0);
+
+        //
         entryContainer = transform.Find("HighScoreEntryContainer");
         entryTemplate = entryContainer.Find("HighScoreEntryTemplate");
 
