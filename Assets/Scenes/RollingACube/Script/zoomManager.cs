@@ -31,17 +31,20 @@ public class zoomManager : MonoBehaviour
 
     //audio
     AudioSource m_MyAudioSource;
+    public AudioSource m_MyAudioSourceBonbon;
     public AudioClip audioStage;
     public AudioClip clipNoTime;
     public bool chAudio = false;
 
     //pour audio power
     public bool itemAudio = false;
+    public bool itemAudioBonbon = false;
     public float durationItem;
     public float durationItemOrigine;
     public AudioClip ItemTimeDiv2;
     public AudioClip ItemStop;
     public AudioClip ItemInvincibility;
+    public AudioClip ItemBonbon;
 
     //pour score
     string scoreFinLevel;
@@ -86,6 +89,16 @@ public class zoomManager : MonoBehaviour
                     changementAudio();
                     //chAudio = true;
                 }
+            }
+        }
+
+        //audio bonbon
+        if(itemAudioBonbon == true)
+        {
+            durationItem -= Time.deltaTime;
+            if (durationItem < 0)
+            {
+                m_MyAudioSourceBonbon.Stop();
             }
         }
 
@@ -160,6 +173,17 @@ public class zoomManager : MonoBehaviour
 
     }
 
+    public void ajoutScoreBonbonRouge()
+    {
+        score = score + 200;
+        Debug.Log("score + 200");
+    }
+
+    public void ajoutScoreBonbonVert()
+    {
+        score = score + 100;
+    }
+
     //audio
     public void audioOrigine()
     {
@@ -195,5 +219,13 @@ public class zoomManager : MonoBehaviour
         m_MyAudioSource.Play();
         itemAudio = true;
         durationItem = 10.0f;
+    }
+
+    public void audioItemTBonbon()
+    {
+        m_MyAudioSourceBonbon.clip = ItemBonbon;
+        m_MyAudioSourceBonbon.Play();
+        itemAudioBonbon = true;
+        durationItem = 0.1f;
     }
 }

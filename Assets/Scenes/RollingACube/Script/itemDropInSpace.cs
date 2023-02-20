@@ -123,7 +123,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function score rouge");
         Destroy(newItem);
         itemDetruit = true;
-
+        scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreRouge();
     }
 
     public void itemBonbonScoreVertF()
@@ -131,6 +131,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function score vert");
         Destroy(newItem);
         itemDetruit = true;
+        scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreVert();
 
     }
 
@@ -178,6 +179,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function score rouge02");
         Destroy(newItem02);
         itemDetruit02 = true;
+        scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreRouge();
 
     }
 
@@ -186,6 +188,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function score vert02");
         Destroy(newItem02);
         itemDetruit02 = true;
+        scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreVert();
 
     }
 

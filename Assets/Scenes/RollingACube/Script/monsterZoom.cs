@@ -148,7 +148,7 @@ public class monsterZoom : MonoBehaviour
         }
 
         //pour itemRandom
-        choixItemRandom = Random.Range(1, 4);
+        choixItemRandom = Random.Range(1, 6);
 
         //direction en fonction du monstre
         if (DirectionAleatoire == true) choixDirection = Random.Range(1, 5);
@@ -416,6 +416,18 @@ public class monsterZoom : MonoBehaviour
         scriptZoomManager.GetComponent<zoomManager>().audioItemTInvincibility();
     }
 
+    public void itemBonbonScoreRouge()
+    {
+        scriptZoomManager.GetComponent<zoomManager>().audioItemTBonbon();
+        scriptZoomManager.GetComponent<zoomManager>().ajoutScoreBonbonRouge();
+    }
+
+    public void itemBonbonScoreVert()
+    {
+        scriptZoomManager.GetComponent<zoomManager>().audioItemTBonbon();
+        scriptZoomManager.GetComponent<zoomManager>().ajoutScoreBonbonVert();
+    }
+
     public void powerItemRandom()
     {
         if (choixItemRandom == 1) tAvDepX2();
@@ -424,7 +436,9 @@ public class monsterZoom : MonoBehaviour
         {
             powerInvincibilty();
             item.GetComponent<itemDropInSpace>().activClignoOtherScript();
-        } 
+        }
+        if (choixItemRandom == 4) itemBonbonScoreRouge();
+        if (choixItemRandom == 5) itemBonbonScoreVert();
     }
 
 
