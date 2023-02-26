@@ -64,6 +64,7 @@ public class itemDropInSpace : MonoBehaviour
 
     //pouvoir des items
     public GameObject scriptPouvoirItem;
+    public GameObject scriptPouvoirItem02;
 
 
 
@@ -96,6 +97,7 @@ public class itemDropInSpace : MonoBehaviour
         itemDetruit = true;
 
         scriptPouvoirItem.GetComponent<monsterZoom>().tAvDepX2();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().tAvDepX2();
     }
 
     public void itemTimeStopF()
@@ -105,6 +107,7 @@ public class itemDropInSpace : MonoBehaviour
         itemDetruit = true;
 
         scriptPouvoirItem.GetComponent<monsterZoom>().powerStop();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().powerStop();
     }
 
     public void itemInvincibiltyF()
@@ -114,6 +117,7 @@ public class itemDropInSpace : MonoBehaviour
         itemDetruit = true;
 
         scriptPouvoirItem.GetComponent<monsterZoom>().powerInvincibilty();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().powerInvincibilty();
         durationItem = 10.0f;
 
     }
@@ -124,6 +128,7 @@ public class itemDropInSpace : MonoBehaviour
         Destroy(newItem);
         itemDetruit = true;
         scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreRouge();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().itemBonbonScoreRouge();
     }
 
     public void itemBonbonScoreVertF()
@@ -132,6 +137,7 @@ public class itemDropInSpace : MonoBehaviour
         Destroy(newItem);
         itemDetruit = true;
         scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreVert();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().itemBonbonScoreVert();
 
     }
 
@@ -142,6 +148,7 @@ public class itemDropInSpace : MonoBehaviour
         itemDetruit = true;
 
         scriptPouvoirItem.GetComponent<monsterZoom>().powerItemRandom();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().powerItemRandom();
     }
 
     //fonction 2éme item
@@ -152,6 +159,7 @@ public class itemDropInSpace : MonoBehaviour
         itemDetruit02 = true;
 
         scriptPouvoirItem.GetComponent<monsterZoom>().tAvDepX2();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().tAvDepX2();
     }
 
     public void itemTimeStopF02()
@@ -161,6 +169,7 @@ public class itemDropInSpace : MonoBehaviour
         itemDetruit02 = true;
 
         scriptPouvoirItem.GetComponent<monsterZoom>().powerStop();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().powerStop();
     }
 
     public void itemInvincibiltyF02()
@@ -170,6 +179,7 @@ public class itemDropInSpace : MonoBehaviour
         itemDetruit02 = true;
 
         scriptPouvoirItem.GetComponent<monsterZoom>().powerInvincibilty();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().powerInvincibilty();
         durationItem = 10.0f;
 
     }
@@ -180,6 +190,7 @@ public class itemDropInSpace : MonoBehaviour
         Destroy(newItem02);
         itemDetruit02 = true;
         scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreRouge();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().itemBonbonScoreRouge();
 
     }
 
@@ -189,6 +200,7 @@ public class itemDropInSpace : MonoBehaviour
         Destroy(newItem02);
         itemDetruit02 = true;
         scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreVert();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().itemBonbonScoreVert();
 
     }
 
@@ -199,6 +211,7 @@ public class itemDropInSpace : MonoBehaviour
         itemDetruit02 = true;
 
         scriptPouvoirItem.GetComponent<monsterZoom>().powerItemRandom();
+        scriptPouvoirItem02.GetComponent<monsterZoom>().powerItemRandom();
 
     }
 
