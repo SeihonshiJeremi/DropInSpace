@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.00021802518, b: 0.00031653387, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.0030548146, b: 0.003794158, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -269,6 +269,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6599487299524215347, guid: b87680c60eb5e804ba3c796e57596812,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.15234412
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599487299524215347, guid: b87680c60eb5e804ba3c796e57596812,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.081734344
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599487299524215347, guid: b87680c60eb5e804ba3c796e57596812,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9832919
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599487299524215347, guid: b87680c60eb5e804ba3c796e57596812,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.056989513
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599487299524215347, guid: b87680c60eb5e804ba3c796e57596812,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 7.873
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599487299524215347, guid: b87680c60eb5e804ba3c796e57596812,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 162.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599487299524215347, guid: b87680c60eb5e804ba3c796e57596812,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 8.322
+      objectReference: {fileID: 0}
     - target: {fileID: 6599487299761911931, guid: b87680c60eb5e804ba3c796e57596812,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -312,7 +347,7 @@ PrefabInstance:
     - target: {fileID: 6599487300539770989, guid: b87680c60eb5e804ba3c796e57596812,
         type: 3}
       propertyPath: scene
-      value: Level01DIP
+      value: SceneTransition01-01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b87680c60eb5e804ba3c796e57596812, type: 3}

@@ -77,12 +77,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - ALPHA_F171AB3B: 0
+    - ALPHA_F171AB3B: 0.058
     - Boolean_36FFE46F: 0
     - Boolean_944B3524: 0
     - ENUM_5ACA4853: 2
-    - LINE_SIZE_RATIO: 0.2
-    - OFFSET_LINES: 0
+    - LINE_SIZE_RATIO: 0.825
+    - OFFSET_LINES: 10
     - TILING_LINES: 6
     - _AlphaClip: 0
     - _Blend: 0
@@ -108,8 +108,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - BACKGROUND_COLOR: {r: 0.00126791, g: 0, b: 1, a: 0.23921569}
-    - LINE_COLOR: {r: 0, g: 0.052369833, b: 1, a: 1}
+    - BACKGROUND_COLOR: {r: 0.9706241, g: 1, b: 0, a: 1}
+    - LINE_COLOR: {r: 0, g: 0, b: 0, a: 0.1764706}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
