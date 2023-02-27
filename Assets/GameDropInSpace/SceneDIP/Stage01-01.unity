@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.0008579549, b: 0.0012549744, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.0027004795, b: 0.003507812, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10123,7 +10123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b111d482ceb84eb80096207630846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueFinLevel: 4
+  valueFinLevel: 49
   text_finirLevel: {fileID: 2091932874863569435}
   text_timer: {fileID: 2091932874737790593}
   timerNiveau: 120
@@ -10149,8 +10149,6 @@ MonoBehaviour:
   ItemStop: {fileID: 8300000, guid: ff0121380ebdf2c4aa295612aa5a1aca, type: 3}
   ItemInvincibility: {fileID: 8300000, guid: bc5ce6f790a10d84eb5daa0bf14a8212, type: 3}
   ItemBonbon: {fileID: 8300000, guid: ebd3e72ca836b4048a71d8dc996e20f0, type: 3}
-  pourTableauDesScores: {fileID: 6650620364240382543}
-  pourChangeSceneAuto: {fileID: 673093278}
 --- !u!54 &2091932875468176646
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10491,7 +10489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2091932875802379514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12303,8 +12301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8461ea2ca551cf74fa7f4b2f8f886b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreFinLevel: 
-  newScore: 0
 --- !u!1 &3767117584385943685
 GameObject:
   m_ObjectHideFlags: 0
@@ -13867,7 +13863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7655462114277671340
 MonoBehaviour:
   m_ObjectHideFlags: 0

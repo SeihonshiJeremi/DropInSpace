@@ -11,18 +11,18 @@ public class highScoreTable : MonoBehaviour
     private List<Transform> highScoreEntryTransformList;
 
     //fonction pour entrer nouveau score depuis niveau
-    public string scoreFinLevel;
-    public int newScore;
+     string scoreFinLevel;
+     int newScore;
 
     public void Getint()
     {
         newScore = PlayerPrefs.GetInt(scoreFinLevel);
-        AddHighScoreEntry(newScore, "SFL");
+        AddHighScoreEntry(newScore, "SFL"); 
     }
 
     private void Awake() 
     {
-        //Getint();
+        Getint();
         //
         //
 
