@@ -5,42 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/ScenePersitante.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/Niveau3D.unity
-    guid: 14bf0a45de91aa94dad3b064b517f8c8
-  - enabled: 0
-    path: Assets/Scenes/SpaceHub/SpaceHub.unity
-    guid: d09f2891ce9465541b38fbcde013884c
-  - enabled: 0
-    path: Assets/Scenes/Niveau2D.unity
-    guid: 877ed36040d3dfe4f99a365997e4fd06
-  - enabled: 0
-    path: Assets/Scenes/Niveau3D 1.unity
-    guid: d171b636a22705647b82ab57b0c3a42b
-  - enabled: 0
-    path: Assets/Scenes/TestNewPlayer/New Scene.unity
-    guid: a3b0979fd297936428b21a906e7d25b1
-  - enabled: 0
-    path: Assets/Scenes/RollingACube/Scene/buttonStart.unity
-    guid: 3405913bbf9e12c4c8b5b037fd129bdc
-  - enabled: 0
-    path: Assets/Scenes/TutoSceneTransition/sceneTransition.unity
-    guid: 96b3fca5bf90c5a4f8fcc8bf24cf8ea8
-  - enabled: 0
-    path: Assets/Scenes/RollingACube/Scene/rollingAcube.unity
-    guid: 66a10e36790755d4492536d6bc3756cf
-  - enabled: 0
-    path: Assets/Scenes/TutoOptionsMenu01/tutoOptions.unity
-    guid: 2ffd9831335b82a4b822f477a4c9a827
-  - enabled: 0
-    path: Assets/Scenes/TutoOptionsMenu02/tutoOptions02.unity
-    guid: 41f1fdd3bda408b4086f11d5ba81b22c
-  - enabled: 0
-    path: Assets/Scenes/TutoOptionsMenu02/pauseMenuTutoOptions02.unity
-    guid: 136966505b73995448bb29423574ca99
   - enabled: 1
     path: Assets/GameDropInSpace/SceneDIP/StartDropInSpace.unity
     guid: 8b14e76d985cf4746a4486c674905e3e
@@ -59,7 +23,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/GameDropInSpace/SceneDIP/HubDIP.unity
     guid: 7f7dc0de2c1740e4a833562b0832232c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects: {}

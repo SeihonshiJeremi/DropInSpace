@@ -7,14 +7,24 @@ public class loadSceneAuto : MonoBehaviour
 {
     public string scene;
     public float loadSceneTime;
+    public bool okChange = false;
 
     void Update()
     {
-        loadSceneTime -= Time.deltaTime;
-        if (loadSceneTime < 0)
+        if(okChange == true)
         {
-            SceneManager.LoadScene(scene);
-            // SceneManager.LoadSceneAsync(scene);
+            loadSceneTime -= Time.deltaTime;
+            if (loadSceneTime < 0)
+            {
+                SceneManager.LoadScene(scene);
+                // SceneManager.LoadSceneAsync(scene);
+            }
         }
+
+    }
+
+    public void boolScene()
+    {
+        okChange = true;
     }
 }

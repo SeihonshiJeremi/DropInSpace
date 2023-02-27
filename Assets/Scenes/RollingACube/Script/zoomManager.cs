@@ -49,7 +49,7 @@ public class zoomManager : MonoBehaviour
     //pour score
     string scoreFinLevel;
     int newScore;
-    public GameObject pourTableauDesScores;
+    //public GameObject pourTableauDesScores;
 
 
     // Start is called before the first frame update
@@ -139,7 +139,7 @@ public class zoomManager : MonoBehaviour
         valueFinLevel -= finLevelToAdd;
         if (valueFinLevel == 0)
         {
-            pourTableauDesScores.GetComponent<highScoreTable>().Getint();
+            //pourTableauDesScores.GetComponent<highScoreTable>().Getint();
 
             Debug.Log("go fin level");
             //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);

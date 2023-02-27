@@ -10,7 +10,7 @@ public class changeColorCube : MonoBehaviour
     public GameObject zoomManager;
     public int valueDalle;
     private int valueScore = 10;
-    private int valueScoreDouble = 20;
+    //private int valueScoreDouble = 20;
 
     private int activeDouble = 1;
 
