@@ -26,8 +26,7 @@ public class zoomManager : MonoBehaviour
     public float timerStart;
     public GameObject ObjectTimerStart;
 
-    public string scene;
-    public string sceneGameOver;
+    public string scene;    
 
     //audio
     AudioSource m_MyAudioSource;
@@ -48,7 +47,7 @@ public class zoomManager : MonoBehaviour
 
     //pour score
     string scoreFinLevel;
-    int newScore;
+    string scoreTemporaire;
     //public GameObject pourTableauDesScores;
 
 
@@ -59,6 +58,8 @@ public class zoomManager : MonoBehaviour
         // ObjectTimerStart.GetComponent<rollingCube>().enabled = false;
 
         GameObject.Find("LifeBar").GetComponent<LifeBarManager>().activationLifeBar();
+
+        score = PlayerPrefs.GetInt(scoreTemporaire);
     }
 
     /*void Getint()
@@ -74,6 +75,7 @@ public class zoomManager : MonoBehaviour
     {
         //ici que je fais appel au script, la fonction des tableaux des scores        
         PlayerPrefs.SetInt(scoreFinLevel, score);
+        PlayerPrefs.SetInt(scoreTemporaire, score);
         /*Getint();
         Debug.Log("The key " + newScore + " exists");*/
 
@@ -110,7 +112,7 @@ public class zoomManager : MonoBehaviour
         timerNiveau -= Time.deltaTime;
         tempsint = Mathf.RoundToInt(timerNiveau);
 
-        if(timerNiveau <= 0) SceneManager.LoadScene(sceneGameOver);
+        if(timerNiveau <= 0) GameObject.Find("LifeBar").GetComponent<LifeBarManager>().reset00();
         if (timerNiveau <= 20 && chAudio == false)
         {
             changementAudio();

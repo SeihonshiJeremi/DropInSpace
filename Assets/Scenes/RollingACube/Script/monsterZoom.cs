@@ -93,8 +93,8 @@ public class monsterZoom : MonoBehaviour
     public bool pos70, pos71, pos72, pos73, pos74, pos75, pos76, pos77, pos78, pos79;
     public bool pos80, pos81;
 
-    //en eattendan
-    int reset;
+    //lifeBar
+    public int reset = 3;
 
     void Start()
     {
@@ -114,10 +114,10 @@ public class monsterZoom : MonoBehaviour
             this.transform.position = new Vector3(x, 1.0f, z);
         }
 
-        //en attendant
-        if (reset == 1)
-        {
-            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        //lifebar
+        if(reset == 1)
+        {            
+           
         }
     }
 
@@ -348,7 +348,7 @@ public class monsterZoom : MonoBehaviour
         if (other.gameObject.tag == "Player" && boolIgnoreCollisionPlayer == false)
         {
             Destroy(Player);
-            reset = 1;
+            ResetDepuisMonster();
         }        
 
         if (other.gameObject.tag == tagMonster)
@@ -439,6 +439,11 @@ public class monsterZoom : MonoBehaviour
         }
         if (choixItemRandom == 4) itemBonbonScoreRouge();
         if (choixItemRandom == 5) itemBonbonScoreVert();
+    }
+
+    public void ResetDepuisMonster()
+    {
+        GameObject.Find("LifeBar").GetComponent<LifeBarManager>().Reset();
     }
 
 

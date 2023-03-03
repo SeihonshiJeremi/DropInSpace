@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.0008918754, b: 0.0011251676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.0009275885, b: 0.0011286775, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 2091932873858382517, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
       propertyPath: scene
-      value: StartDropInSpace
+      value: SceneTransitionEndGame
       objectReference: {fileID: 0}
     - target: {fileID: 2091932873858382517, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
