@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class MainMenuTutoOptions02 : MonoBehaviour
 {
     public string scene;
+    public string sceneExploration;
 
     public GameObject mainMenuButton;
     public GameObject optionsScreen;
@@ -26,6 +27,11 @@ public class MainMenuTutoOptions02 : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(scene);
+    }
+
+    public void ExplorationButton()
+    {
+        SceneManager.LoadScene(sceneExploration);
     }
 
     public void OpenOptions()

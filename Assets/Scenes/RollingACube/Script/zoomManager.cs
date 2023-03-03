@@ -141,7 +141,7 @@ public class zoomManager : MonoBehaviour
     public void reduceFinLevel(int finLevelToAdd)
     {
         valueFinLevel -= finLevelToAdd;
-        if (valueFinLevel == 0)
+        if (valueFinLevel == 0) // mettre ici à la fin des niveaux 4 une option pour retourner dans le hub find bool
         {
             //pourTableauDesScores.GetComponent<highScoreTable>().Getint();
 

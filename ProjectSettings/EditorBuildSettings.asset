@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/GameDropInSpace/SceneDIP/StartDropInSpace.unity
     guid: 8b14e76d985cf4746a4486c674905e3e
   - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransitionExploration.unity
+    guid: 821a49c4e8045c742bab437587b95718
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SpaceHub.unity
+    guid: d09f2891ce9465541b38fbcde013884c
+  - enabled: 1
     path: Assets/GameDropInSpace/SceneDIP/SceneTransition01-01.unity
     guid: 715ed696daa1854488f23964f8819a90
   - enabled: 1
@@ -20,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameDropInSpace/SceneDIP/Stage01-02.unity
     guid: a0a0254f1b524ef4ab97d5887ab7931e
-  - enabled: 0
-    path: Assets/GameDropInSpace/SceneDIP/HubDIP.unity
-    guid: 7f7dc0de2c1740e4a833562b0832232c
   - enabled: 1
     path: Assets/GameDropInSpace/SceneDIP/SceneTransitionGameOver.unity
     guid: 707320b11f984eb4189ea3217ce5aa69
