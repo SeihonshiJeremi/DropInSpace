@@ -57,6 +57,8 @@ public class zoomManager : MonoBehaviour
     {
         m_MyAudioSource = GetComponent<AudioSource>();
         // ObjectTimerStart.GetComponent<rollingCube>().enabled = false;
+
+        GameObject.Find("LifeBar").GetComponent<LifeBarManager>().activationLifeBar();
     }
 
     /*void Getint()

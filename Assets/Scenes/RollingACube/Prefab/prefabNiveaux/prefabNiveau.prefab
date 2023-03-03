@@ -489,8 +489,6 @@ MonoBehaviour:
   ItemStop: {fileID: 8300000, guid: ff0121380ebdf2c4aa295612aa5a1aca, type: 3}
   ItemInvincibility: {fileID: 8300000, guid: bc5ce6f790a10d84eb5daa0bf14a8212, type: 3}
   ItemBonbon: {fileID: 8300000, guid: ebd3e72ca836b4048a71d8dc996e20f0, type: 3}
-  pourTableauDesScores: {fileID: 6650620364967550697}
-  pourChangeSceneAuto: {fileID: 3628780261047401361}
 --- !u!82 &2091932874440223480
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8953,7 +8951,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 11.9, y: -61.8}
+  m_AnchoredPosition: {x: 210, y: -29.99994}
   m_SizeDelta: {x: 1200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2091932875664218664
