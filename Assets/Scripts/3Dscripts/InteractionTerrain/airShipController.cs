@@ -21,6 +21,8 @@ public class airShipController : MonoBehaviour
     //pour effet particule
     public GameObject particle;
 
+    bool camFOVDiminution;
+
     void Start()
     {
         Physics.gravity = new Vector3(0, 0, 0);
@@ -70,9 +72,16 @@ public class airShipController : MonoBehaviour
         {
             //forwardSpeed = forwardSpeed / 2;
             forwardSpeed = 100;
-            Camera.main.fieldOfView = 60.0f;
-            particle.SetActive(false);
+            particle.SetActive(false);            
+            camFOVDiminution = true;
         }
+
+        if (Camera.main.fieldOfView >= 60 && camFOVDiminution == true) Camera.main.fieldOfView -= Time.deltaTime * 20;
+        if (Camera.main.fieldOfView < 60)
+        {
+            Camera.main.fieldOfView = 60.0f;
+            camFOVDiminution = false;
+        } 
     }
 
     public void ChangePhysicGravity()

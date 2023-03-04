@@ -9,14 +9,16 @@ public class resetLifeBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //reset score temporaire
         score = 0;
         PlayerPrefs.SetInt(scoreTemporaire, score);
+
+        //
         GameObject.Find("LifeBar").GetComponent<LifeBarManager>().ResetLifeBar();
+
+        //pour destroy transition exploration
+      
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

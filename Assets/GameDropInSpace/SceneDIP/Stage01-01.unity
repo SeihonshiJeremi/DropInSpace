@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.0017031906, b: 0.002276151, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.00081517134, b: 0.0013146474, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &128089112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2091932875885142160, guid: d59076447de3f23419eb1e07d29307e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1195641112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1195641112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,6 +140,36 @@ PrefabInstance:
         type: 3}
       propertyPath: scene
       value: SceneTransition01-02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932873858382517, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: sceneTransitionExploration
+      value: SpaceHub
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: itemRandom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: itemRandom02
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: itemTimeStop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: itemInvincibilty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: itemInvincibilty02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2091932874361655775, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
@@ -205,6 +241,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2091932875885142164, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: Monster02
+      value: 
+      objectReference: {fileID: 1477177867}
+    - target: {fileID: 2091932875885142164, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: tagMonster
+      value: Monster01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932875885142164, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: followMonster
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932875886820123, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: Monster02
+      value: 
+      objectReference: {fileID: 128089112}
+    - target: {fileID: 2091932875886820123, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: tagMonster
+      value: Monster02
+      objectReference: {fileID: 0}
     - target: {fileID: 2091932875886820123, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
       propertyPath: sceneGameOver
@@ -215,5 +276,16 @@ PrefabInstance:
       propertyPath: activationBarLife
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3577208599667337865, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: transiExploration
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d59076447de3f23419eb1e07d29307e0, type: 3}
+--- !u!1 &1477177867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2091932875886820117, guid: d59076447de3f23419eb1e07d29307e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1195641112}
+  m_PrefabAsset: {fileID: 0}

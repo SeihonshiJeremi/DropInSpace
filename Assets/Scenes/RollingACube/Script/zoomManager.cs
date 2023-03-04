@@ -50,6 +50,11 @@ public class zoomManager : MonoBehaviour
     string scoreTemporaire;
     //public GameObject pourTableauDesScores;
 
+    //pour transition exploration
+    public bool transitionExploration;
+    public string sceneTransitionExploration;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -149,6 +154,8 @@ public class zoomManager : MonoBehaviour
             //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
             SceneManager.LoadScene(scene);
         }
+
+        if(transitionExploration == true && valueFinLevel == 0) SceneManager.LoadScene(sceneTransitionExploration);
     }
 
     public void addFinLevel(int finLevelToAdd)
@@ -231,5 +238,10 @@ public class zoomManager : MonoBehaviour
         m_MyAudioSourceBonbon.Play();
         itemAudioBonbon = true;
         durationItem = 0.1f;
+    }
+
+    public void TransitionExploration()
+    {
+        transitionExploration = true;
     }
 }

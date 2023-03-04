@@ -65,6 +65,8 @@ public class itemDropInSpace : MonoBehaviour
     //pouvoir des items
     public GameObject scriptPouvoirItem;
     public GameObject scriptPouvoirItem02;
+    public int choixItemRandom;
+    bool cligno;
 
 
 
@@ -87,6 +89,9 @@ public class itemDropInSpace : MonoBehaviour
         if (itemBonbonScoreRouge02 == true) { newItem02 = Instantiate(itemBonbonScoreRougeGO02); }
         if (itemBonbonScoreVert02 == true) { newItem02 = Instantiate(itemBonbonScoreVertGO02); }
         if (itemRandom02 == true) { newItem02 = Instantiate(itemRandomGO02); }
+
+        choixItemRandom = Random.Range(1, 4);
+        durationItem = 0.0f;
     }
 
     //fonction 1er item
@@ -147,8 +152,9 @@ public class itemDropInSpace : MonoBehaviour
         Destroy(newItem);
         itemDetruit = true;
 
-        scriptPouvoirItem.GetComponent<monsterZoom>().powerItemRandom();
-        scriptPouvoirItem02.GetComponent<monsterZoom>().powerItemRandom();
+        //scriptPouvoirItem.GetComponent<monsterZoom>().powerItemRandom();
+        //scriptPouvoirItem02.GetComponent<monsterZoom>().powerItemRandom();
+        powerItemRandom();
     }
 
     //fonction 2éme item
@@ -210,8 +216,9 @@ public class itemDropInSpace : MonoBehaviour
         Destroy(newItem02);
         itemDetruit02 = true;
 
-        scriptPouvoirItem.GetComponent<monsterZoom>().powerItemRandom();
-        scriptPouvoirItem02.GetComponent<monsterZoom>().powerItemRandom();
+        // scriptPouvoirItem.GetComponent<monsterZoom>().powerItemRandom();
+        // scriptPouvoirItem02.GetComponent<monsterZoom>().powerItemRandom();
+        powerItemRandom();
 
     }
 
@@ -241,12 +248,57 @@ public class itemDropInSpace : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    //pouvoir random
+    public void powerItemRandom()
+    {
+        if (choixItemRandom == 1)
+        {
+            scriptPouvoirItem.GetComponent<monsterZoom>().tAvDepX2();
+            scriptPouvoirItem02.GetComponent<monsterZoom>().tAvDepX2();
+        }
+        if (choixItemRandom == 2)
+        {
+            scriptPouvoirItem.GetComponent<monsterZoom>().powerStop();
+            scriptPouvoirItem02.GetComponent<monsterZoom>().powerStop();
+        } 
+        if (choixItemRandom == 3)
+        {
+            scriptPouvoirItem.GetComponent<monsterZoom>().powerInvincibilty();
+            scriptPouvoirItem02.GetComponent<monsterZoom>().powerInvincibilty();
+            activClignoOtherScript();
+        }
+       /* if (choixItemRandom == 4)
+        {
+            scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreRouge();
+            scriptPouvoirItem02.GetComponent<monsterZoom>().itemBonbonScoreRouge();
+        }
+        if (choixItemRandom == 5)
+        {
+            scriptPouvoirItem.GetComponent<monsterZoom>().itemBonbonScoreVert();
+            scriptPouvoirItem02.GetComponent<monsterZoom>().itemBonbonScoreVert();
+        } */
+    }
+
+    void FixedUpdate()
+    {
+        durationItem -= Time.deltaTime;
+        //pour reinitialiser temps origine lors pouvoir
+        if (durationItem < 0)
+        {
+            durationItem = durationItemOrigine;
+            choixItemRandom = Random.Range(1, 4);
+            cligno = false;
+
+        }
+    }
+
+
+        // Update is called once per frame
+        void Update()
     {
         //pour itemInvincibility
         durationItem -= Time.deltaTime;
-        if (durationItem > 0) StartCoroutine(Clignotement());
+        if (cligno == true) StartCoroutine(Clignotement());
 
 
         //pour apparition
@@ -458,7 +510,8 @@ public class itemDropInSpace : MonoBehaviour
 
     public void activClignoOtherScript()
     {
-        durationItem = 10.0f;
+        //durationItem = 10.0f;
+        cligno = true;
     }
 
 

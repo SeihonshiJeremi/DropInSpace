@@ -100,6 +100,9 @@ public class monsterZoom : MonoBehaviour
     {
         Transform ignore = ignoreCollision as Transform;
         Physics.IgnoreCollision(ignore.GetComponent<Collider>(), GetComponent<Collider>());
+
+        choixItemRandom = Random.Range(1, 6);
+        durationItem = 10.0f;
     }
 
     void Update()
@@ -138,6 +141,9 @@ public class monsterZoom : MonoBehaviour
             Physics.IgnoreCollision(ignorePlayer.GetComponent<Collider>(), GetComponent<Collider>());
             boolIgnoreCollisionPlayer = false;
 
+            //pour itemRandom
+            choixItemRandom = Random.Range(1, 6);
+
         } 
 
         //pour item invincibility
@@ -147,8 +153,8 @@ public class monsterZoom : MonoBehaviour
             Physics.IgnoreCollision(ignorePlayer.GetComponent<Collider>(), GetComponent<Collider>());
         }
 
-        //pour itemRandom
-        choixItemRandom = Random.Range(1, 6);
+        
+
 
         //direction en fonction du monstre
         if (DirectionAleatoire == true) choixDirection = Random.Range(1, 5);
@@ -401,12 +407,14 @@ public class monsterZoom : MonoBehaviour
         tempsAvantDeplacement = 4.0f;
         tempsAvantDeplacementOrigine = 4.0f;
         scriptZoomManager.GetComponent<zoomManager>().audioItemTimeDiv2();
+        Debug.Log("tAvDepX2");
     }
 
     public void powerStop()
     {
         tempsAvantDeplacement = 10.0f;
         scriptZoomManager.GetComponent<zoomManager>().audioItemTStop();
+        Debug.Log("stop");
     }
 
     public void powerInvincibilty()
@@ -414,31 +422,21 @@ public class monsterZoom : MonoBehaviour
         boolIgnoreCollisionPlayer = true;
         durationItem = 10.0f;
         scriptZoomManager.GetComponent<zoomManager>().audioItemTInvincibility();
+        Debug.Log("Invincibilty");
     }
 
     public void itemBonbonScoreRouge()
     {
         scriptZoomManager.GetComponent<zoomManager>().audioItemTBonbon();
         scriptZoomManager.GetComponent<zoomManager>().ajoutScoreBonbonRouge();
+        Debug.Log("rouge");
     }
 
     public void itemBonbonScoreVert()
     {
         scriptZoomManager.GetComponent<zoomManager>().audioItemTBonbon();
         scriptZoomManager.GetComponent<zoomManager>().ajoutScoreBonbonVert();
-    }
-
-    public void powerItemRandom()
-    {
-        if (choixItemRandom == 1) tAvDepX2();
-        if (choixItemRandom == 2) powerStop();
-        if (choixItemRandom == 3)
-        {
-            powerInvincibilty();
-            item.GetComponent<itemDropInSpace>().activClignoOtherScript();
-        }
-        if (choixItemRandom == 4) itemBonbonScoreRouge();
-        if (choixItemRandom == 5) itemBonbonScoreVert();
+        Debug.Log("vert");
     }
 
     public void ResetDepuisMonster()
