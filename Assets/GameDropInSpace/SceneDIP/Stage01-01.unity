@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.00081517134, b: 0.0013146474, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.0017848312, b: 0.0027181145, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -143,18 +143,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2091932873858382517, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
+      propertyPath: durationItem
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932873858382517, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
       propertyPath: sceneTransitionExploration
       value: SpaceHub
       objectReference: {fileID: 0}
     - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
       propertyPath: itemRandom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
       propertyPath: itemRandom02
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
@@ -164,12 +169,12 @@ PrefabInstance:
     - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
       propertyPath: itemInvincibilty
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2091932874026800211, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
       propertyPath: itemInvincibilty02
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2091932874361655775, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}
@@ -250,6 +255,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tagMonster
       value: Monster01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091932875885142164, guid: d59076447de3f23419eb1e07d29307e0,
+        type: 3}
+      propertyPath: durationItem
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2091932875885142164, guid: d59076447de3f23419eb1e07d29307e0,
         type: 3}

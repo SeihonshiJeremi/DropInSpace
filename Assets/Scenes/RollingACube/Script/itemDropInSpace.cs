@@ -100,7 +100,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function div2");
         Destroy(newItem);
         itemDetruit = true;
-
+        durationItem = 10.0f;
         scriptPouvoirItem.GetComponent<monsterZoom>().tAvDepX2();
         scriptPouvoirItem02.GetComponent<monsterZoom>().tAvDepX2();
     }
@@ -110,7 +110,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function stop");
         Destroy(newItem);
         itemDetruit = true;
-
+        durationItem = 10.0f;
         scriptPouvoirItem.GetComponent<monsterZoom>().powerStop();
         scriptPouvoirItem02.GetComponent<monsterZoom>().powerStop();
     }
@@ -120,7 +120,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function invincibility");
         Destroy(newItem);
         itemDetruit = true;
-
+        activClignoOtherScript();
         scriptPouvoirItem.GetComponent<monsterZoom>().powerInvincibilty();
         scriptPouvoirItem02.GetComponent<monsterZoom>().powerInvincibilty();
         durationItem = 10.0f;
@@ -155,6 +155,7 @@ public class itemDropInSpace : MonoBehaviour
         //scriptPouvoirItem.GetComponent<monsterZoom>().powerItemRandom();
         //scriptPouvoirItem02.GetComponent<monsterZoom>().powerItemRandom();
         powerItemRandom();
+        durationItem = 10.0f;
     }
 
     //fonction 2éme item
@@ -163,7 +164,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function div202");
         Destroy(newItem02);
         itemDetruit02 = true;
-
+        durationItem = 10.0f;
         scriptPouvoirItem.GetComponent<monsterZoom>().tAvDepX2();
         scriptPouvoirItem02.GetComponent<monsterZoom>().tAvDepX2();
     }
@@ -173,7 +174,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function stop02");
         Destroy(newItem02);
         itemDetruit02 = true;
-
+        durationItem = 10.0f;
         scriptPouvoirItem.GetComponent<monsterZoom>().powerStop();
         scriptPouvoirItem02.GetComponent<monsterZoom>().powerStop();
     }
@@ -183,7 +184,7 @@ public class itemDropInSpace : MonoBehaviour
         Debug.Log("go function invincibility02");
         Destroy(newItem02);
         itemDetruit02 = true;
-
+        activClignoOtherScript();
         scriptPouvoirItem.GetComponent<monsterZoom>().powerInvincibilty();
         scriptPouvoirItem02.GetComponent<monsterZoom>().powerInvincibilty();
         durationItem = 10.0f;
@@ -290,6 +291,8 @@ public class itemDropInSpace : MonoBehaviour
             cligno = false;
 
         }
+
+        if (cligno == true) StartCoroutine(Clignotement());
     }
 
 
@@ -297,8 +300,8 @@ public class itemDropInSpace : MonoBehaviour
         void Update()
     {
         //pour itemInvincibility
-        durationItem -= Time.deltaTime;
-        if (cligno == true) StartCoroutine(Clignotement());
+        //durationItem -= Time.deltaTime;
+        
 
 
         //pour apparition

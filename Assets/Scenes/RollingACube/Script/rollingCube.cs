@@ -58,8 +58,8 @@ public class rollingCube : MonoBehaviour
         if (timeDesacTouche <= 0.0f) activTouche();
         if (timeDesacTouche >= 0.0f) desactivationTouche(); 
 
-        horizontal = Input.GetAxis("DPAD-Horizontal");
-        vertical = Input.GetAxis("DPAD-Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = -Input.GetAxis("Vertical");
     }
 
     void FixedUpdate()

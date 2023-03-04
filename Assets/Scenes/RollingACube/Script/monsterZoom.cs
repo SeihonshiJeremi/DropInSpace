@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class monsterZoom : MonoBehaviour
 {
-   /* [Header("keybinds")]
-    public KeyCode arrowLeft = KeyCode.Space;
-    public KeyCode arrowRight = KeyCode.Space;
-    public KeyCode arrowUp = KeyCode.Space;
-    public KeyCode arrowDown = KeyCode.Space;*/
+    public float durationItem = 10.0f;
+    public float durationItemOrigine = 10.0f;
+    /* [Header("keybinds")]
+     public KeyCode arrowLeft = KeyCode.Space;
+     public KeyCode arrowRight = KeyCode.Space;
+     public KeyCode arrowUp = KeyCode.Space;
+     public KeyCode arrowDown = KeyCode.Space;*/
 
     public GameObject Player;
 
@@ -66,8 +68,7 @@ public class monsterZoom : MonoBehaviour
     //pour item
     public GameObject item;
     public GameObject scriptZoomManager;
-    public float durationItem = 10.0f;
-    public float durationItemOrigine = 10.0f;
+
 
     //pour item invincibility
     bool boolIgnoreCollisionPlayer = false;
@@ -408,6 +409,7 @@ public class monsterZoom : MonoBehaviour
         tempsAvantDeplacementOrigine = 4.0f;
         scriptZoomManager.GetComponent<zoomManager>().audioItemTimeDiv2();
         Debug.Log("tAvDepX2");
+        durationItem = 10.0f;
     }
 
     public void powerStop()
@@ -415,6 +417,7 @@ public class monsterZoom : MonoBehaviour
         tempsAvantDeplacement = 10.0f;
         scriptZoomManager.GetComponent<zoomManager>().audioItemTStop();
         Debug.Log("stop");
+        durationItem = 10.0f;
     }
 
     public void powerInvincibilty()
@@ -423,6 +426,7 @@ public class monsterZoom : MonoBehaviour
         durationItem = 10.0f;
         scriptZoomManager.GetComponent<zoomManager>().audioItemTInvincibility();
         Debug.Log("Invincibilty");
+        durationItem = 10.0f;
     }
 
     public void itemBonbonScoreRouge()

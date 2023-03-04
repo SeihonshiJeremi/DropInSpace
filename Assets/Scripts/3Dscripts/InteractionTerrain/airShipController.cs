@@ -36,20 +36,20 @@ public class airShipController : MonoBehaviour
 
             transform.Rotate(-Input.GetAxisRaw("Vertical") * lookRateSpeed * Time.deltaTime, Input.GetAxisRaw("Horizontal") * lookRateSpeed * Time.deltaTime, rollInput * rollSpeed * Time.deltaTime, Space.Self);
 
-            activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, Input.GetAxisRaw("Jump") * forwardSpeed, forwardAcceleration * Time.deltaTime);
+            activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, Input.GetAxisRaw("Dash") * forwardSpeed, forwardAcceleration * Time.deltaTime);
             activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, Input.GetAxisRaw("Horizontal") * strafeSpeed, strafeAcceleration * Time.deltaTime);
             activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Hover") * hoverSpeed, hoverAcceleration * Time.deltaTime);
 
             transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
             transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) + (transform.up * activeHoverSpeed * Time.deltaTime);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Dash"))
         {
             ChangePhysicGravity();
             
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetButtonUp("Dash"))
         {
             ChangePhysicGravityExit();            
         }

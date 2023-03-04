@@ -7,6 +7,8 @@ using TMPro;
 //[RequireComponent(typeof(AudioSource))]
 public class zoomManager : MonoBehaviour
 {
+    public float durationItem;
+    public float durationItemOrigine;
     public int valueFinLevel;
     [SerializeField] TextMeshProUGUI text_finirLevel;
 
@@ -38,8 +40,7 @@ public class zoomManager : MonoBehaviour
     //pour audio power
     public bool itemAudio = false;
     public bool itemAudioBonbon = false;
-    public float durationItem;
-    public float durationItemOrigine;
+
     public AudioClip ItemTimeDiv2;
     public AudioClip ItemStop;
     public AudioClip ItemInvincibility;
@@ -65,6 +66,7 @@ public class zoomManager : MonoBehaviour
         GameObject.Find("LifeBar").GetComponent<LifeBarManager>().activationLifeBar();
 
         score = PlayerPrefs.GetInt(scoreTemporaire);
+        durationItem = 0.0f;
     }
 
     /*void Getint()
@@ -76,8 +78,10 @@ public class zoomManager : MonoBehaviour
     }*/
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        durationItem -= Time.deltaTime;
+        if (durationItem < 0) durationItem = durationItemOrigine;
         //ici que je fais appel au script, la fonction des tableaux des scores        
         PlayerPrefs.SetInt(scoreFinLevel, score);
         PlayerPrefs.SetInt(scoreTemporaire, score);
@@ -91,6 +95,7 @@ public class zoomManager : MonoBehaviour
           
             if (durationItem < 0)
             {
+                
                 audioOrigine();
                 itemAudio = false;
                 if(chAudio == true)
@@ -104,7 +109,7 @@ public class zoomManager : MonoBehaviour
         //audio bonbon
         if(itemAudioBonbon == true)
         {
-            durationItem -= Time.deltaTime;
+            
             if (durationItem < 0)
             {
                 m_MyAudioSourceBonbon.Stop();
@@ -213,7 +218,7 @@ public class zoomManager : MonoBehaviour
         m_MyAudioSource.clip = ItemTimeDiv2;
         m_MyAudioSource.Play();
         itemAudio = true;
-        durationItem = 5.0f;
+        durationItem = 10.0f;
     }
 
     public void audioItemTStop()
