@@ -8,6 +8,7 @@ public class MainMenuTutoOptions02 : MonoBehaviour
 {
     public string scene;
     public string sceneExploration;
+    public string sceneScore;
 
     public GameObject mainMenuButton;
     public GameObject optionsScreen;
@@ -32,6 +33,11 @@ public class MainMenuTutoOptions02 : MonoBehaviour
     public void ExplorationButton()
     {
         SceneManager.LoadScene(sceneExploration);
+    }
+
+    public void ScoreButton()
+    {
+        SceneManager.LoadScene(sceneScore);
     }
 
     public void OpenOptions()

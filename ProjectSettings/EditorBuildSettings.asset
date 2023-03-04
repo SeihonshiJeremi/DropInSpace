@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameDropInSpace/SceneDIP/SceneTransitionEndGame.unity
     guid: d85ef810fd057f949b307e48abbce3d6
+  - enabled: 1
+    path: Assets/Scenes/TutoHighScore/tutoScore.unity
+    guid: 5da96c5447750894f9076ea2453740e0
+  - enabled: 1
+    path: Assets/Scenes/TutoHighScore/tutoScoreTableauOrigine.unity
+    guid: f8f81b2b687d1b04ebce09a8702b069c
   m_configObjects: {}
