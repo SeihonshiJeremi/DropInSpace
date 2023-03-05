@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class resetLifeBar : MonoBehaviour
+public class resetScore : MonoBehaviour
 {
     int score;
     string scoreTemporaire;
@@ -14,7 +14,7 @@ public class resetLifeBar : MonoBehaviour
         PlayerPrefs.SetInt(scoreTemporaire, score);
 
         //
-        GameObject.Find("LifeBar").GetComponent<LifeBarManager>().ResetLifeBar();
+        //GameObject.Find("LifeBar").GetComponent<LifeBarManager>().ResetLifeBar();
 
         //pour destroy transition exploration
       
