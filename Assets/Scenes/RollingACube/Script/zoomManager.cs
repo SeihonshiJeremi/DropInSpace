@@ -58,7 +58,7 @@ public class zoomManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         m_MyAudioSource = GetComponent<AudioSource>();
         GameObject.FindWithTag("lifeBar").GetComponent<LifeBarManager>().activationLifeBar();
