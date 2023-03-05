@@ -6,19 +6,10 @@ public class resetScore : MonoBehaviour
 {
     int score;
     string scoreTemporaire;
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //reset score temporaire
         score = 0;
-        PlayerPrefs.SetInt(scoreTemporaire, score);
-
-        //
-        //GameObject.Find("LifeBar").GetComponent<LifeBarManager>().ResetLifeBar();
-
-        //pour destroy transition exploration
-      
+        PlayerPrefs.SetInt(scoreTemporaire, score);      
     }
-
-
 }

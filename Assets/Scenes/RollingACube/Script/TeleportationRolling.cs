@@ -13,7 +13,6 @@ public class TeleportationRolling : MonoBehaviour
     public Transform pointTPMonster02;
     public GameObject Monster02;
 
-   // public string tag;
 
     private void OnTriggerEnter(Collider other)
     {

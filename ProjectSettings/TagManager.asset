@@ -36,6 +36,7 @@ TagManager:
   - itemBonbonScoreRouge02
   - itemBonbonScoreVert02
   - itemRandom02
+  - lifeBar
   layers:
   - Default
   - TransparentFX

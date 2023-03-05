@@ -58,26 +58,14 @@ public class zoomManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         m_MyAudioSource = GetComponent<AudioSource>();
-        // ObjectTimerStart.GetComponent<rollingCube>().enabled = false;
-
-        GameObject.Find("LifeBar").GetComponent<LifeBarManager>().activationLifeBar();
-
+        GameObject.FindWithTag("lifeBar").GetComponent<LifeBarManager>().activationLifeBar();
         score = PlayerPrefs.GetInt(scoreTemporaire);
         durationItem = 0.0f;
     }
 
-    /*void Getint()
-    {
-        
-        newScore = PlayerPrefs.GetInt(scoreFinLevel);
-        
-        
-    }*/
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (Input.GetButton("Dash") && transitionExploration == false) SceneManager.LoadScene(scene);
@@ -88,8 +76,6 @@ public class zoomManager : MonoBehaviour
         //ici que je fais appel au script, la fonction des tableaux des scores        
         PlayerPrefs.SetInt(scoreFinLevel, score);
         PlayerPrefs.SetInt(scoreTemporaire, score);
-        /*Getint();
-        Debug.Log("The key " + newScore + " exists");*/
 
         //timer item
         if (itemAudio == true)

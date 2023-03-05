@@ -11,7 +11,6 @@ public class GridManager : MonoBehaviour
     public float x_Space, z_Space;
     public GameObject cubeGrid;
     public GameObject cubeDestructGrid;
-
     public bool pos01, pos02, pos03, pos04, pos05, pos06, pos07, pos08, pos09;
     public bool pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18, pos19;
     public bool pos20, pos21, pos22, pos23, pos24, pos25, pos26, pos27, pos28, pos29;
@@ -21,8 +20,6 @@ public class GridManager : MonoBehaviour
     public bool pos60, pos61, pos62, pos63, pos64, pos65, pos66, pos67, pos68, pos69;
     public bool pos70, pos71, pos72, pos73, pos74, pos75, pos76, pos77, pos78, pos79;
     public bool pos80, pos81;
-
-    //public Transform Parent;
 
     void Start()
     {

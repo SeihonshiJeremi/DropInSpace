@@ -16,6 +16,9 @@ public class changeColorCube : MonoBehaviour
 
     public bool changeColorOK = false;
 
+    GameObject objectDeDestruction;
+    float timer = 5.0f;
+
     void Awake()
     {
         zoomManager = GameObject.Find("ZoomManager");
@@ -65,5 +68,21 @@ public class changeColorCube : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void destruction()
+    {
+        objectDeDestruction = GameObject.FindWithTag("destructorPlatform");
+        Destroy(objectDeDestruction);
+    }
+
+    void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer < 0)
+        {
+            destruction();
+            timer = 0;
+        } 
     }
 }

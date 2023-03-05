@@ -9,29 +9,20 @@ public class LifeBarManager : MonoBehaviour
     public GameObject CanvasLifeBar;
     public bool activationBarLife;
     public GameObject ImageLife01;
-    public GameObject ImageLife02;
     public GameObject ImageLife03;
     public string sceneGameOver;
     public int reset = 3;
+    GameObject lifeBar;
 
     void Awake()
     {
         DontDestroyOnLoad(this);
+        lifeBar = GameObject.FindWithTag("lifeBar");
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        //CanvasLifeBar.SetActive(true);
         if (activationBarLife == true) CanvasLifeBar.GetComponent<Canvas>().enabled = true;
-
         if (activationBarLife == false) CanvasLifeBar.GetComponent<Canvas>().enabled = false;
     }
 
@@ -49,7 +40,6 @@ public class LifeBarManager : MonoBehaviour
         reset = 3;
     }
 
-
     public void reset02()
     {
         Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
@@ -65,10 +55,7 @@ public class LifeBarManager : MonoBehaviour
     public void reset00()
     {
         SceneManager.LoadScene(sceneGameOver);
-        Destroy(GameObject.Find("LifeBar"));
-        Destroy(GameObject.Find("lifeBar01"));
-        Destroy(GameObject.Find("lifeBar02"));
-        Destroy(GameObject.Find("lifeBar03"));
+        Destroy(lifeBar);
     }
 
     public void Reset()
@@ -81,9 +68,6 @@ public class LifeBarManager : MonoBehaviour
 
     public void DetruitLifeBar()
     {
-        Destroy(GameObject.Find("LifeBar"));
-        Destroy(GameObject.Find("lifeBar01"));
-        Destroy(GameObject.Find("lifeBar02"));
-        Destroy(GameObject.Find("lifeBar03"));
+        Destroy(lifeBar);
     }
 }

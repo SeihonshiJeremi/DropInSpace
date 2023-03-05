@@ -6,19 +6,8 @@ public class desacLifeBar : MonoBehaviour
 {
     public bool DesacLifeBar;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        if (DesacLifeBar == true)
-        {
-           
-            GameObject.Find("LifeBar").GetComponent<LifeBarManager>().desactivationLifeBar();
-        } 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (DesacLifeBar == true) GameObject.FindWithTag("lifeBar").GetComponent<LifeBarManager>().desactivationLifeBar();
     }
 }
