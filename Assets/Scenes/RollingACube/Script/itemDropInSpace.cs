@@ -68,9 +68,6 @@ public class itemDropInSpace : MonoBehaviour
     public int choixItemRandom;
     bool cligno;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -517,9 +514,121 @@ public class itemDropInSpace : MonoBehaviour
         cligno = true;
     }
 
+    //pour scriptrandom aleaatoire
+    //
+    public void randomScriptDiv2()
+    {
+        itemTimeDiv2 = true;
+        itemTimeStop = false;
+        itemInvincibilty = false;
+        itemBonbonScoreRouge = false;
+        itemBonbonScoreVert = false;
+        itemRandom = false;
+    }
+    public void randomScriptStop()
+    {
+        itemTimeDiv2 = false;
+        itemTimeStop = true;
+        itemInvincibilty = false;
+        itemBonbonScoreRouge = false;
+        itemBonbonScoreVert = false;
+        itemRandom = false;
+    }
+    public void randomScriptInvincibilty()
+    {
+        itemTimeDiv2 = false;
+        itemTimeStop = false;
+        itemInvincibilty = true;
+        itemBonbonScoreRouge = false;
+        itemBonbonScoreVert = false;
+        itemRandom = false;
+    }
+    public void randomScriptScoreRouge()
+    {
+        itemTimeDiv2 = false;
+        itemTimeStop = false;
+        itemInvincibilty = false;
+        itemBonbonScoreRouge = true;
+        itemBonbonScoreVert = false;
+        itemRandom = false;
+    }
+    public void randomScriptScoreVert()
+    {
+        itemTimeDiv2 = false;
+        itemTimeStop = false;
+        itemInvincibilty = false;
+        itemBonbonScoreRouge = false;
+        itemBonbonScoreVert = true;
+        itemRandom = false;
+    }
+    public void randomScriptRandom()
+    {
+        itemTimeDiv2 = false;
+        itemTimeStop = false;
+        itemInvincibilty = false;
+        itemBonbonScoreRouge = false;
+        itemBonbonScoreVert = false;
+        itemRandom = true;
+    }
+    //
+    public void randomScriptDiv202()
+    {
+        itemTimeDiv202 = true;
+        itemTimeStop02 = false;
+        itemInvincibilty02 = false;
+        itemBonbonScoreRouge02 = false;
+        itemBonbonScoreVert02 = false;
+        itemRandom02 = false;
+    }
+    public void randomScriptStop02()
+    {
+        itemTimeDiv202 = false;
+        itemTimeStop02 = true;
+        itemInvincibilty02 = false;
+        itemBonbonScoreRouge02 = false;
+        itemBonbonScoreVert02 = false;
+        itemRandom02 = false;
+    }
+    public void randomScriptInvincibilty02()
+    {
+        itemTimeDiv202 = false;
+        itemTimeStop02 = false;
+        itemInvincibilty02 = true;
+        itemBonbonScoreRouge02 = false;
+        itemBonbonScoreVert02 = false;
+        itemRandom02 = false;
+    }
+    public void randomScriptScoreRouge02()
+    {
+        itemTimeDiv202 = false;
+        itemTimeStop02 = false;
+        itemInvincibilty02 = false;
+        itemBonbonScoreRouge02 = true;
+        itemBonbonScoreVert02 = false;
+        itemRandom02 = false;
+    }
+    public void randomScriptScoreVert02()
+    {
+        itemTimeDiv202 = false;
+        itemTimeStop02 = false;
+        itemInvincibilty02 = false;
+        itemBonbonScoreRouge02 = false;
+        itemBonbonScoreVert02 = true;
+        itemRandom02 = false;
+    }
+    public void randomScriptRandom02()
+    {
+        itemTimeDiv202 = false;
+        itemTimeStop02 = false;
+        itemInvincibilty02 = false;
+        itemBonbonScoreRouge02 = false;
+        itemBonbonScoreVert02 = false;
+        itemRandom02 = true;
+    }
 
-        //Ligne01;
-        Vector3 position01 = new Vector3(0, 1, 0);
+
+    //Ligne01;
+    Vector3 position01 = new Vector3(0, 1, 0);
         Vector3 position02 = new Vector3(2, 1, 0);
         Vector3 position03 = new Vector3(4, 1, 0);
         Vector3 position04 = new Vector3(6, 1, 0);

@@ -37,7 +37,7 @@ public class MainMenuTutoOptions02 : MonoBehaviour
 
     public void ScoreButton()
     {
-        SceneManager.LoadScene(sceneScore);
+        SceneManager.LoadSceneAsync(sceneScore);
     }
 
     public void OpenOptions()

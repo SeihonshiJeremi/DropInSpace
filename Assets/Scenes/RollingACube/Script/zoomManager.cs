@@ -80,6 +80,9 @@ public class zoomManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Input.GetButton("Dash") && transitionExploration == false) SceneManager.LoadScene(scene);
+        if (Input.GetButton("Dash") && transitionExploration == true) SceneManager.LoadScene(sceneTransitionExploration);
+
         durationItem -= Time.deltaTime;
         if (durationItem < 0) durationItem = durationItemOrigine;
         //ici que je fais appel au script, la fonction des tableaux des scores        
@@ -151,7 +154,7 @@ public class zoomManager : MonoBehaviour
     public void reduceFinLevel(int finLevelToAdd)
     {
         valueFinLevel -= finLevelToAdd;
-        if (valueFinLevel == 0) // mettre ici à la fin des niveaux 4 une option pour retourner dans le hub find bool
+        if (valueFinLevel == 0 && transitionExploration == false) // mettre ici à la fin des niveaux 4 une option pour retourner dans le hub find bool
         {
             //pourTableauDesScores.GetComponent<highScoreTable>().Getint();
 
@@ -161,6 +164,8 @@ public class zoomManager : MonoBehaviour
         }
 
         if(transitionExploration == true && valueFinLevel == 0) SceneManager.LoadScene(sceneTransitionExploration);
+
+
     }
 
     public void addFinLevel(int finLevelToAdd)

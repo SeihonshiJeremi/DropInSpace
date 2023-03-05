@@ -78,4 +78,12 @@ public class LifeBarManager : MonoBehaviour
         if (reset == 1) reset01();
         if (reset == 0) reset00();
     }
+
+    public void DetruitLifeBar()
+    {
+        Destroy(GameObject.Find("LifeBar"));
+        Destroy(GameObject.Find("lifeBar01"));
+        Destroy(GameObject.Find("lifeBar02"));
+        Destroy(GameObject.Find("lifeBar03"));
+    }
 }
