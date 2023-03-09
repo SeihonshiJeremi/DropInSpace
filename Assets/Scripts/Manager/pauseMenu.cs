@@ -7,11 +7,6 @@ public class pauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
-    void start()
-    {
-        
-    }
-
     void Update()
     {
         DontDestroyOnLoad(this.gameObject);

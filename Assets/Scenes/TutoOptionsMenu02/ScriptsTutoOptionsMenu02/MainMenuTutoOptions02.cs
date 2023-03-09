@@ -12,22 +12,31 @@ public class MainMenuTutoOptions02 : MonoBehaviour
 
     public GameObject mainMenuButton;
     public GameObject optionsScreen;
+    public float timer;
+    public GameObject EventSystem;
 
-    // Start is called before the first frame update
+    void Awake()
+    {
+        timer = 2.0f;
+        EventSystem.SetActive(false);
+    }
+
     void Start()
     {
         optionsScreen.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        timer -= Time.deltaTime;
+        if (timer < 0) EventSystem.SetActive(true);
+        else EventSystem.SetActive(false);
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene(scene);
+         SceneManager.LoadScene(scene);
     }
 
     public void ExplorationButton()

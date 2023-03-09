@@ -23,6 +23,8 @@ public class airShipController : MonoBehaviour
 
     bool camFOVDiminution;
 
+    bool forwardParticle;
+
     void Start()
     {
         Physics.gravity = new Vector3(0, 0, 0);
@@ -59,9 +61,15 @@ public class airShipController : MonoBehaviour
             Camera.main.fieldOfView += Time.deltaTime * 5;
             forwardSpeed += Time.deltaTime * 5;
             if (Camera.main.fieldOfView > 130) Camera.main.fieldOfView = 130;
-            if (forwardSpeed > 200) forwardSpeed = 200;
-            particle.SetActive(true);
+            if (forwardSpeed > 200) forwardSpeed = 200;           
         }
+        if(forwardParticle == true) forwardSpeed -= Time.deltaTime * 20;
+        if (forwardSpeed > 100) particle.SetActive(true);
+        else if (forwardSpeed <= 100)
+        {
+            particle.SetActive(false);
+            forwardParticle = false;
+        } 
 
         /*if (Input.GetButtonDown("Dash"))
         {
@@ -71,8 +79,8 @@ public class airShipController : MonoBehaviour
         if (Input.GetButtonUp("Dash"))
         {
             //forwardSpeed = forwardSpeed / 2;
-            forwardSpeed = 100;
-            particle.SetActive(false);            
+            forwardParticle = true;
+            if (forwardSpeed <= 100) forwardSpeed = 100;          
             camFOVDiminution = true;
         }
 

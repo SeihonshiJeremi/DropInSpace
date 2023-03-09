@@ -83,7 +83,7 @@ Material:
     - ENUM_5ACA4853: 2
     - LINE_SIZE_RATIO: 0.1
     - OFFSET_LINES: 0.1
-    - TILING_LINES: 0.1
+    - TILING_LINES: 0.2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -108,7 +108,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - BACKGROUND_COLOR: {r: 0.7725491, g: 0.19215688, b: 0.07450981, a: 0.39215687}
+    - BACKGROUND_COLOR: {r: 0.7725491, g: 0.19215688, b: 0.07450981, a: 0.05882353}
     - LINE_COLOR: {r: 0.9803922, g: 0.5176471, b: 0.18039216, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
