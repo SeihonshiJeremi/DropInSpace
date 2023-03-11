@@ -94,6 +94,9 @@ public class monsterZoom : MonoBehaviour
     public bool pos70, pos71, pos72, pos73, pos74, pos75, pos76, pos77, pos78, pos79;
     public bool pos80, pos81;
 
+    GameObject lifeBar;
+
+
     //lifeBar
     public int reset = 3;
 
@@ -104,6 +107,8 @@ public class monsterZoom : MonoBehaviour
 
         choixItemRandom = Random.Range(1, 6);
         durationItem = 10.0f;
+
+        lifeBar = GameObject.FindWithTag("lifeBar");
     }
 
     void Update()
@@ -445,7 +450,7 @@ public class monsterZoom : MonoBehaviour
 
     public void ResetDepuisMonster()
     {
-        GameObject.Find("LifeBar").GetComponent<LifeBarManager>().Reset();
+        lifeBar.GetComponent<LifeBarManager>().Reset();
     }
 
 

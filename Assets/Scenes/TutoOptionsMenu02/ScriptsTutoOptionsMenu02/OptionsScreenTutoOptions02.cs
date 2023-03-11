@@ -24,6 +24,7 @@ public class OptionsScreenTutoOptions02 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UpdateResLabel();//rejouter apres supp reso auto
         fullscreenTog.isOn = Screen.fullScreen;
 
         /*if(QualitySettings.vSyncCount == 0)
@@ -54,30 +55,30 @@ public class OptionsScreenTutoOptions02 : MonoBehaviour
 
         //UpdateResLabel();
 
-        bool foundRes = false;
-        for (int i = 0; i < resolutions.Count; i++)
-        {
-            if(Screen.width == resolutions[i].horizontal && Screen.height == resolutions[i].vertical)
-            {
-                foundRes = true;
+        /* bool foundRes = false;
+         for (int i = 0; i < resolutions.Count; i++)
+         {
+             if(Screen.width == resolutions[i].horizontal && Screen.height == resolutions[i].vertical)
+             {
+                 foundRes = true;
 
-                selectedResolution = i;
+                 selectedResolution = i;
 
-                UpdateResLabel();
-            }
-        }
+                 UpdateResLabel();
+             }
+         }
 
-        if(!foundRes)
-        {
-            ResItem newRes = new ResItem();
-            newRes.horizontal = Screen.width;
-            newRes.vertical = Screen.height;
+         if(!foundRes)
+         {
+             ResItem newRes = new ResItem();
+             newRes.horizontal = Screen.width;
+             newRes.vertical = Screen.height;
 
-            resolutions.Add(newRes);
-            selectedResolution = resolutions.Count - 1;
+             resolutions.Add(newRes);
+             selectedResolution = resolutions.Count - 1;
 
-            UpdateResLabel();
-        }
+             UpdateResLabel();
+         }*/
 
         float vol = 0f;
         theMixer.GetFloat("MasterVol", out vol);

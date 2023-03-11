@@ -6,10 +6,20 @@ public class resetScore : MonoBehaviour
 {
     int score;
     string scoreTemporaire;
+    int reset;
+    string lifeBar;
+    int debug;
     void Awake()
     {
         //reset score temporaire
         score = 0;
-        PlayerPrefs.SetInt(scoreTemporaire, score);      
+        PlayerPrefs.SetInt(scoreTemporaire, score);
+
+        //reset LifeBar
+        reset = 3;
+        PlayerPrefs.SetInt("LifeBar", reset);
+
+        debug = PlayerPrefs.GetInt("LifeBar", reset);
+        Debug.Log(debug);
     }
 }

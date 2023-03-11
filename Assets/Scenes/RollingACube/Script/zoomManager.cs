@@ -61,7 +61,6 @@ public class zoomManager : MonoBehaviour
     void Start()
     {
         m_MyAudioSource = GetComponent<AudioSource>();
-        GameObject.FindWithTag("lifeBar").GetComponent<LifeBarManager>().activationLifeBar();
         score = PlayerPrefs.GetInt(scoreTemporaire);
         durationItem = 0.0f;
     }

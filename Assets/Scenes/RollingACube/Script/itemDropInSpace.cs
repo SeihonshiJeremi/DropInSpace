@@ -68,6 +68,8 @@ public class itemDropInSpace : MonoBehaviour
     public int choixItemRandom;
     bool cligno;
 
+    public GameObject shieldPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +91,7 @@ public class itemDropInSpace : MonoBehaviour
 
         choixItemRandom = Random.Range(1, 4);
         durationItem = 0.0f;
+        shieldPlayer.SetActive(false);
     }
 
     //fonction 1er item
@@ -185,7 +188,6 @@ public class itemDropInSpace : MonoBehaviour
         scriptPouvoirItem.GetComponent<monsterZoom>().powerInvincibilty();
         scriptPouvoirItem02.GetComponent<monsterZoom>().powerInvincibilty();
         durationItem = 10.0f;
-
     }
 
     public void itemBonbonScoreRougeF02()
@@ -242,7 +244,7 @@ public class itemDropInSpace : MonoBehaviour
             ObjetFaireClignoter.enabled = false;
             yield return new WaitForSeconds(.25f); // or 0.125f if it shall take 0.25 in total
             ObjetFaireClignoter.enabled = true;
-            yield return new WaitForSeconds(.25f); // or 0.125f if it shall take 0.25 in total
+            yield return new WaitForSeconds(.25f); // or 0.125f if it shall take 0.25 in total            
         }
     }
 
@@ -286,6 +288,7 @@ public class itemDropInSpace : MonoBehaviour
             durationItem = durationItemOrigine;
             choixItemRandom = Random.Range(1, 4);
             cligno = false;
+            shieldPlayer.SetActive(false);
 
         }
 
@@ -512,6 +515,7 @@ public class itemDropInSpace : MonoBehaviour
     {
         //durationItem = 10.0f;
         cligno = true;
+        shieldPlayer.SetActive(true);
     }
 
     //pour scriptrandom aleaatoire
