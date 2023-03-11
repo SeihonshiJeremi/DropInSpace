@@ -32,12 +32,20 @@ public class TeleportationRolling : MonoBehaviour
             Monster.transform.position = newPosition;
         }
 
+        if (other.gameObject.tag == "MonsterChangeColor")
+        {
+            Vector3 newPosition;
+            newPosition = pointTPMonster.position;
+            Monster.transform.position = newPosition;
+        }
+
         if (other.gameObject.tag == "Monster02")
         {
             Vector3 newPosition;
             newPosition = pointTPMonster02.position;
             Monster02.transform.position = newPosition;
         }
+
 
         /*if (other.gameObject.tag == tag)
         {

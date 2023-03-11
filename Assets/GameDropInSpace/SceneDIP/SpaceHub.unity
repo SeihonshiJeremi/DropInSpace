@@ -3536,7 +3536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9b49ad17d53340a501868543d0ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: rollingAcube
+  scene: SceneTransition02-01
   avCollision: 0
 --- !u!114 &1369017776
 MonoBehaviour:
@@ -3564,7 +3564,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369017773}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 30

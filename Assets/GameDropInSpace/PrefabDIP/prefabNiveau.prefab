@@ -1529,6 +1529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d29799bdb10384abb156d16ff00f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valeurScene: 0
+  ValeurScene: 
+  TransiExplo: {fileID: 0}
 --- !u!1 &6028994371893574005
 GameObject:
   m_ObjectHideFlags: 0
@@ -10216,7 +10219,7 @@ MonoBehaviour:
   ObjectTimerStart: {fileID: 8171668963167490806}
   scene: SceneTransition01-02
   m_MyAudioSourceBonbon: {fileID: 8171668963116097297}
-  audioStage: {fileID: 8300000, guid: 845ea6702f3109c439701b4add76632f, type: 3}
+  audioStage: {fileID: 8300000, guid: b5d2df6a4d36f784d95634f77d5b18a1, type: 3}
   clipNoTime: {fileID: 8300000, guid: 03072668d2cf52d4e9949cb381dc67e9, type: 3}
   chAudio: 0
   itemAudio: 0
@@ -10240,7 +10243,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3245771755884211493, guid: ae7b178cca63e8c458d3830a42b6182c,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 845ea6702f3109c439701b4add76632f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b5d2df6a4d36f784d95634f77d5b18a1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -11367,7 +11370,8 @@ AudioSource:
   m_GameObject: {fileID: 8171668963116097296}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7713926311537228172, guid: ae7b178cca63e8c458d3830a42b6182c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: ebd3e72ca836b4048a71d8dc996e20f0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

@@ -39,6 +39,12 @@ EditorBuildSettings:
     path: Assets/GameDropInSpace/SceneDIP/Stage01-04.unity
     guid: c04b53ad50e8c6c4cac886f797462fea
   - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition02-01.unity
+    guid: f22c566cd635f3f4b844ce57f3a42787
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage02-01.unity
+    guid: ffd8b6c3acceef443869dc8f36096862
+  - enabled: 1
     path: Assets/GameDropInSpace/SceneDIP/SceneTransitionGameOver.unity
     guid: 707320b11f984eb4189ea3217ce5aa69
   - enabled: 1
