@@ -9,6 +9,10 @@ public class resetScore : MonoBehaviour
     int reset;
     string lifeBar;
     int debug;
+
+    int valeurScene;
+    string ValeurScene;
+
     void Awake()
     {
         //reset score temporaire
@@ -21,5 +25,8 @@ public class resetScore : MonoBehaviour
 
         debug = PlayerPrefs.GetInt("LifeBar", reset);
         Debug.Log(debug);
+
+        valeurScene = 100;
+        PlayerPrefs.SetInt("ValeurScene", valeurScene);
     }
 }

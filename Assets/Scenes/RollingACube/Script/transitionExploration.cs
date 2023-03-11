@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class transitionExploration : MonoBehaviour
 {
-    public bool transiExploration;
+    public int valeurScene;
+    public string ValeurScene;
+    public GameObject TransiExplo;
 
-    void Start()
+    void Update()
     {
-        if (transiExploration == true) GameObject.Find("ZoomManager").GetComponent<zoomManager>().TransitionExploration();
+        valeurScene = PlayerPrefs.GetInt("ValeurScene", valeurScene);
+        Debug.Log(valeurScene);
+        if (valeurScene == 200) Destroy(TransiExplo);
+        if(valeurScene == 103) GameObject.Find("ZoomManager").GetComponent<zoomManager>().TransitionExploration();
     }
 }

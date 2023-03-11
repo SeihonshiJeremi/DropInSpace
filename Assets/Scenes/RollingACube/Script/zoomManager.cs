@@ -54,6 +54,8 @@ public class zoomManager : MonoBehaviour
     //pour transition exploration
     public bool transitionExploration;
     public string sceneTransitionExploration;
+    public int valeurScene;
+    public string ValeurScene;
 
 
 
@@ -63,12 +65,15 @@ public class zoomManager : MonoBehaviour
         m_MyAudioSource = GetComponent<AudioSource>();
         score = PlayerPrefs.GetInt(scoreTemporaire);
         durationItem = 0.0f;
+
+        //transition explo
+        valeurScene = PlayerPrefs.GetInt("ValeurScene", valeurScene);
     }
 
     void FixedUpdate()
     {
-        if (Input.GetButton("Dash") && transitionExploration == false) SceneManager.LoadScene(scene);
-        if (Input.GetButton("Dash") && transitionExploration == true) SceneManager.LoadScene(sceneTransitionExploration);
+       // if (Input.GetButton("Dash") && transitionExploration == false) SceneManager.LoadScene(scene);
+       // if (Input.GetButton("Dash") && transitionExploration == true) SceneManager.LoadScene(sceneTransitionExploration);
 
         durationItem -= Time.deltaTime;
         if (durationItem < 0) durationItem = durationItemOrigine;
@@ -145,10 +150,18 @@ public class zoomManager : MonoBehaviour
 
             Debug.Log("go fin level");
             //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+
+            valeurScene = valeurScene + 1;
+            PlayerPrefs.SetInt("ValeurScene", valeurScene);
             SceneManager.LoadScene(scene);
         }
 
-        if(transitionExploration == true && valueFinLevel == 0) SceneManager.LoadScene(sceneTransitionExploration);
+        if (transitionExploration == true && valueFinLevel == 0)
+        {
+            valeurScene = 200;
+            PlayerPrefs.SetInt("ValeurScene", valeurScene);
+            SceneManager.LoadScene(sceneTransitionExploration);
+        } 
 
 
     }
@@ -237,6 +250,6 @@ public class zoomManager : MonoBehaviour
 
     public void TransitionExploration()
     {
-        transitionExploration = true;
+        if(valeurScene == 103) transitionExploration = true;
     }
 }

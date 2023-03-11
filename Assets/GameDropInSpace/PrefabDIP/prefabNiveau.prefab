@@ -1529,7 +1529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d29799bdb10384abb156d16ff00f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transiExploration: 0
 --- !u!1 &6028994371893574005
 GameObject:
   m_ObjectHideFlags: 0
@@ -8977,8 +8976,8 @@ MonoBehaviour:
   _collisionAvecChangerOrientationArr: 0
   x: 0
   z: 0
-  tempsAvantDeplacement: 2
-  tempsAvantDeplacementOrigine: 2
+  tempsAvantDeplacement: 4
+  tempsAvantDeplacementOrigine: 4
   choixDirection: 0
   choixDirectionHorizontal: 0
   choixDirectionVertical: 0
@@ -9932,8 +9931,8 @@ MonoBehaviour:
     type: 3}
   itemRandomGO02: {fileID: 8147558560285950436, guid: df0867e1ecd1ed24f8e0f26611b22ef9,
     type: 3}
-  tAvAppItem: 10
-  tAvAppItemOringine: 10
+  tAvAppItem: 20
+  tAvAppItemOringine: 20
   tAvAppItem02: 500
   tAvAppItemOringine02: 500
   pos01: 1
@@ -10228,6 +10227,8 @@ MonoBehaviour:
   ItemBonbon: {fileID: 8300000, guid: ebd3e72ca836b4048a71d8dc996e20f0, type: 3}
   transitionExploration: 0
   sceneTransitionExploration: SpaceHub
+  valeurScene: 0
+  ValeurScene: 
 --- !u!82 &8171668963110616250
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12281,7 +12282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemScript: {fileID: 8171668962449687056}
-  goScript: 1
+  goScript: 0
   random: 0
   tempsAvantChangementItem: 120
 --- !u!1 &8948298575673387888
