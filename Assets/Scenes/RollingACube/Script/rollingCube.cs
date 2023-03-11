@@ -18,6 +18,10 @@ public class rollingCube : MonoBehaviour
     public float z;
     public float y;
 
+    public float xDesac;
+    public float zDesac;
+    public float yDesac;
+
     public bool desacTouche = false;
     public float timeDesacTouche = 3.0f;
 
@@ -34,10 +38,13 @@ public class rollingCube : MonoBehaviour
     public float screenWidth = Screen.width;
     public float screenHeight = Screen.height;*/
 
-    void Awake()
+    void Start()
     {
-       /*QualitySettings.vSyncCount = 0;  // VSync must be disabled
-        Application.targetFrameRate = 60;*/
+        /*QualitySettings.vSyncCount = 0;  // VSync must be disabled
+         Application.targetFrameRate = 60;*/
+        x = this.transform.position.x;
+        z = this.transform.position.z;
+        y = this.transform.position.y;
     }
 
     void Update()
@@ -177,7 +184,7 @@ public class rollingCube : MonoBehaviour
     public void desactivationTouche()
     {
         desacTouche = true;
-        this.transform.position = new Vector3(8, y, 8);
+        this.transform.position = new Vector3(xDesac, y, zDesac);
     }
 
     public void activTouche()
