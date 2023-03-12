@@ -66,6 +66,51 @@ EditorBuildSettings:
     path: Assets/GameDropInSpace/SceneDIP/SceneTransition03-01.unity
     guid: 4ab19094309860b4dbdee5761ed4d867
   - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage03-01.unity
+    guid: 22de1276fa0dd444088b515b7afa31dd
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition03-02.unity
+    guid: 06a022d91fe20a645b592325a6e55178
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage03-02.unity
+    guid: cab173e9203fd1c45a53f908681d63d4
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition03-03.unity
+    guid: b9057396572f9654eb7a003f072c206b
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage03-03.unity
+    guid: df19614cb5e733447b93222c6affd0e5
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition03-04.unity
+    guid: a82974c9f9f0120418bd0922bfbd1de4
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage03-04.unity
+    guid: 20ad5c5f2f79cb242afd6667ddabb773
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition04-01.unity
+    guid: 3e844b3190dd11646ae036bc862e0c82
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage04-01.unity
+    guid: 3d1c319a4ed05ff4997d685483e627fd
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition04-02.unity
+    guid: 7732c1ee7a9ad954ab8cd090ad0dba0f
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage04-02.unity
+    guid: e5b958db33b46c849820a57e8f6bf20b
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition04-03.unity
+    guid: 632bcf7c6fc4f3c4293af3c473b9b2af
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage04-03.unity
+    guid: 765ec9f104b07844cb9b9f26dcbebf58
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition04-04.unity
+    guid: 5bed8561d2900254ebfe719ad5b2a21e
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage04-04.unity
+    guid: 735d73c1f56fdb14d87859b0f0136285
+  - enabled: 1
     path: Assets/GameDropInSpace/SceneDIP/SceneTransitionGameOver.unity
     guid: 707320b11f984eb4189ea3217ce5aa69
   - enabled: 1

@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9b49ad17d53340a501868543d0ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: rollingAcube
+  scene: SceneTransition07-01
   avCollision: 0
 --- !u!135 &22583127
 SphereCollider:
@@ -448,7 +448,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22583123}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 30
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9b49ad17d53340a501868543d0ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: rollingAcube
+  scene: SceneTransition03-01
   avCollision: 0
 --- !u!135 &45473009
 SphereCollider:
@@ -523,7 +523,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45473003}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 30
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9b49ad17d53340a501868543d0ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: rollingAcube
+  scene: SceneTransition08-01
   avCollision: 0
 --- !u!114 &394999046
 MonoBehaviour:
@@ -1519,7 +1519,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394999043}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 30
@@ -2482,7 +2482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9b49ad17d53340a501868543d0ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: rollingAcube
+  scene: SceneTransition05-01
   avCollision: 0
 --- !u!135 &794193468
 SphereCollider:
@@ -2492,7 +2492,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794193464}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 30
@@ -2539,7 +2539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9b49ad17d53340a501868543d0ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: SceneTransition01-01
+  scene: SceneTransition04-01
   avCollision: 0
 --- !u!114 &835689663
 MonoBehaviour:
@@ -2567,7 +2567,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835689660}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 30
@@ -3674,7 +3674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9b49ad17d53340a501868543d0ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: rollingAcube
+  scene: SceneTransition06-01
   avCollision: 0
 --- !u!135 &1408880562
 SphereCollider:
@@ -3684,7 +3684,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408880558}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 30
