@@ -115,7 +115,7 @@ public class zoomManager : MonoBehaviour
         timerNiveau -= Time.deltaTime;
         tempsint = Mathf.RoundToInt(timerNiveau);
 
-        if(timerNiveau <= 0) GameObject.Find("LifeBar").GetComponent<LifeBarManager>().reset00();
+        if(timerNiveau < 1) GameObject.Find("LifeBar").GetComponent<LifeBarManager>().Reset();
         if (timerNiveau <= 20 && chAudio == false)
         {
             changementAudio();

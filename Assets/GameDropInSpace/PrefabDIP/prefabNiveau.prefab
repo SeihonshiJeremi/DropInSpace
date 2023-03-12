@@ -7766,6 +7766,7 @@ MonoBehaviour:
   assemblePtForWest: 0
   item: {fileID: 0}
   scriptZoomManager: {fileID: 0}
+  boolIgnoreCollisionPlayer: 0
   ignoreCollisionPlayer: {fileID: 0}
   choixItemRandom: 0
   MonsterTP: 0
@@ -7852,6 +7853,7 @@ MonoBehaviour:
   pos79: 0
   pos80: 0
   pos81: 0
+  lifeBar: {fileID: 0}
   reset: 3
 --- !u!65 &8171668961719617542
 BoxCollider:
@@ -9012,6 +9014,7 @@ MonoBehaviour:
   assemblePtForWest: 0
   item: {fileID: 8171668962449687056}
   scriptZoomManager: {fileID: 8171668962618649846}
+  boolIgnoreCollisionPlayer: 0
   ignoreCollisionPlayer: {fileID: 8171668963167490811}
   choixItemRandom: 0
   MonsterTP: 0
@@ -9098,6 +9101,7 @@ MonoBehaviour:
   pos79: 0
   pos80: 0
   pos81: 0
+  lifeBar: {fileID: 5543336317360490102}
   reset: 3
 --- !u!65 &8171668962225139038
 BoxCollider:
@@ -9285,6 +9289,7 @@ MonoBehaviour:
   assemblePtForWest: 0
   item: {fileID: 8171668962449687056}
   scriptZoomManager: {fileID: 8171668962618649846}
+  boolIgnoreCollisionPlayer: 0
   ignoreCollisionPlayer: {fileID: 8171668963167490811}
   choixItemRandom: 0
   MonsterTP: 0
@@ -9371,6 +9376,7 @@ MonoBehaviour:
   pos79: 0
   pos80: 0
   pos81: 0
+  lifeBar: {fileID: 5543336317360490102}
   reset: 3
 --- !u!65 &8171668962227664593
 BoxCollider:
@@ -11504,6 +11510,7 @@ GameObject:
   - component: {fileID: 8171668963167490807}
   - component: {fileID: 8171668963167490808}
   - component: {fileID: 8171668963167490809}
+  - component: {fileID: 4232708669496367219}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11521,7 +11528,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 8, y: 1, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9200961968294596394}
   m_Father: {fileID: 8171668963355222252}
@@ -11733,6 +11740,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4232708669496367219
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171668963167490806}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4985d5602879bf04e943d1cd6c3e1502, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &8171668963243824346
 GameObject:
   m_ObjectHideFlags: 0
@@ -14846,7 +14873,7 @@ PrefabInstance:
     - target: {fileID: 4722808187736626510, guid: 43a073a3229fecb4e9917f03ec71bab3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5386614850181484532, guid: 43a073a3229fecb4e9917f03ec71bab3,
         type: 3}
@@ -15512,7 +15539,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b465811d408ed4c46b885554f7a1ee79,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b465811d408ed4c46b885554f7a1ee79, type: 3}

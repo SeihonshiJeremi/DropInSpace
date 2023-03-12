@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.0015792233, b: 0.0022146956, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.0009969502, b: 0.0012675037, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -210,6 +210,11 @@ PrefabInstance:
       propertyPath: audioStage
       value: 
       objectReference: {fileID: 8300000, guid: 845ea6702f3109c439701b4add76632f, type: 3}
+    - target: {fileID: 8171668962618649847, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: timerNiveau
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8171668963110616250, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: m_audioClip
