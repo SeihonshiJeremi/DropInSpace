@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.0019417669, b: 0.002621847, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.00260126, b: 0.0034036983, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -553,7 +553,7 @@ PrefabInstance:
     - target: {fileID: 8171668962225139033, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: followMonster
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8171668962225139033, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}

@@ -111,6 +111,90 @@ EditorBuildSettings:
     path: Assets/GameDropInSpace/SceneDIP/Stage04-04.unity
     guid: 735d73c1f56fdb14d87859b0f0136285
   - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition05-01.unity
+    guid: 15b7a3fde5c9dcb47ae52ee318bc4730
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage05-01.unity
+    guid: 20f6a63d55001224b8bf24154dfc77c0
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition05-02.unity
+    guid: 9372ab8860a82d947b09aacf3eccc1fc
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage05-02.unity
+    guid: a7097d8f930d2744283cecbb379dc807
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition05-03.unity
+    guid: f4cd380c51ad9dd43b72aecf8b3c6efd
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage05-03.unity
+    guid: d651aad38cd8f3b48ac7c2e62a8fa547
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition05-04.unity
+    guid: 1eaa385d4be3a1f418ef366e6a9bcd48
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage05-04.unity
+    guid: 89bbb99afc9512644a67d3d8029a8c9e
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition06-01.unity
+    guid: 239062a15123a0a4aab17e1080cb3b03
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage06-01.unity
+    guid: 6e12dc5cdd92c9e4bb52df83da4ab396
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition06-02.unity
+    guid: 3f2548f865e7c334c89172bf67816785
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage06-02.unity
+    guid: dd1ced5a2e11872409bd756756b0c9a4
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition06-03.unity
+    guid: 8c584e6c9b2631f4cadb6206611755b6
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage06-03.unity
+    guid: 1a92a6851a7880c439ae05ffe9e0c105
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition06-04.unity
+    guid: 4969fb533d446114aba0188660b66cba
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage06-04.unity
+    guid: 62fac7381dc7aa446a239a64ea827560
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition07-01.unity
+    guid: 32e2749c300553d4cb7fed1278f9313b
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage07-01.unity
+    guid: 3732364c558994542a5542cac895c1df
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition07-02.unity
+    guid: 1ea1201efc199994d983a5c0eccc9f2e
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage07-02.unity
+    guid: 4b6d1fab599e08b47b8f2f2572ff9a7e
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition07-03.unity
+    guid: 7d3b28fcd345afa46804447e03eb8799
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage07-03.unity
+    guid: 12305dcd1fae7a84bab80a66732ec22e
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition07-04.unity
+    guid: e3d8ab489c09b13458275e0a620cd103
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/Stage07-04.unity
+    guid: 227705df6dcf23d45b79533335cd5c1e
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition08-01.unity
+    guid: 1537dcbcaff4bf74ebe71a3c354aff5a
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition08-02.unity
+    guid: e75bc4b5ac4624e48b3a19fedbadc1ad
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition08-03.unity
+    guid: 4e693100157247f4ebf25e530c2f6a16
+  - enabled: 1
+    path: Assets/GameDropInSpace/SceneDIP/SceneTransition08-04.unity
+    guid: 996cee7ada226ae47abf1fa6c0b6397b
+  - enabled: 1
     path: Assets/GameDropInSpace/SceneDIP/SceneTransitionGameOver.unity
     guid: 707320b11f984eb4189ea3217ce5aa69
   - enabled: 1
