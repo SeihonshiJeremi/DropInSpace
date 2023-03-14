@@ -170,10 +170,10 @@ public class monsterZoom : MonoBehaviour
         if (DirectionVerticalSingle == true) choixDirection = Random.Range(3, 4);
 
         //direction lors de collision avec changer
-        if (_collisionAvecChangerOrientationGauche == true) choixDirection = 1;
-        if (_collisionAvecChangerOrientationDroite == true) choixDirection = 2;
-        if (_collisionAvecChangerOrientationAv == true) choixDirection = 3;
-        if (_collisionAvecChangerOrientationArr == true) choixDirection = 4;
+        if (_collisionAvecChangerOrientationGauche == true) choixDirection = 2;
+        if (_collisionAvecChangerOrientationDroite == true) choixDirection = 1;
+        if (_collisionAvecChangerOrientationAv == true) choixDirection = 4;
+        if (_collisionAvecChangerOrientationArr == true) choixDirection = 3;
 
         if (_isMoving) return;
 

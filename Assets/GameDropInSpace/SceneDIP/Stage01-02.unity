@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.0027154712, b: 0.003860302, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.0013576098, b: 0.0018570686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -434,6 +434,61 @@ PrefabInstance:
         type: 3}
       propertyPath: tempsAvantDeplacementOrigine
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104880, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104880, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104880, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104880, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104880, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104886, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_TranslationAtRest.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104886, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_TranslationAtRest.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104886, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_TranslationAtRest.z
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104886, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104886, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668962411104886, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8171668962449687057, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
