@@ -612,6 +612,8 @@ MonoBehaviour:
   ItemBonbon: {fileID: 8300000, guid: ebd3e72ca836b4048a71d8dc996e20f0, type: 3}
   transitionExploration: 0
   sceneTransitionExploration: 
+  valeurScene: 0
+  ValeurScene: 
 --- !u!82 &2091932874440223480
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1160,6 +1162,7 @@ MonoBehaviour:
   scriptPouvoirItem: {fileID: 2091932875886820117}
   scriptPouvoirItem02: {fileID: 2091932875885142160}
   choixItemRandom: 0
+  shieldPlayer: {fileID: 0}
 --- !u!1 &2091932874161092207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1711,9 @@ MonoBehaviour:
   x: 0
   z: 0
   y: 0
+  xDesac: 0
+  zDesac: 0
+  yDesac: 0
   desacTouche: 0
   timeDesacTouche: 3
   horizontal: 0
@@ -2807,6 +2813,7 @@ Transform:
   - {fileID: 2091932874361655744}
   - {fileID: 2461507775216445097}
   - {fileID: 6538262602518293424}
+  - {fileID: 8364193180993030962}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8602,6 +8609,7 @@ MonoBehaviour:
   assemblePtForWest: 0
   item: {fileID: 0}
   scriptZoomManager: {fileID: 0}
+  boolIgnoreCollisionPlayer: 0
   ignoreCollisionPlayer: {fileID: 0}
   choixItemRandom: 0
   MonsterTP: 0
@@ -8688,6 +8696,7 @@ MonoBehaviour:
   pos79: 0
   pos80: 0
   pos81: 0
+  lifeBar: {fileID: 0}
   reset: 3
 --- !u!65 &2091932875460992580
 BoxCollider:
@@ -9841,6 +9850,7 @@ MonoBehaviour:
   assemblePtForWest: 0
   item: {fileID: 2091932874026800210}
   scriptZoomManager: {fileID: 2091932873858382516}
+  boolIgnoreCollisionPlayer: 0
   ignoreCollisionPlayer: {fileID: 2091932874409018553}
   choixItemRandom: 0
   MonsterTP: 0
@@ -9927,6 +9937,7 @@ MonoBehaviour:
   pos79: 0
   pos80: 0
   pos81: 0
+  lifeBar: {fileID: 0}
   reset: 3
 --- !u!65 &2091932875885142163
 BoxCollider:
@@ -10114,6 +10125,7 @@ MonoBehaviour:
   assemblePtForWest: 0
   item: {fileID: 2091932874026800210}
   scriptZoomManager: {fileID: 2091932873858382516}
+  boolIgnoreCollisionPlayer: 0
   ignoreCollisionPlayer: {fileID: 2091932874409018553}
   choixItemRandom: 0
   MonsterTP: 0
@@ -10200,6 +10212,7 @@ MonoBehaviour:
   pos79: 0
   pos80: 0
   pos81: 0
+  lifeBar: {fileID: 0}
   reset: 3
 --- !u!65 &2091932875886820124
 BoxCollider:
@@ -11120,7 +11133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d29799bdb10384abb156d16ff00f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transiExploration: 0
+  valeurScene: 0
+  ValeurScene: 
+  TransiExplo: {fileID: 0}
 --- !u!1 &4595037273409056567
 GameObject:
   m_ObjectHideFlags: 0
@@ -11256,6 +11271,86 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4897218042642730398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8364193180993030962}
+  - component: {fileID: 4758117829284420142}
+  m_Layer: 0
+  m_Name: swipeMovement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8364193180993030962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897218042642730398}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2091932875004815686}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4758117829284420142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897218042642730398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa2f54c38d82484a88334a9e3cb7eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementPlayer: {fileID: 2091932874409018548}
+  position:
+    m_Name: Position
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: 08a3777f-422a-4f86-81e0-40780a49d886
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 40301f18-6098-4db9-be2e-8ddfd69f5a9c
+      m_Path: <Touchscreen>/primaryTouch/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Position
+      m_Flags: 0
+    m_Flags: 0
+  press:
+    m_Name: Press
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 2d150bfa-6c23-4323-9a4d-0fefbff20f79
+    m_Processors: 
+    m_Interactions: Press
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 63803b79-cf68-456d-9169-8b65b0895b2d
+      m_Path: <Touchscreen>/Press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Press
+      m_Flags: 0
+    m_Flags: 0
+  swipeResistance: 100
 --- !u!1 &6162546018563760154
 GameObject:
   m_ObjectHideFlags: 0
@@ -11542,7 +11637,6 @@ MonoBehaviour:
   EventSystem: {fileID: 1171268338712001842}
   Audio: {fileID: 2091932874440223480}
   anim: {fileID: 9075886654695173406}
-  scene: StartDropInSpace
 --- !u!1 &7331903173966206997
 GameObject:
   m_ObjectHideFlags: 0
