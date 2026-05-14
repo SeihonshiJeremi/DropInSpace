@@ -98,6 +98,21 @@ public class rollingCube : MonoBehaviour
             yield return new WaitForFixedUpdate();
             audioSource.Play();
         }
+
+        Debug.Log($"[Roll] _collisionOK : {_collisionOK} — VibrationsManager : {VibrationsManager.Instance != null}");
+
+        if (_collisionOK && VibrationsManager.Instance != null)
+        {
+            try
+            {
+                VibrationsManager.Instance.Vibrate(0.1f, 0.3f, 0.08f);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[Roll] Erreur vibration : {e.Message}");
+            }
+        }
+
         _isMoving = false;
     }
 
@@ -117,7 +132,12 @@ public class rollingCube : MonoBehaviour
         if (other.CompareTag("itemBonbonScoreVert02")) itemScript.itemBonbonScoreVertF02();
         if (other.CompareTag("itemRandom02")) itemScript.itemRandomF02();
 
-        if (other.CompareTag("changeCubeMaterial")) _collisionOK = true;
+        if (other.CompareTag("changeCubeMaterial"))
+        {
+            _collisionOK = true;
+            // Vibration légère à chaque cube colorié
+            VibrationsManager.Instance?.Vibrate(0.1f, 0.3f, 0.08f);
+        }
     }
 
     private void OnTriggerExit(Collider other)
