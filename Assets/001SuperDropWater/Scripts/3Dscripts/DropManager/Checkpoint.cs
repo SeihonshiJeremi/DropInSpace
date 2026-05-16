@@ -11,12 +11,12 @@ public class Checkpoint : MonoBehaviour
 
     void Start()
     {
-        theHealthMan = FindObjectOfType<LifeManager>();
+        theHealthMan = FindFirstObjectByType<LifeManager>();
     }
 
 	public void CheckpointOn()
 	{
-		Checkpoint[] checkpoints = FindObjectsOfType<Checkpoint>();
+		Checkpoint[] checkpoints = FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
 		foreach (Checkpoint cp in checkpoints)
 		{
 			cp.CheckpointOff();

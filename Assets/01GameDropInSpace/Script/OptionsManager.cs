@@ -31,7 +31,7 @@ public class OptionsManager : MonoBehaviour
 
     void OnEnable()
     {
-        selectionManager = FindObjectOfType<SelectionManager>();
+        selectionManager = Object.FindFirstObjectByType<SelectionManager>();
 
         // Reset couleur de tous les boutons Options au démarrage
         foreach (var btn in GetComponentsInChildren<Button>())

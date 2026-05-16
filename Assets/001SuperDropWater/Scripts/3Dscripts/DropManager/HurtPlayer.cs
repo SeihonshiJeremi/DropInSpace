@@ -14,7 +14,11 @@ public class HurtPlayer : MonoBehaviour
 			//Quand tu te fait toucher//
 			Vector3 hitDirection = other.transform.position - transform.position;
 			hitDirection = hitDirection.normalized;
-			FindObjectOfType<LifeManager>().damagePlayer(damageToGive, hitDirection);
+			LifeManager lifeManager = Object.FindFirstObjectByType<LifeManager>();
+			if (lifeManager != null)
+			{
+				lifeManager.damagePlayer(damageToGive, hitDirection);
+			}
 		}
 	}
 }

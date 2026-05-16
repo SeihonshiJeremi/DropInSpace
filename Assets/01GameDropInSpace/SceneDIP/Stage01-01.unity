@@ -119,6 +119,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!108 &1736587799 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 8171668962080057937, guid: ecda096af8564b040830d87d114a67e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7813622747438145370}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7813622747438145370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,6 +145,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1103339136579998314, guid: 82c46a3292d2960469b4a18bfa615aa2,
         type: 2}
+    - target: {fileID: 2726612649474061406, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: intensiteArret
+      value: 0.997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726612649474061406, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: directionalLight
+      value: 
+      objectReference: {fileID: 1736587799}
+    - target: {fileID: 2726612649474061406, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: vignetteSmoothness
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726612649474061406, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: intensiteDirectional
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726612649474061406, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: intensiteEnMouvement
+      value: 0.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726612649474061406, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: vignetteIntensiteBase
+      value: 0.998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726612649474061406, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: Assembly-CSharp::ObscurVisuel
+      objectReference: {fileID: 0}
     - target: {fileID: 2974683520235246391, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: m_fontAsset
@@ -372,6 +413,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1103339136579998314, guid: 82c46a3292d2960469b4a18bfa615aa2,
         type: 2}
+    - target: {fileID: 8171668962080057937, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8171668962449687057, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: tAvAppItem
@@ -553,6 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectionManager
   premierBouton: {fileID: 7813622747438145375}
+  navigationBloquee: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

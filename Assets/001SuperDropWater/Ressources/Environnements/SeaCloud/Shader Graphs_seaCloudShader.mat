@@ -70,6 +70,7 @@ Material:
     - _Cull: 2
     - _Curvature_Radius: 1
     - _DstBlend: 10
+    - _DstBlendAlpha: 10
     - _Emission_Strength: 2
     - _Fresnel_Opacity: 1
     - _Fresnel_Power: 1
@@ -83,6 +84,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SrcBlend: 5
+    - _SrcBlendAlpha: 1
     - _Surface: 1
     - _Transparency: 100
     - _WorkflowMode: 0

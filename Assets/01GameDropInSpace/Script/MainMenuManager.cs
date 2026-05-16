@@ -19,7 +19,7 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-        selectionManager = FindObjectOfType<SelectionManager>();
+        selectionManager = Object.FindFirstObjectByType<SelectionManager>();
     }
 
     void SetSelection(GameObject bouton)

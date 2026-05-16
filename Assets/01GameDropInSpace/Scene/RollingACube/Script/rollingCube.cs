@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +15,9 @@ public class rollingCube : MonoBehaviour
     public float timeDesacTouche = 3.0f;
 
     public GameObject item;
+
+    // Camera orbitale — palier de rotation (0=sud, 1=est, 2=nord, 3=ouest)
+    public int cameraAnglePalier = 0;
 
     // Input System
     private DIS_Controls controls;
@@ -75,11 +77,10 @@ public class rollingCube : MonoBehaviour
         if (desacTouche) return;
         if (_isMoving) return;
 
-        // Nouveau Input System — clavier + toutes les manettes automatiquement
-        if (moveInput.x < -0.5f) AssembleDir(Vector3.left);
-        else if (moveInput.x > 0.5f) AssembleDir(Vector3.right);
-        else if (moveInput.y > 0.5f) AssembleDir(Vector3.forward);
-        else if (moveInput.y < -0.5f) AssembleDir(Vector3.back);
+        if (moveInput.x < -0.5f) AssembleDir(GetDirection(Vector3.left));
+        else if (moveInput.x > 0.5f) AssembleDir(GetDirection(Vector3.right));
+        else if (moveInput.y > 0.5f) AssembleDir(GetDirection(Vector3.forward));
+        else if (moveInput.y < -0.5f) AssembleDir(GetDirection(Vector3.back));
     }
 
     private void AssembleDir(Vector3 dir)
@@ -103,14 +104,8 @@ public class rollingCube : MonoBehaviour
 
         if (_collisionOK && VibrationsManager.Instance != null)
         {
-            try
-            {
-                VibrationsManager.Instance.Vibrate(0.1f, 0.3f, 0.08f);
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError($"[Roll] Erreur vibration : {e.Message}");
-            }
+            try { VibrationsManager.Instance.Vibrate(0.1f, 0.3f, 0.08f); }
+            catch (System.Exception e) { Debug.LogError($"[Roll] Erreur vibration : {e.Message}"); }
         }
 
         _isMoving = false;
@@ -135,7 +130,6 @@ public class rollingCube : MonoBehaviour
         if (other.CompareTag("changeCubeMaterial"))
         {
             _collisionOK = true;
-            // Vibration légère à chaque cube colorié
             VibrationsManager.Instance?.Vibrate(0.1f, 0.3f, 0.08f);
         }
     }
@@ -161,8 +155,17 @@ public class rollingCube : MonoBehaviour
         timeDesacTouche = 3.0f;
     }
 
-    public void AssembleLeft() => AssembleDir(Vector3.left);
-    public void AssembleRight() => AssembleDir(Vector3.right);
-    public void AssembleForward() => AssembleDir(Vector3.forward);
-    public void AssembleBack() => AssembleDir(Vector3.back);
+    public void AssembleLeft() => AssembleDir(GetDirection(Vector3.left));
+    public void AssembleRight() => AssembleDir(GetDirection(Vector3.right));
+    public void AssembleForward() => AssembleDir(GetDirection(Vector3.forward));
+    public void AssembleBack() => AssembleDir(GetDirection(Vector3.back));
+
+    // Recalcule la direction selon l'angle de la camera
+    private Vector3 GetDirection(Vector3 dir)
+    {
+        if (cameraAnglePalier == 0) return dir;
+        for (int i = 0; i < cameraAnglePalier; i++)
+            dir = new Vector3(-dir.z, 0, dir.x); // Rotation 90 deg
+        return dir;
+    }
 }

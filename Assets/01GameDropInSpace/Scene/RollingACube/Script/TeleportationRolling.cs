@@ -11,7 +11,6 @@ public class TeleportationRolling : MonoBehaviour
     public Transform pointTPMonster02;
     public GameObject Monster02;
 
-    // CORRIGÉ : cache des GetComponent
     private rollingCube playerRolling;
     private swipeMovementDIS swipe;
 
@@ -19,7 +18,6 @@ public class TeleportationRolling : MonoBehaviour
     {
         GameObject playerObj = GameObject.Find("Player");
         if (playerObj != null) playerRolling = playerObj.GetComponent<rollingCube>();
-
         GameObject swipeObj = GameObject.Find("swipeMovement");
         if (swipeObj != null) swipe = swipeObj.GetComponent<swipeMovementDIS>();
     }
@@ -28,15 +26,24 @@ public class TeleportationRolling : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // MODE INFINI : Game Over sauf si respawn en cours
+            if (InfiniteModeManager.Instance != null && InfiniteModeManager.Instance.EstEnJeu())
+            {
+                if (InfiniteGridManager.Instance != null && InfiniteGridManager.Instance.RespawnEnCours())
+                    return;
+
+                InfiniteModeManager.Instance.DeclencherGameOver();
+                return;
+            }
+
+            // Comportement normal
             if (playerRolling != null) playerRolling.tDesacTouche();
             if (swipe != null) swipe.tDesacTouche();
             Player.transform.position = pointTP.position;
         }
 
-        // CORRIGÉ : Monster et MonsterChangeColor fusionnés
         if (other.CompareTag("Monster") || other.CompareTag("MonsterChangeColor"))
             Monster.transform.position = pointTPMonster.position;
-
         if (other.CompareTag("Monster02"))
             Monster02.transform.position = pointTPMonster02.position;
     }

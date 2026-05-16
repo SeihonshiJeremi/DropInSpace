@@ -13,7 +13,14 @@ public class transitionExploration : MonoBehaviour
 
     void Start()
     {
-        zm = zoomManager.Instance ?? FindObjectOfType<zoomManager>();
+        if (zoomManager.Instance != null)
+        {
+            zm = zoomManager.Instance;
+        }
+        else
+        {
+            zm = Object.FindFirstObjectByType<zoomManager>();
+        }
     }
 
     void Update()

@@ -3,25 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-
 public class sceneTransitionTutoDIP : MonoBehaviour
 {
     [SerializeField]
     private Material screenTransitionMaterial;
-
     [SerializeField]
     private float transitionTime = 1f;
-
     [SerializeField]
     private string propertyName = "_Progress";
-
     public UnityEvent OnTransitionDone;
-
     private void Start()
     {
         StartCoroutine(TransitionCoroutine());
     }
-
     private IEnumerator TransitionCoroutine()
     {
         float currentTime = 0;

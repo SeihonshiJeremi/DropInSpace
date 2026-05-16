@@ -9,6 +9,8 @@ public class SelectionManager : MonoBehaviour
     public bool navigationBloquee = false;
 
     private GameObject dernierBouton;
+    private bool modeGameOver = false;
+    private GameObject premierBoutonGameOver = null;
 
     void Update()
     {
@@ -16,6 +18,15 @@ public class SelectionManager : MonoBehaviour
         {
             if (EventSystem.current.currentSelectedGameObject != premierBouton)
                 EventSystem.current.SetSelectedGameObject(premierBouton);
+            return;
+        }
+
+        // En mode Game Over, on force la sélection sur les boutons du Game Over uniquement
+        if (modeGameOver)
+        {
+            if (premierBoutonGameOver != null &&
+                EventSystem.current.currentSelectedGameObject == null)
+                EventSystem.current.SetSelectedGameObject(premierBoutonGameOver);
             return;
         }
 
@@ -41,6 +52,22 @@ public class SelectionManager : MonoBehaviour
             SetSelection(premierBouton);
     }
 
+    // Appelé par InfiniteGameOverUI.AfficherGameOver()
+    public void ActiverModeGameOver(GameObject premierBoutonGO)
+    {
+        modeGameOver = true;
+        premierBoutonGameOver = premierBoutonGO;
+
+        // Désélectionner les boutons du jeu
+        if (dernierBouton != null)
+            SetDiamonds(dernierBouton, false);
+        dernierBouton = null;
+
+        // Sélectionner le premier bouton du Game Over
+        if (premierBoutonGO != null)
+            EventSystem.current.SetSelectedGameObject(premierBoutonGO);
+    }
+
     void SetSelection(GameObject bouton)
     {
         if (dernierBouton != null)
@@ -52,7 +79,9 @@ public class SelectionManager : MonoBehaviour
 
     public void ResetSelection()
     {
-        foreach (var btn in FindObjectsOfType<Button>())
+        modeGameOver = false;
+        premierBoutonGameOver = null;
+        foreach (var btn in FindObjectsByType<Button>(FindObjectsSortMode.None))
             SetDiamonds(btn.gameObject, false);
         dernierBouton = null;
         EventSystem.current.SetSelectedGameObject(premierBouton);
@@ -68,13 +97,9 @@ public class SelectionManager : MonoBehaviour
     {
         Transform left = bouton.transform.Find("DiamondLeft");
         Transform right = bouton.transform.Find("DiamondRight");
-
         bool aDiamants = left != null || right != null;
-
         if (left != null) left.gameObject.SetActive(actif);
         if (right != null) right.gameObject.SetActive(actif);
-
-        // Change couleur Image uniquement si le bouton a des diamants
         if (aDiamants)
         {
             Image img = bouton.GetComponent<Image>();

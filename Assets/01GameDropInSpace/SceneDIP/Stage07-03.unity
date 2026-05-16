@@ -255,6 +255,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1103339136579998314, guid: 82c46a3292d2960469b4a18bfa615aa2,
         type: 2}
+    - target: {fileID: 8115325579905495303, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171668961430789766, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 8171668961430789767, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: m_fontAsset
@@ -1369,7 +1379,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 076599eeb5f64fa4887456b55f368bdc, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8171668963116097297, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: OutputAudioMixerGroup

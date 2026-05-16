@@ -7,7 +7,7 @@ public class ArcadeMenuManager : MonoBehaviour
 
     void Start()
     {
-        mainMenuManager = FindObjectOfType<MainMenuManager>();
+        mainMenuManager = Object.FindFirstObjectByType<MainMenuManager>();
     }
 
     public void OnArcadeClassicClick()
@@ -17,8 +17,7 @@ public class ArcadeMenuManager : MonoBehaviour
 
     public void OnInfiniClick()
     {
-        // TODO : scène ou mode Infini Aléatoire
-        Debug.Log("Infini Aléatoire clicked");
+        SceneManager.LoadScene("SceneTransitionInfini");
     }
 
     public void OnChronoClick()
@@ -29,8 +28,7 @@ public class ArcadeMenuManager : MonoBehaviour
 
     public void OnObscurClick()
     {
-        // TODO : scène ou mode Obscur
-        Debug.Log("Obscur clicked");
+        SceneManager.LoadScene("SceneTransitionDark");
     }
 
     public void OnZenClick()

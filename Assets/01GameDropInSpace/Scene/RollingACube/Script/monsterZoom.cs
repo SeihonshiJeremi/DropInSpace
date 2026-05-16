@@ -247,7 +247,7 @@ public class monsterZoom : MonoBehaviour
 
     public void tAvDepX2()
     {
-        if (zm == null) zm = FindObjectOfType<zoomManager>();
+        if (zm == null) zm = Object.FindFirstObjectByType<zoomManager>();
         tempsAvantDeplacement = 4.0f;
         tempsAvantDeplacementOrigine = 4.0f;
         zm?.audioItemTimeDiv2();
@@ -256,7 +256,7 @@ public class monsterZoom : MonoBehaviour
 
     public void powerStop()
     {
-        if (zm == null) zm = FindObjectOfType<zoomManager>();
+        if (zm == null) zm = Object.FindFirstObjectByType<zoomManager>();
         tempsAvantDeplacement = 10.0f;
         zm?.audioItemTStop();
         durationItem = 10.0f;
@@ -264,7 +264,7 @@ public class monsterZoom : MonoBehaviour
 
     public void powerInvincibilty()
     {
-        if (zm == null) zm = FindObjectOfType<zoomManager>();
+        if (zm == null) zm = Object.FindFirstObjectByType<zoomManager>();
         boolIgnoreCollisionPlayer = true;
         zm?.audioItemTInvincibility();
         durationItem = 10.0f;
@@ -272,14 +272,14 @@ public class monsterZoom : MonoBehaviour
 
     public void itemBonbonScoreRouge()
     {
-        if (zm == null) zm = FindObjectOfType<zoomManager>();
+        if (zm == null) zm = Object.FindFirstObjectByType<zoomManager>();
         zm?.audioItemTBonbon();
         zm?.ajoutScoreBonbonRouge();
     }
 
     public void itemBonbonScoreVert()
     {
-        if (zm == null) zm = FindObjectOfType<zoomManager>();
+        if (zm == null) zm = Object.FindFirstObjectByType<zoomManager>();
         zm?.audioItemTBonbon();
         zm?.ajoutScoreBonbonVert();
     }
