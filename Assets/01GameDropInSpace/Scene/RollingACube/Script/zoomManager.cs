@@ -46,6 +46,7 @@ public class zoomManager : MonoBehaviour
     public int valeurScene;
 
     private LifeBarManager lifeBarManager;
+    private bool modeZen = false;
 
     void Awake()
     {
@@ -58,13 +59,49 @@ public class zoomManager : MonoBehaviour
         score = PlayerPrefs.GetInt(scoreTemporaire, 0);
         durationItem = 0.0f;
         valeurScene = PlayerPrefs.GetInt("ValeurScene", valeurScene);
+        modeZen = PlayerPrefs.GetInt("ModeZenActif", 0) == 1;
 
         if (PlayerPrefs.GetInt("ModeExploration", 0) == 1)
             transitionExploration = true;
 
-        GameObject lifeBarObj = GameObject.Find("LifeBar");
-        if (lifeBarObj != null)
-            lifeBarManager = lifeBarObj.GetComponent<LifeBarManager>();
+        if (modeZen)
+        {
+            // Mode Zen — désactive LifeBar
+            GameObject lifeBarObj = GameObject.Find("LifeBar");
+            if (lifeBarObj != null)
+                lifeBarObj.SetActive(false);
+
+            // Mode Zen — désactive les monstres
+            try
+            {
+                foreach (GameObject monstre in GameObject.FindGameObjectsWithTag("Monster"))
+                    monstre.SetActive(false);
+            }
+            catch { }
+
+            try
+            {
+                foreach (GameObject monstre in GameObject.FindGameObjectsWithTag("Monster02"))
+                    monstre.SetActive(false);
+            }
+            catch { }
+
+            try
+            {
+                foreach (GameObject monstre in GameObject.FindGameObjectsWithTag("MonsterChangeColor"))
+                    monstre.SetActive(false);
+            }
+            catch { }
+
+            // Mode Zen — bloque le changement de musique
+            chAudio = true;
+        }
+        else
+        {
+            GameObject lifeBarObj = GameObject.Find("LifeBar");
+            if (lifeBarObj != null)
+                lifeBarManager = lifeBarObj.GetComponent<LifeBarManager>();
+        }
     }
 
     void Update()
@@ -93,17 +130,21 @@ public class zoomManager : MonoBehaviour
         tempsint = Mathf.RoundToInt(timerNiveau);
         text_timer.text = " " + tempsint;
 
-        if (timerNiveau < 1 && lifeBarManager != null)
-            lifeBarManager.Reset();
-
-        if (timerNiveau <= 20 && !chAudio)
+        // Mode Zen — pas de reset vie et pas de changement audio
+        if (!modeZen)
         {
-            changementAudio();
-            chAudio = true;
+            if (timerNiveau < 1 && lifeBarManager != null)
+                lifeBarManager.Reset();
+
+            if (timerNiveau <= 20 && !chAudio)
+            {
+                changementAudio();
+                chAudio = true;
+            }
         }
 
         text_finirLevel.text = " " + valueFinLevel;
-        text_score.text = " " + FormatScore(score); // MODIFIE
+        text_score.text = " " + FormatScore(score);
 
         if (activDoubleScore >= 1) doubleScore = true;
         else doubleScore = false;
@@ -120,14 +161,18 @@ public class zoomManager : MonoBehaviour
 
         if (valueFinLevel == 0 && !transitionExploration)
         {
-            // Mode Infini — laisse le manager gerer
             if (PlayerPrefs.GetInt("ModeInfiniActif", 0) == 1)
                 return;
 
-            // Mode Obscur — charge SceneTransitionDark au lieu de la transition normale
             if (PlayerPrefs.GetInt("ModeObscurActif", 0) == 1)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("SceneTransitionDark");
+                SceneManager.LoadScene("SceneTransitionDark");
+                return;
+            }
+
+            if (modeZen)
+            {
+                SceneManager.LoadScene("SceneTransitionZen");
                 return;
             }
 
@@ -213,7 +258,6 @@ public class zoomManager : MonoBehaviour
         if (valeurScene == 103) transitionExploration = true;
     }
 
-    // AJOUTE — formate le score en K/M pour eviter le debordement
     private string FormatScore(int score)
     {
         if (score >= 1000000)

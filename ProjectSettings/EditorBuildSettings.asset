@@ -33,6 +33,12 @@ EditorBuildSettings:
     path: Assets/01GameDropInSpace/SceneDIP/SceneTransition02-04.unity
     guid: cec10b511fbfeb6439e8100e9cdcc6f8
   - enabled: 1
+    path: Assets/01GameDropInSpace/SceneDIP/SceneVictoireZen.unity
+    guid: 45269951520e8a34e832b7fa61006cd8
+  - enabled: 1
+    path: Assets/01GameDropInSpace/SceneDIP/SceneTransitionZen.unity
+    guid: b70cc68e7c0c9aa4da7877d65fc6b654
+  - enabled: 1
     path: Assets/01GameDropInSpace/SceneDIP/SceneTransition03-01.unity
     guid: 4ab19094309860b4dbdee5761ed4d867
   - enabled: 1

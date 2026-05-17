@@ -245,6 +245,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1103339136579998314, guid: 82c46a3292d2960469b4a18bfa615aa2,
         type: 2}
+    - target: {fileID: 7168593594581716120, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a35baba98a7bf44793769358be79308, type: 2}
     - target: {fileID: 8171668961430789767, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: m_fontAsset
@@ -485,6 +490,11 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: b03239186a1234f4198318f83e41f77e, type: 3}
+    - target: {fileID: 9032652891033383175, guid: ecda096af8564b040830d87d114a67e9,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a35baba98a7bf44793769358be79308, type: 2}
     - target: {fileID: 9054188472393519891, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: m_IsActive

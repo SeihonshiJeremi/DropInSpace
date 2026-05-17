@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: dropMaterialSpacehUB
-  m_Shader: {fileID: 4800000, guid: 5c1d2cee3a147424e9a81567796ccac9, type: 3}
+  m_Shader: {fileID: 4800000, guid: 2b4e1b440d1c68844959eee3b0c25b19, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -34,6 +34,9 @@ Material:
     m_Ints: []
     m_Floats:
     - Step1: 1
+    - _EmissionIntensity: 0.15
+    - _FresnelIntensity: 1.9
+    - _FresnelPower: 3.24
     - _Gloss: 10
     - _OutlineWidth: 0.366
     - _RimPower: 2.2
@@ -51,6 +54,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 0.84313726, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0.5, b: 1, a: 1}
+    - _FresnelColor: {r: 0, g: 0.8, b: 1, a: 1}
     - _HighColor: {r: 0.125, g: 0.125, b: 0.125, a: 1}
     - _OutlineColor: {r: 0.015686275, g: 0.15686275, b: 1, a: 1}
     - _RimColor: {r: 0.016161919, g: 0.15686275, b: 1, a: 0.27058825}

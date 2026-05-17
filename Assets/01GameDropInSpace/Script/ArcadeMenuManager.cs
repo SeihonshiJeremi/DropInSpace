@@ -12,29 +12,47 @@ public class ArcadeMenuManager : MonoBehaviour
 
     public void OnArcadeClassicClick()
     {
+        PlayerPrefs.SetInt("ModeInfiniActif", 0);
+        PlayerPrefs.SetInt("ModeObscurActif", 0);
+        PlayerPrefs.SetInt("ModeZenActif", 0);
+        PlayerPrefs.Save();
         SceneManager.LoadScene("SceneTransition01-01");
     }
 
     public void OnInfiniClick()
     {
+        PlayerPrefs.SetInt("ModeObscurActif", 0);
+        PlayerPrefs.SetInt("ModeZenActif", 0);
+        PlayerPrefs.SetInt("ModeInfiniActif", 1);
+        PlayerPrefs.SetInt("ScoreDepart", PlayerPrefs.GetInt("ScoreTemporaire", 0));
+        PlayerPrefs.Save();
         SceneManager.LoadScene("SceneTransitionInfini");
-    }
-
-    public void OnChronoClick()
-    {
-        // TODO : scène ou mode Chrono
-        Debug.Log("Chrono clicked");
     }
 
     public void OnObscurClick()
     {
+        PlayerPrefs.SetInt("ModeInfiniActif", 0);
+        PlayerPrefs.SetInt("ModeZenActif", 0);
+        PlayerPrefs.SetInt("ModeObscurActif", 1);
+        PlayerPrefs.SetInt("ScoreDepart", PlayerPrefs.GetInt("ScoreTemporaire", 0));
+        PlayerPrefs.Save();
         SceneManager.LoadScene("SceneTransitionDark");
     }
 
     public void OnZenClick()
     {
-        // TODO : scène ou mode Zen
-        Debug.Log("Zen clicked");
+        PlayerPrefs.SetInt("ModeInfiniActif", 0);
+        PlayerPrefs.SetInt("ModeObscurActif", 0);
+        PlayerPrefs.SetInt("ModeZenActif", 1);
+        PlayerPrefs.SetInt("ScoreDepart", PlayerPrefs.GetInt("ScoreTemporaire", 0));
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("SceneTransitionZen");
+    }
+
+    public void OnChronoClick()
+    {
+        // TODO : mode Chrono
+        Debug.Log("Chrono clicked");
     }
 
     public void OnBackClick()

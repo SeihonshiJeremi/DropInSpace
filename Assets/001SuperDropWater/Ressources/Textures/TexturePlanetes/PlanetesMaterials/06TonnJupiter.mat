@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 06TonnJupiter
-  m_Shader: {fileID: 4800000, guid: 313fcf3aebc04cf4ab4f8c5f2850be7f, type: 3}
+  m_Shader: {fileID: 4800000, guid: 2b4e1b440d1c68844959eee3b0c25b19, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -115,9 +115,12 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _EmissionIntensity: 2
     - _EnableExternalAlpha: 0
     - _EnvironmentReflections: 1
-    - _Gloss: 8.24
+    - _FresnelIntensity: 1.5
+    - _FresnelPower: 3
+    - _Gloss: 1.8
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -148,6 +151,7 @@ Material:
     - _Color: {r: 0.46274513, g: 0.27058825, b: 0.14901961, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _FresnelColor: {r: 1, g: 0.5921569, b: 0.24705884, a: 1}
     - _HighColor: {r: 0.75294244, g: 0.45078585, b: 0.12477186, a: 1}
     - _OutlineColor: {r: 0.8588236, g: 0.6313726, b: 0.43137258, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

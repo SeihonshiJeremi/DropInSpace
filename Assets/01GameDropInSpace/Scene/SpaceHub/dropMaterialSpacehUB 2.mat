@@ -8,7 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: dropMaterialSpacehUB 2
-  m_Shader: {fileID: 4800000, guid: 2bffc50af4b1ff34cb151aa15bb9edb4, type: 3}
+  m_Shader: {fileID: 4800000, guid: 62801e9516f70c34ba623e1b3067ee81, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -17,6 +19,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -60,10 +63,16 @@ Material:
     - _FresnelPower: 1
     - _Gloss: 10
     - _Glossiness: 0.5
+    - _GlowIntensity: 2.52
+    - _LinesIntensity: 0.233
+    - _LinesSharpness: 15.2
+    - _LinesTiling: 42.5
     - _Metallic: 0
     - _NormalStrength1: 0.17
     - _NormalStrength2: 0.8
     - _OutlineWidth: 0.366
+    - _PulseAmplitude: 0.307
+    - _PulseSpeed: 1.73
     - _RimPower: 2.2
     - _RimStep: 0.959
     - _RimStepSmooth: 0.352
@@ -98,3 +107,4 @@ Material:
     - _SnowColor: {r: 1, g: 1, b: 1, a: 1}
     - _SnowDirection: {r: 0, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
