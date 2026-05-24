@@ -1,28 +1,22 @@
+ï»¿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class changeColorCube : MonoBehaviour
 {
     public Material m_Material01;
     public Material m_Material02;
     public int valueDalle;
-
     private int valueScore = 10;
     private int activeDouble = 1;
     public bool changeColorOK = false;
-
-    // CORRIGÉ : cache des composants
     private zoomManager zm;
     private Renderer cubeRenderer;
     private AudioSource audioSource;
-
     private float timer = 5.0f;
     private bool destructorHandled = false;
 
     void Awake()
     {
-        // CORRIGÉ : singleton au lieu de GameObject.Find à chaque cube
         zm = zoomManager.Instance;
         cubeRenderer = GetComponent<Renderer>();
         audioSource = GetComponent<AudioSource>();
@@ -38,10 +32,16 @@ public class changeColorCube : MonoBehaviour
             zm.scoreDoubleTrue(activeDouble);
             changeColorOK = true;
             audioSource.Play();
+
+            if (CubeMusicManager.Instance != null)
+                CubeMusicManager.Instance.JouerNoteCube();
         }
         else if (collision.collider.CompareTag("Player"))
         {
             zm.scoreDoubleFalse(activeDouble);
+
+            if (CubeMusicManager.Instance != null)
+                CubeMusicManager.Instance.ResetCombo();
         }
 
         if (collision.collider.CompareTag("destructorPlatform"))
@@ -67,12 +67,10 @@ public class changeColorCube : MonoBehaviour
     void Update()
     {
         if (destructorHandled) return;
-
         timer -= Time.deltaTime;
         if (timer < 0)
         {
             destructorHandled = true;
-            // CORRIGÉ : vérification null avant Destroy
             GameObject obj = GameObject.FindWithTag("destructorPlatform");
             if (obj != null) Destroy(obj);
             timer = 0;

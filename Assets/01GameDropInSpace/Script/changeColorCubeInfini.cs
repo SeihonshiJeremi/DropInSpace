@@ -1,12 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// Script sur les cubes du mode Infini
-// Remplace changeColorCube sur le prefab cubeDestructGrid de la scène Infini
 public class changeColorCubeInfini : MonoBehaviour
 {
     public Material m_Material01;
     public Material m_Material02;
-
     private bool changeColorOK = false;
     private Renderer cubeRenderer;
     private AudioSource audioSource;
@@ -25,9 +22,16 @@ public class changeColorCubeInfini : MonoBehaviour
             changeColorOK = true;
             if (audioSource != null) audioSource.Play();
             InfiniteGridManager.Instance?.SignalerCubeColorie();
+
+            if (CubeMusicManager.Instance != null)
+                CubeMusicManager.Instance.JouerNoteCube();
+        }
+        else if (collision.collider.CompareTag("Player") && changeColorOK)
+        {
+            if (CubeMusicManager.Instance != null)
+                CubeMusicManager.Instance.ResetCombo();
         }
 
-        // Le DestructorPlatform détruit le cube — crée des niveaux différents
         if (collision.collider.CompareTag("destructorPlatform"))
             Destroy(gameObject);
     }

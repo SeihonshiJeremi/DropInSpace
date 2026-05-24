@@ -10809,7 +10809,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3245771755884211493, guid: ae7b178cca63e8c458d3830a42b6182c,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: b03239186a1234f4198318f83e41f77e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 31c6ce06c8233a7499e2bcba41f8cb66, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -11091,6 +11091,7 @@ MonoBehaviour:
   desacTouche: 0
   timeDesacTouche: 3
   item: {fileID: 2091932875146419530}
+  cameraAnglePalier: 0
 --- !u!65 &2091932875570580910
 BoxCollider:
   m_ObjectHideFlags: 0
