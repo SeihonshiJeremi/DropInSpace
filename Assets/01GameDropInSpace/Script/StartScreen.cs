@@ -3,28 +3,26 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-/// <summary>
-/// Ecran Start — Drop fait le Warp Roll en boucle
-/// Texte qui clignote — appuyer n'importe quelle touche pour passer au menu
-/// </summary>
 public class StartScreen : MonoBehaviour
 {
     [Header("UI")]
-    public GameObject startScreenCanvas;   // Le Canvas StartScreen
-    public TMP_Text startText;             // Le texte "APPUYEZ SUR N'IMPORTE QUELLE TOUCHE"
-    public GameObject mainMenuCanvas;      // Le Canvas du menu principal — a desactiver au debut
+    public GameObject startScreenCanvas;
+    public TMP_Text startText;
+    public GameObject mainMenuCanvas;
+    public GameObject demoMenuCanvas;
+    public bool demoMode;
 
     [Header("Drop Warp Roll")]
-    public Transform dropModel;            // La Sphere de Drop
-    public ParticleSystem warpParticles;   // Particules du Warp Roll
+    public Transform dropModel;
+    public ParticleSystem warpParticles;
 
     [Header("Clignotement")]
-    public float vitesseClignotement = 1.2f; // Vitesse du clignotement
+    public float vitesseClignotement = 1.2f;
 
     [Header("Warp Roll")]
     public float tonneauSpeed = 360f;
     public float tonneauDuree = 1.2f;
-    public float pauseEntreBoucles = 0.8f; // Pause entre chaque Warp Roll
+    public float pauseEntreBoucles = 0.8f;
 
     private bool peutPasser = false;
     private bool enTransition = false;
@@ -38,24 +36,27 @@ public class StartScreen : MonoBehaviour
     void OnEnable()
     {
         controls.Gameplay.Enable();
+        controls.UI.Enable();
     }
 
     void OnDisable()
     {
         controls.Gameplay.Disable();
+        controls.UI.Disable();
     }
 
     void Start()
     {
-        // Cache le menu principal au debut
+        // Tout éteint sauf le Start Screen
         if (mainMenuCanvas != null) mainMenuCanvas.SetActive(false);
+        if (demoMenuCanvas != null) demoMenuCanvas.SetActive(false);
         if (startScreenCanvas != null) startScreenCanvas.SetActive(true);
 
-        // Lance le clignotement et le Warp Roll en boucle
+        if (UnityEngine.EventSystems.EventSystem.current != null && startScreenCanvas != null)
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(startScreenCanvas);
+
         StartCoroutine(Clignoter());
         StartCoroutine(WarpRollBoucle());
-
-        // Attend un peu avant d'accepter les inputs
         StartCoroutine(ActiverInput());
     }
 
@@ -69,14 +70,12 @@ public class StartScreen : MonoBehaviour
     {
         if (!peutPasser || enTransition) return;
 
-        // Detecte n'importe quelle touche clavier
         if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
         {
             StartCoroutine(PasserAuMenu());
             return;
         }
 
-        // Detecte n'importe quel bouton manette
         if (Gamepad.current != null)
         {
             foreach (var control in Gamepad.current.allControls)
@@ -94,7 +93,6 @@ public class StartScreen : MonoBehaviour
     {
         while (true)
         {
-            // Fade in
             float elapsed = 0f;
             while (elapsed < vitesseClignotement)
             {
@@ -104,7 +102,6 @@ public class StartScreen : MonoBehaviour
                 yield return null;
             }
 
-            // Fade out
             elapsed = 0f;
             while (elapsed < vitesseClignotement)
             {
@@ -118,7 +115,6 @@ public class StartScreen : MonoBehaviour
 
     IEnumerator WarpRollBoucle()
     {
-        // Attend un peu au debut
         yield return new WaitForSeconds(1.5f);
 
         while (true)
@@ -175,11 +171,39 @@ public class StartScreen : MonoBehaviour
         enTransition = true;
         peutPasser = false;
 
-        // Petit flash blanc
         yield return new WaitForSeconds(0.1f);
 
-        // Cache l'ecran Start et affiche le menu
+        // Éteint le Start Screen
         if (startScreenCanvas != null) startScreenCanvas.SetActive(false);
-        if (mainMenuCanvas != null) mainMenuCanvas.SetActive(true);
+
+        if (demoMode)
+        {
+            // ─── MODE DÉMO ───
+            if (mainMenuCanvas != null) mainMenuCanvas.SetActive(false);
+            if (demoMenuCanvas != null) demoMenuCanvas.SetActive(true);
+
+            // Initialise le demoLayout via MainMenuManager
+            MainMenuManager mgr = Object.FindFirstObjectByType<MainMenuManager>();
+            if (mgr != null) mgr.InitDemoMode();
+        }
+        else
+        {
+            // ─── MODE NORMAL ───
+            if (demoMenuCanvas != null) demoMenuCanvas.SetActive(false);
+            if (mainMenuCanvas != null) mainMenuCanvas.SetActive(true);
+        }
+
+        yield return null;
+
+        SelectionManager selMgr = Object.FindFirstObjectByType<SelectionManager>();
+        if (selMgr != null)
+        {
+            selMgr.ResetSelection();
+            Debug.Log("[StartScreen] SelectionManager.ResetSelection() appelé");
+        }
+        else
+        {
+            Debug.LogWarning("[StartScreen] SelectionManager introuvable !");
+        }
     }
 }

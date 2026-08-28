@@ -50,28 +50,31 @@ public class zoomManager : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
     }
 
     void Start()
     {
         m_MyAudioSource = GetComponent<AudioSource>();
-        score = PlayerPrefs.GetInt(scoreTemporaire, 0);
-        durationItem = 0.0f;
-        valeurScene = PlayerPrefs.GetInt("ValeurScene", valeurScene);
-        modeZen = PlayerPrefs.GetInt("ModeZenActif", 0) == 1;
 
-        if (PlayerPrefs.GetInt("ModeExploration", 0) == 1)
-            transitionExploration = true;
+        // ─── CHARGEMENT DEPUIS GAMESTATEMANAGER ───────────────────────
+        score = GameStateManager.Instance.CurrentScore;
+        durationItem = 0.0f;
+        modeZen = GameStateManager.Instance.IsZenMode;
+        transitionExploration = GameStateManager.Instance.IsExplorationMode;
+        valeurScene = PlayerPrefs.GetInt("ValeurScene", 0);
 
         if (modeZen)
         {
-            // Mode Zen � d�sactive LifeBar
             GameObject lifeBarObj = GameObject.Find("LifeBar");
             if (lifeBarObj != null)
                 lifeBarObj.SetActive(false);
 
-            // Mode Zen � d�sactive les monstres
             try
             {
                 foreach (GameObject monstre in GameObject.FindGameObjectsWithTag("Monster"))
@@ -93,7 +96,6 @@ public class zoomManager : MonoBehaviour
             }
             catch { }
 
-            // Mode Zen � bloque le changement de musique
             chAudio = true;
         }
         else
@@ -130,7 +132,6 @@ public class zoomManager : MonoBehaviour
         tempsint = Mathf.RoundToInt(timerNiveau);
         text_timer.text = " " + tempsint;
 
-        // Mode Zen � pas de reset vie et pas de changement audio
         if (!modeZen)
         {
             if (timerNiveau < 1 && lifeBarManager != null)
@@ -161,10 +162,10 @@ public class zoomManager : MonoBehaviour
 
         if (valueFinLevel == 0 && !transitionExploration)
         {
-            if (PlayerPrefs.GetInt("ModeInfiniActif", 0) == 1)
+            if (GameStateManager.Instance.IsInfinityMode)
                 return;
 
-            if (PlayerPrefs.GetInt("ModeObscurActif", 0) == 1)
+            if (GameStateManager.Instance.IsObscurMode)
             {
                 SceneManager.LoadScene("SceneTransitionDark");
                 return;
@@ -178,11 +179,17 @@ public class zoomManager : MonoBehaviour
 
             valeurScene = valeurScene + 1;
             PlayerPrefs.SetInt("ValeurScene", valeurScene);
+            GameStateManager.Instance.AdvanceStage();
+            GameStateManager.Instance.SaveToPrefs();
             SceneManager.LoadScene(scene);
         }
 
         if (transitionExploration && valueFinLevel == 0)
+        {
+            GameStateManager.Instance.AdvanceStage();
+            GameStateManager.Instance.SaveToPrefs();
             PlaneteExploration.PasserStageExplorationSuivant(sceneTransitionExploration);
+        }
     }
 
     public void addFinLevel(int finLevelToAdd)

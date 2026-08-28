@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Gestionnaire des vies du joueur — barres de vie, game over, retour hub
+/// </summary>
 public class LifeBarManager : MonoBehaviour
 {
     public GameObject ImageLife01;
@@ -11,12 +14,11 @@ public class LifeBarManager : MonoBehaviour
     public string sceneGameOver;
     public int reset = 3;
 
-    // CORRIGÉ : cache des composants Image
     private Image imageLife01Component;
     private Image imageLife03Component;
-
-    // CORRIGÉ : évite d'appeler reset02/01/00 chaque frame
     private int lastReset = -1;
+
+    public string sceneSpaceHub = "SpaceHub";
 
     void Start()
     {
@@ -27,7 +29,7 @@ public class LifeBarManager : MonoBehaviour
 
     void Update()
     {
-        // CORRIGÉ : ne fait rien si reset n'a pas changé
+        // Optimisation : ne fait rien si reset n'a pas changé
         if (reset == lastReset) return;
         lastReset = reset;
 
@@ -49,19 +51,19 @@ public class LifeBarManager : MonoBehaviour
         setLifeBar();
     }
 
-    public string sceneSpaceHub = "SpaceHub";
-
+    // ─── GAME OVER / RETOUR HUB ──────────────────────────────────────
     public void reset00()
     {
         resetPrefsLifeBar();
 
-        // AJOUTÉ : si on est en mode Exploration → retour SpaceHub
-        if (PlayerPrefs.GetInt("ModeExploration", 0) == 1)
+        // ─── MODE EXPLORATION — retour au SpaceHub ───────────────────
+        if (GameStateManager.Instance.IsExplorationMode)
         {
-            PlayerPrefs.SetInt("ModeExploration", 0);
-            PlayerPrefs.SetInt("StageEnCours", 0);
+            GameStateManager.Instance.SetMode("Arcade");
+            GameStateManager.Instance.SetCurrentStage(0);
             SceneManager.LoadScene(sceneSpaceHub);
         }
+        // ─── AUTRE MODE — écran game over ────────────────────────────
         else
         {
             SceneManager.LoadScene(sceneGameOver);
@@ -83,6 +85,8 @@ public class LifeBarManager : MonoBehaviour
     public void getLifeBar()
     {
         reset = PlayerPrefs.GetInt("LifeBar", reset);
+        // Synchronise aussi avec GameStateManager
+        GameStateManager.Instance.SetLifeBar(reset);
     }
 
     public void resetPrefsLifeBar()

@@ -9,7 +9,7 @@ public class GridManager : MonoBehaviour
     public GameObject cubeGrid;
     public GameObject cubeDestructGrid;
 
-    // Positions des cubes destructibles — conservées pour compatibilité Inspector
+    // Positions des cubes destructibles ï¿½ conservï¿½es pour compatibilitï¿½ Inspector
     public bool pos01, pos02, pos03, pos04, pos05, pos06, pos07, pos08, pos09;
     public bool pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18, pos19;
     public bool pos20, pos21, pos22, pos23, pos24, pos25, pos26, pos27, pos28, pos29;
@@ -20,7 +20,7 @@ public class GridManager : MonoBehaviour
     public bool pos70, pos71, pos72, pos73, pos74, pos75, pos76, pos77, pos78, pos79;
     public bool pos80, pos81;
 
-    // CORRIGÉ : positions en tableau au lieu de 81 variables
+    // CORRIGï¿½ : positions en tableau au lieu de 81 variables
     private static readonly Vector3[] positions = new Vector3[]
     {
         new Vector3(0,20,0),  new Vector3(2,20,0),  new Vector3(4,20,0),  new Vector3(6,20,0),  new Vector3(8,20,0),  new Vector3(10,20,0), new Vector3(12,20,0), new Vector3(14,20,0), new Vector3(16,20,0),
@@ -36,14 +36,20 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
-        // Remet la gravité à la normale après le hub
-        Physics.gravity = new Vector3(0, -9.81f, 0);
 
-        // Génère la grille principale
+    
+
+
+
+        // Remet la gravitï¿½ ï¿½ la normale aprï¿½s le hub
+        Physics.gravity = new Vector3(0, -9.81f, 0);
+        Debug.Log($"[GridManager] GravitÃ© dÃ©finie : {Physics.gravity}");
+
+        // Gï¿½nï¿½re la grille principale
         for (int i = 0; i < columnLength * forwardLength; i++)
             Instantiate(cubeGrid, new Vector3(x_Space * (i % columnLength), 0, z_Space * (i / columnLength)), Quaternion.identity);
 
-        // CORRIGÉ : tableau de bools pour éviter 81 if séparés
+        // CORRIGï¿½ : tableau de bools pour ï¿½viter 81 if sï¿½parï¿½s
         bool[] posArray = new bool[]
         {
             pos01,pos02,pos03,pos04,pos05,pos06,pos07,pos08,pos09,

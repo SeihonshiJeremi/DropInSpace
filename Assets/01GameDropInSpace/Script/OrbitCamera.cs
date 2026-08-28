@@ -2,31 +2,30 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Camera orbitale — tourne autour du centre de la grille par paliers de 90 degres.
-/// LB/Tab = rotation gauche, RB/Q = rotation droite.
-/// Recalcule les directions de Drop apres chaque rotation.
-/// A placer sur la Main Camera.
-/// </summary>
 public class OrbitCamera : MonoBehaviour
 {
     [Header("Pivot")]
-    public Transform pivot; // Centre de la grille — assigne dans l'Inspector
+    public Transform pivot;
 
     [Header("Rotation")]
-    public float distancePivot = 14.58f; // Distance actuelle camera/pivot
-    public float hauteurCamera = 17.08f; // Hauteur Y de la camera
-    public float dureeRotation = 0.4f;   // Duree de l'animation de rotation
+    public float distancePivot = 14.58f;
+    public float hauteurCamera = 17.08f;
+    public float dureeRotation = 0.4f;
+
+    [Header("Tactile Caméra")]
+    public float tactileSwipeResistance = 60f;
 
     [Header("Reference Drop")]
-    public rollingCube dropScript; // Script de Drop pour recalculer les directions
+    public rollingCube dropScript;
 
-    // Etat
-    private float angleActuel = 0f;     // Angle actuel en degrees (0 = position initiale)
+    private float angleActuel = 0f;
     private bool enRotation = false;
 
-    // Input
     private DIS_Controls controls;
+
+    // ─── Tactile ───
+    private Vector2 twoFingerStartPos;
+    private bool twoFingerArmed = false;
 
     void Awake()
     {
@@ -36,6 +35,7 @@ public class OrbitCamera : MonoBehaviour
     void OnEnable()
     {
         controls.Gameplay.Enable();
+        controls.UI.Enable();
         controls.Gameplay.RotateLeft.performed += ctx => TournerGauche();
         controls.Gameplay.RotateRight.performed += ctx => TournerDroite();
     }
@@ -43,16 +43,59 @@ public class OrbitCamera : MonoBehaviour
     void OnDisable()
     {
         controls.Gameplay.Disable();
+        controls.UI.Disable();
     }
 
     void Start()
     {
-        // Calcule la distance et hauteur initiales depuis la position actuelle
         if (pivot != null)
         {
             Vector3 offset = transform.position - pivot.position;
             distancePivot = new Vector2(offset.x, offset.z).magnitude;
             hauteurCamera = transform.position.y;
+        }
+    }
+
+    void Update()
+    {
+        HandleTouchCamera();
+    }
+
+    void HandleTouchCamera()
+    {
+        if (enRotation) return;
+
+        // ─── Détection 2 doigts (Android/iOS) ───
+        if (Input.touchCount == 2)
+        {
+            // Premier contact à 2 doigts → on enregistre la position
+            if (!twoFingerArmed)
+            {
+                twoFingerStartPos = Input.GetTouch(0).position;
+                twoFingerArmed = true;
+            }
+            else
+            {
+                // Mesurer le déplacement du premier doigt
+                Vector2 delta = (Vector2)Input.GetTouch(0).position - twoFingerStartPos;
+
+                if (Mathf.Abs(delta.x) > tactileSwipeResistance)
+                {
+                    // Un seul trigger = une rotation de 90°
+                    if (delta.x > 0)
+                        TournerDroite();
+                    else
+                        TournerGauche();
+
+                    // Désarmer jusqu'à ce que les doigts soient relevés
+                    twoFingerArmed = false;
+                }
+            }
+        }
+        else
+        {
+            // Moins de 2 doigts → reset
+            twoFingerArmed = false;
         }
     }
 
@@ -92,7 +135,6 @@ public class OrbitCamera : MonoBehaviour
         angleActuel = angleCible % 360f;
         AppliquerAngle(angleActuel);
 
-        // Recalcule les directions de Drop
         RecalculerDirectionsDrop();
 
         enRotation = false;
@@ -110,30 +152,15 @@ public class OrbitCamera : MonoBehaviour
         transform.LookAt(new Vector3(pivot.position.x, pivot.position.y - 2f, pivot.position.z));
     }
 
-    // ══════════════════════════════════════════════════════════════════════
-    // RECALCUL DIRECTIONS DROP
-    // ══════════════════════════════════════════════════════════════════════
-
-    /// <summary>
-    /// Recalcule les directions de Drop selon l'angle de la camera.
-    /// Garantit que "haut" sur le stick = avancer dans la direction visible.
-    /// </summary>
     private void RecalculerDirectionsDrop()
     {
         if (dropScript == null) return;
 
-        // Normalise l'angle entre 0 et 360
         float angle = ((angleActuel % 360f) + 360f) % 360f;
-
-        // Selon l'angle, remapper les directions
-        // 0 deg = position initiale (sud de la grille)
-        // 90 deg = est, 180 = nord, 270 = ouest
         int palier = Mathf.RoundToInt(angle / 90f) % 4;
 
         Debug.Log($"[OrbitCamera] Angle: {angle:F0} — Palier: {palier}");
 
-        // Le remapping est gere via les methodes publiques de rollingCube
-        // On stocke le palier pour que rollingCube l'utilise
         dropScript.cameraAnglePalier = palier;
     }
 }

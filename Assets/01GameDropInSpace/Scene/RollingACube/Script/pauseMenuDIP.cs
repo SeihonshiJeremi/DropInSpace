@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+
 public class pauseMenuDIP : MonoBehaviour
 {
     public bool GameIsPaused;
@@ -11,32 +12,38 @@ public class pauseMenuDIP : MonoBehaviour
     public GameObject EventSystem;
     public AudioSource Audio;
     public Animator anim;
+
     public enum TypeScene { Arcade, Exploration, SpaceHub, Menu }
     [Header("Bouton quitter")]
     public TypeScene typeScene = TypeScene.Arcade;
     public string nomSceneMenu = "StartDropInSpace";
     public string nomSceneHub = "SpaceHub";
-    // Input System
+
     private DIS_Controls controls;
+
     void Awake()
     {
         controls = new DIS_Controls();
     }
+
     void OnEnable()
     {
         controls.Gameplay.Enable();
         controls.Gameplay.Pause.performed += ctx => TogglePause();
     }
+
     void OnDisable()
     {
         controls.Gameplay.Disable();
     }
+
     void Start()
     {
         timer = 2.0f;
         EventSystem.SetActive(false);
         GameIsPaused = false;
     }
+
     void Update()
     {
         if (timer > 0)
@@ -51,12 +58,14 @@ public class pauseMenuDIP : MonoBehaviour
             okPause = true;
         }
     }
+
     private void TogglePause()
     {
         if (!okPause) return;
         if (GameIsPaused) Resume();
         else Pause();
     }
+
     public void Pause()
     {
         if (!okPause) return;
@@ -66,6 +75,7 @@ public class pauseMenuDIP : MonoBehaviour
         Audio.Pause();
         anim.Play("pauseMenuDIPAnim");
     }
+
     public void Resume()
     {
         Time.timeScale = 1f;
@@ -73,30 +83,20 @@ public class pauseMenuDIP : MonoBehaviour
         pauseMenuObject.SetActive(false);
         Audio.Play();
     }
+
     public void QuitGame()
     {
         Time.timeScale = 1f;
 
-        // Detruit les managers actifs
-        if (ModeObscurManager.Instance != null)
-            Destroy(ModeObscurManager.Instance.gameObject);
-        if (ModeInfiniManager.Instance != null)
-            Destroy(ModeInfiniManager.Instance.gameObject);
+        // Nettoyage via GameStateManager
+        GameStateManager.Instance.ClearAllInstances();
+        GameStateManager.Instance.ResetSession();
 
-        // Nettoie tous les flags de modes speciaux
-        PlayerPrefs.SetInt("ModeObscurActif", 0);
-        PlayerPrefs.SetInt("ModeInfiniActif", 0);
-        PlayerPrefs.SetInt("VictoireObscur", 0);
-        PlayerPrefs.SetInt("ScoreDepart", 0);
-        PlayerPrefs.Save();
-
-        // Detecte automatiquement le mode via PlayerPrefs
-        int modeExploration = PlayerPrefs.GetInt("ModeExploration", 0);
         string sceneActuelle = SceneManager.GetActiveScene().name;
 
         if (sceneActuelle == "SpaceHub")
             SceneManager.LoadScene(nomSceneMenu);
-        else if (modeExploration == 1)
+        else if (GameStateManager.Instance.IsExplorationMode)
             SceneManager.LoadScene(nomSceneHub);
         else
             SceneManager.LoadScene(nomSceneMenu);

@@ -16,38 +16,56 @@ public class rollingCube : MonoBehaviour
 
     public GameObject item;
 
-    // Camera orbitale � palier de rotation (0=sud, 1=est, 2=nord, 3=ouest)
     public int cameraAnglePalier = 0;
 
-    // Input System
     private DIS_Controls controls;
     private Vector2 moveInput;
 
-    // Cache
     private AudioSource audioSource;
     private itemDropInSpace itemScript;
+
+    [Header("Respawn")]
+    public float respawnCooldownDuration = 0.5f;
+    private float cooldownRespawn = 0f;
+
+    private Coroutine rollCoroutine;
+
+    // ← NOUVEAU : sauvegarder la position/rotation d'origine
+    private Vector3 spawnPosition;
+    private Quaternion spawnRotation;
 
     void Awake()
     {
         controls = new DIS_Controls();
+
+        // ← SAUVEGARDER les coordonnées d'origine au démarrage
+        spawnPosition = transform.position;
+        spawnRotation = transform.rotation;
     }
 
     void OnEnable()
     {
         controls.Gameplay.Enable();
-        controls.Gameplay.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        controls.UI.Enable();
+        controls.Gameplay.Move.performed += ctx =>
+        {
+            if (cooldownRespawn <= 0f)
+                moveInput = ctx.ReadValue<Vector2>();
+        };
         controls.Gameplay.Move.canceled += ctx => moveInput = Vector2.zero;
     }
 
     void OnDisable()
     {
         controls.Gameplay.Disable();
+        controls.UI.Disable();
     }
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        itemScript = item.GetComponent<itemDropInSpace>();
+        if (item != null)
+            itemScript = item.GetComponent<itemDropInSpace>();
 
         x = transform.position.x;
         z = transform.position.z;
@@ -56,6 +74,13 @@ public class rollingCube : MonoBehaviour
 
     void Update()
     {
+        if (cooldownRespawn > 0f)
+        {
+            cooldownRespawn -= Time.deltaTime;
+            moveInput = Vector2.zero;
+            return;
+        }
+
         x = transform.position.x;
         z = transform.position.z;
         y = transform.position.y;
@@ -74,6 +99,7 @@ public class rollingCube : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (cooldownRespawn > 0f) return;
         if (desacTouche) return;
         if (_isMoving) return;
 
@@ -85,30 +111,45 @@ public class rollingCube : MonoBehaviour
 
     private void AssembleDir(Vector3 dir)
     {
+        if (cooldownRespawn > 0f) return;
+        if (desacTouche) return;  // ← CRITIQUE : bloquer pendant le cooldown respawn
+        if (_isMoving) return;
+
+        _isMoving = true;
+
         var anchor = transform.position + (Vector3.down + dir) * 1.085f;
         var axis = Vector3.Cross(Vector3.up, dir);
-        StartCoroutine(Roll(anchor, axis));
+        rollCoroutine = StartCoroutine(Roll(anchor, axis));
     }
 
     IEnumerator Roll(Vector3 anchor, Vector3 axis)
     {
-        _isMoving = true;
-        for (int i = 0; i < (90 / _rollSpeed); i++)
+        if (audioSource != null && audioSource.clip != null)
+            audioSource.PlayOneShot(audioSource.clip);
+
+        float remainingAngle = 90f;
+
+        while (remainingAngle > 0f)
         {
-            transform.RotateAround(anchor, axis, _rollSpeed);
+            float rotationStep = Mathf.Min(_rollSpeed, remainingAngle);
+            transform.RotateAround(anchor, axis, rotationStep);
+            remainingAngle -= rotationStep;
+
             yield return new WaitForFixedUpdate();
-            audioSource.Play();
         }
 
-        Debug.Log($"[Roll] _collisionOK : {_collisionOK} � VibrationsManager : {VibrationsManager.Instance != null}");
+        float snapX = Mathf.Round(transform.position.x);
+        float snapZ = Mathf.Round(transform.position.z);
+        transform.position = new Vector3(snapX, 1.0f, snapZ);
 
         if (_collisionOK && VibrationsManager.Instance != null)
         {
             try { VibrationsManager.Instance.Vibrate(0.1f, 0.3f, 0.08f); }
-            catch (System.Exception e) { Debug.LogError($"[Roll] Erreur vibration : {e.Message}"); }
+            catch (System.Exception e) { Debug.LogWarning($"[Roll] Erreur vibration: {e.Message}"); }
         }
 
         _isMoving = false;
+        rollCoroutine = null;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -160,12 +201,44 @@ public class rollingCube : MonoBehaviour
     public void AssembleForward() => AssembleDir(GetDirection(Vector3.forward));
     public void AssembleBack() => AssembleDir(GetDirection(Vector3.back));
 
-    // Recalcule la direction selon l'angle de la camera
     private Vector3 GetDirection(Vector3 dir)
     {
         if (cameraAnglePalier == 0) return dir;
         for (int i = 0; i < cameraAnglePalier; i++)
-            dir = new Vector3(-dir.z, 0, dir.x); // Rotation 90 deg
+            dir = new Vector3(-dir.z, 0, dir.x);
         return dir;
+    }
+
+    // ══════════════════════════════════════════════════════════════════════
+    // RESET COMPLET (appelé par TeleportationRolling)
+    // ══════════════════════════════════════════════════════════════════════
+
+    public void ResetMovementState()
+    {
+        // Arrêter la coroutine Roll en cours
+        if (rollCoroutine != null)
+        {
+            StopCoroutine(rollCoroutine);
+            rollCoroutine = null;
+        }
+
+        _isMoving = false;
+        desacTouche = true;       // ← BLOQUER le mouvement
+        timeDesacTouche = 3.0f;   // ← BLOCAGE de 3 secondes
+        moveInput = Vector2.zero;
+
+        // ← REMISE à la position ET rotation d'origine
+        transform.position = spawnPosition;
+        transform.rotation = spawnRotation;
+
+        // ← Reset _collisionOK (sera remis à true quand Drop touche un cube)
+        _collisionOK = false;
+
+        Debug.Log($"[rollingCube] ResetMovementState — Position: {spawnPosition}, Rotation: {spawnRotation.eulerAngles}");
+    }
+
+    public void TriggerRespawnCooldown()
+    {
+        cooldownRespawn = respawnCooldownDuration;
     }
 }

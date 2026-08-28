@@ -21,7 +21,7 @@ public class SelectionManager : MonoBehaviour
             return;
         }
 
-        // En mode Game Over, on force la sÈlection sur les boutons du Game Over uniquement
+        // En mode Game Over, on force la s√©lection sur les boutons du Game Over uniquement
         if (modeGameOver)
         {
             if (premierBoutonGameOver != null &&
@@ -32,9 +32,9 @@ public class SelectionManager : MonoBehaviour
 
         if (EventSystem.current.currentSelectedGameObject == null)
         {
-            if (dernierBouton != null)
+            if (dernierBouton != null && dernierBouton.activeInHierarchy)
                 SetSelection(dernierBouton);
-            else if (premierBouton != null)
+            else if (premierBouton != null && premierBouton.activeInHierarchy)
                 SetSelection(premierBouton);
         }
         else if (EventSystem.current.currentSelectedGameObject != dernierBouton)
@@ -48,22 +48,23 @@ public class SelectionManager : MonoBehaviour
 
     void OnEnable()
     {
-        if (premierBouton != null)
+        // Ne s√©lectionne que si le bouton est actif dans la hi√©rarchie
+        if (premierBouton != null && premierBouton.activeInHierarchy)
             SetSelection(premierBouton);
     }
 
-    // AppelÈ par InfiniteGameOverUI.AfficherGameOver()
+    // Appel√© par InfiniteGameOverUI.AfficherGameOver()
     public void ActiverModeGameOver(GameObject premierBoutonGO)
     {
         modeGameOver = true;
         premierBoutonGameOver = premierBoutonGO;
 
-        // DÈsÈlectionner les boutons du jeu
+        // D√©s√©lectionner les boutons du jeu
         if (dernierBouton != null)
             SetDiamonds(dernierBouton, false);
         dernierBouton = null;
 
-        // SÈlectionner le premier bouton du Game Over
+        // S√©lectionner le premier bouton du Game Over
         if (premierBoutonGO != null)
             EventSystem.current.SetSelectedGameObject(premierBoutonGO);
     }
@@ -84,8 +85,11 @@ public class SelectionManager : MonoBehaviour
         foreach (var btn in FindObjectsByType<Button>(FindObjectsSortMode.None))
             SetDiamonds(btn.gameObject, false);
         dernierBouton = null;
-        EventSystem.current.SetSelectedGameObject(premierBouton);
-        SetDiamonds(premierBouton, true);
+        if (premierBouton != null && premierBouton.activeInHierarchy)
+        {
+            EventSystem.current.SetSelectedGameObject(premierBouton);
+            SetDiamonds(premierBouton, true);
+        }
     }
 
     public void ForceDiamonds(GameObject bouton, bool actif)

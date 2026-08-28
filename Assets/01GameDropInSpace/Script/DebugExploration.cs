@@ -1,15 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Script de TEST uniquement � � supprimer avant Steam !
-/// Permet de simuler la fin du mode Exploration en un clic.
-/// � placer sur n'importe quel GameObject dans le SpaceHub.
+/// SCRIPT DE DEBUG UNIQUEMENT — Sera exclu du build Steam automatiquement
+/// Pour tester rapidement le mode Exploration sans jouer 8 planètes
 /// </summary>
 public class DebugExploration : MonoBehaviour
 {
-
     private bool dejaDeclanche = false;
 
+#if UNITY_EDITOR
+    // ── SEUL CE BLOC SERA COMPILÉ DANS L'EDITOR ─────────────────────────
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F1) && !dejaDeclanche)
@@ -24,12 +25,12 @@ public class DebugExploration : MonoBehaviour
             ResetExploration();
         }
 
-        // F3 � va directement au stage 02-04 pour tester la fin
+        // F3 → va directement au stage 02-04 pour tester la fin
         if (Input.GetKeyDown(KeyCode.F3))
         {
             PlayerPrefs.SetInt("ModeExploration", 1);
             PlayerPrefs.SetInt("PlaneteEnCours", 2);
-            PlayerPrefs.SetInt("StageEnCours", 3); // index 3 = 4�me stage
+            PlayerPrefs.SetInt("StageEnCours", 3);
             PlayerPrefs.SetInt("NombreStages", 4);
             PlayerPrefs.SetString("Stage_0", "Stage02-01");
             PlayerPrefs.SetString("Stage_1", "Stage02-02");
@@ -38,55 +39,47 @@ public class DebugExploration : MonoBehaviour
             PlayerPrefs.SetInt("ScoreTemporaire", 0);
             PlayerPrefs.SetInt("LifeBar", 3);
             PlayerPrefs.Save();
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Stage02-04");
+            SceneManager.LoadScene("Stage02-04");
         }
-    }
-
-    public void SimulerToutesPlanetesCompletes()
-    {
-        if (ExplorationManager.Instance == null)
-        {
-            Debug.LogWarning("ExplorationManager introuvable !");
-            return;
-        }
-
-        for (int i = 1; i <= 8; i++)
-        {
-            if (i == 2) continue; // Laisse le monde 2 pour tester
-            ExplorationManager.Instance.MarquerPlaneteComplete(i);
-        }
-
-        // Met � jour l'UI
-        if (ExplorationUIManager.Instance != null)
-            ExplorationUIManager.Instance.MettreAJourUI();
-
-        Debug.Log("TEST : Toutes les plan�tes marqu�es comme compl�tes !");
-    }
-
-    public void SimulerPlaneteComplete(int numero)
-    {
-        if (ExplorationManager.Instance == null) return;
-        ExplorationManager.Instance.MarquerPlaneteComplete(numero);
-        if (ExplorationUIManager.Instance != null)
-            ExplorationUIManager.Instance.MettreAJourUI();
-        Debug.Log($"TEST : Plan�te {numero} marqu�e comme compl�te !");
-    }
-
-    public void ResetExploration()
-    {
-        if (ExplorationManager.Instance == null) return;
-        ExplorationManager.Instance.ResetExploration();
-        if (ExplorationUIManager.Instance != null)
-            ExplorationUIManager.Instance.MettreAJourUI();
-        Debug.Log("TEST : Exploration remise � z�ro !");
     }
 
     void OnGUI()
     {
         GUI.Box(new Rect(10, 10, 280, 100), "DEBUG EXPLORATION");
-        if (GUI.Button(new Rect(20, 35, 260, 25), "F1 - Toutes plan�tes compl�tes"))
+        if (GUI.Button(new Rect(20, 35, 260, 25), "F1 - Toutes planètes complètes"))
             SimulerToutesPlanetesCompletes();
         if (GUI.Button(new Rect(20, 65, 260, 25), "F2 - Reset exploration"))
             ResetExploration();
+    }
+    // ── FIN DU BLOC DEBUG ──────────────────────────────────────────────
+#endif
+
+    // Ces méthodes restent accessibles via code si nécessaire
+    public void SimulerToutesPlanetesCompletes()
+    {
+        ExplorationManager em = FindObjectOfType<ExplorationManager>();
+        if (em == null)
+        {
+            Debug.LogWarning("[Debug] ExplorationManager introuvable !");
+            return;
+        }
+
+        for (int i = 1; i <= 8; i++)
+        {
+            if (i == 2) continue; // Laisse un monde intact pour test
+            em.MarquerPlaneteComplete(i);
+        }
+
+        ExplorationUIManager ui = FindObjectOfType<ExplorationUIManager>();
+        if (ui != null) ui.MettreAJourUI();
+
+        Debug.Log("TEST : Toutes les planètes simulées comme complètes !");
+    }
+
+    public void ResetExploration()
+    {
+        ExplorationManager em = FindObjectOfType<ExplorationManager>();
+        if (em != null) em.ResetExploration();
+        Debug.Log("TEST : Exploration remise à zéro !");
     }
 }

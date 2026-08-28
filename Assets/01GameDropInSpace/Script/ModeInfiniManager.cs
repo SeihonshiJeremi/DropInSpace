@@ -31,6 +31,15 @@ public class ModeInfiniManager : MonoBehaviour
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Nettoie les autres modes
+        if (ModeObscurManager.Instance != null)
+            Destroy(ModeObscurManager.Instance.gameObject);
+
+        // Configure l'état global
+        GameStateManager.Instance.SetMode("Infinity");
+        GameStateManager.Instance.SetScore(0);
+        GameStateManager.Instance.SetLifeBar(3);
     }
 
     void Start()
@@ -68,30 +77,25 @@ public class ModeInfiniManager : MonoBehaviour
     {
         Debug.Log($"[ModeInfiniManager] Scene chargee : {scene.name}");
 
-        // Dans un stage — surveille la fin via valueFinLevel
         if (!scene.name.StartsWith("SceneTransition"))
             StartCoroutine(SurveillerFinStage());
     }
 
     private IEnumerator SurveillerFinStage()
     {
-        // Attend que zoomManager soit initialise
         yield return new WaitForSeconds(0.5f);
         if (zoomManager.Instance == null) yield break;
 
-        // Attend que valueFinLevel soit rempli
         while (zoomManager.Instance != null && zoomManager.Instance.valueFinLevel <= 0)
             yield return new WaitForSeconds(0.1f);
 
         Debug.Log($"[ModeInfiniManager] Stage demarre — {zoomManager.Instance.valueFinLevel} dalles");
 
-        // Surveille jusqu'a valueFinLevel == 0
         while (zoomManager.Instance != null && zoomManager.Instance.valueFinLevel > 0)
             yield return new WaitForSeconds(0.1f);
 
         if (zoomManager.Instance == null) yield break;
 
-        // Recupere le score
         int scoreFinLevel = PlayerPrefs.GetInt("ScoreFinLevel", 0);
         int scoreDepart = PlayerPrefs.GetInt("ScoreDepart", 0);
         int scoreStage = Mathf.Max(0, scoreFinLevel - scoreDepart);
@@ -124,6 +128,8 @@ public class ModeInfiniManager : MonoBehaviour
         string prochainStage = stagesRestants[0];
         stagesRestants.RemoveAt(0);
 
+        GameStateManager.Instance.SetScore(scoreCumule);
+        GameStateManager.Instance.SaveToPrefs();
         PlayerPrefs.SetInt("ScoreTemporaire", scoreCumule);
         PlayerPrefs.SetInt("ScoreDepart", scoreCumule);
         PlayerPrefs.SetInt("ModeInfiniActif", 1);

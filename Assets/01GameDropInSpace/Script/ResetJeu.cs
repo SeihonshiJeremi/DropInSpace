@@ -2,47 +2,39 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Remet tout a zero quand on arrive sur le menu principal.
-/// Detruit tous les DontDestroyOnLoad, remet les PlayerPrefs a 0.
-/// A placer sur un GameObject dans StartDropInSpace.
+/// Reset complet du jeu — appelé quand on quitte un mode spécial
+/// Le code est dans Start() plutôt que Awake() pour garantir que GameStateManager est prêt.
 /// </summary>
 public class ResetJeu : MonoBehaviour
 {
     void Awake()
     {
-        // Detruit tous les managers de modes speciaux
-        if (ModeObscurManager.Instance != null)
-            Destroy(ModeObscurManager.Instance.gameObject);
-        if (ModeInfiniManager.Instance != null)
-            Destroy(ModeInfiniManager.Instance.gameObject);
-        if (ModeZenManager.Instance != null)
-            Destroy(ModeZenManager.Instance.gameObject);
+        // Ne rien faire ici — GameStateManager peut ne pas être initialisé
+        Debug.Log("[ResetJeu] Awake appelé — le vrai reset se fera dans Start()");
+    }
 
-        // Remet uniquement les flags de session � scores et progression conserves !
-        PlayerPrefs.SetInt("ModeObscurActif", 0);
-        PlayerPrefs.SetInt("ModeInfiniActif", 0);
-        PlayerPrefs.SetInt("ModeZenActif", 0);
-        PlayerPrefs.SetInt("ModeExploration", 0);
-        PlayerPrefs.SetInt("VictoireObscur", 0);
-        PlayerPrefs.SetInt("VictoireExploration", 0);
-        PlayerPrefs.SetInt("ScoreDepart", 0);
-        PlayerPrefs.SetInt("ScoreTemporaire", 0);
-        PlayerPrefs.SetInt("ScoreFinLevel", 0);
-        PlayerPrefs.SetInt("ScoreZenFinal", 0);
-        PlayerPrefs.SetInt("PlaneteEnCours", 0);
-        PlayerPrefs.SetInt("StageEnCours", 0);
+    void Start()
+    {
+        // Wait pour que GameStateManager soit prêt
+        StartCoroutine(WaitAndReset());
+    }
 
-        // NE PAS toucher :
-        // ExplorationProgress � progression des planetes
-        // MeilleurScoreInfiniStages � meilleur score mode Infini
-        // MeilleurScoreObscur � meilleur score mode Obscur
-        // MeilleurScoreZen � meilleur score mode Zen
-        // ScoreArcade (et autres scores) � scores persistants
-
-        PlayerPrefs.Save();
-
-        // Remet le temps a la normale (au cas ou le jeu etait en pause)
-        Time.timeScale = 1f;
-        Debug.Log("[ResetJeu] Tout remis a zero !");
+    private System.Collections.IEnumerator WaitAndReset()
+    {
+        // Attend une frame pour s'assurer que tous les Awake() sont finis
+        yield return null;
+        
+        // Double-check : si GameStateManager n'existe pas, on le crée
+        if (GameStateManager.Instance == null)
+        {
+            Debug.LogWarning("[ResetJeu] GameStateManager manquants — création d'une instance");
+            GameObject gm = new GameObject("GameStateManager");
+            gm.AddComponent<GameStateManager>();
+            DontDestroyOnLoad(gm);
+        }
+        
+        // Maintenant on peut faire le reset proprement
+        GameStateManager.Instance.ResetSession();
+        Debug.Log("[ResetJeu] Session réinitialisée dans Start()");
     }
 }

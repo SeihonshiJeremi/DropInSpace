@@ -1,50 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TeleportationRolling : MonoBehaviour
 {
+    [Header("Points de Téléportation")]
     public Transform pointTP;
-    public GameObject Player;
     public Transform pointTPMonster;
-    public GameObject Monster;
     public Transform pointTPMonster02;
+
+    [Header("Références Objets")]
+    public GameObject Player;
+    public GameObject Monster;
     public GameObject Monster02;
-
-    private rollingCube playerRolling;
-    private swipeMovementDIS swipe;
-
-    void Start()
-    {
-        GameObject playerObj = GameObject.Find("Player");
-        if (playerObj != null) playerRolling = playerObj.GetComponent<rollingCube>();
-        GameObject swipeObj = GameObject.Find("swipeMovement");
-        if (swipeObj != null) swipe = swipeObj.GetComponent<swipeMovementDIS>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // MODE INFINI : Game Over sauf si respawn en cours
-            if (InfiniteModeManager.Instance != null && InfiniteModeManager.Instance.EstEnJeu())
-            {
-                if (InfiniteGridManager.Instance != null && InfiniteGridManager.Instance.RespawnEnCours())
-                    return;
+            rollingCube playerRolling = other.GetComponent<rollingCube>();
 
-                InfiniteModeManager.Instance.DeclencherGameOver();
-                return;
+            if (playerRolling != null)
+            {
+                // ← ResetMovementState fait TOUT :
+                // - Stoppe le roll en cours
+                // - Remet position + rotation d'origine
+                // - desacTouche = true (mouvement bloqué)
+                // - timeDesacTouche = 3.0f (blocage 3 secondes)
+                // - _collisionOK = false (reset collision)
+                playerRolling.ResetMovementState();
+                playerRolling.TriggerRespawnCooldown();
             }
 
-            // Comportement normal
-            if (playerRolling != null) playerRolling.tDesacTouche();
-            if (swipe != null) swipe.tDesacTouche();
-            Player.transform.position = pointTP.position;
+            // ← Bloquer aussi les swipes
+            if (swipeMovementDIS.instance != null)
+            {
+                swipeMovementDIS.instance.tDesacTouche();
+                swipeMovementDIS.instance.ForceResetPress();
+            }
+
+            Debug.Log("[Teleport] Drop respawné — mouvement bloqué 3s");
         }
 
         if (other.CompareTag("Monster") || other.CompareTag("MonsterChangeColor"))
-            Monster.transform.position = pointTPMonster.position;
+        {
+            if (Monster != null && pointTPMonster != null)
+                Monster.transform.position = pointTPMonster.position;
+        }
+
         if (other.CompareTag("Monster02"))
-            Monster02.transform.position = pointTPMonster02.position;
+        {
+            if (Monster02 != null && pointTPMonster02 != null)
+                Monster02.transform.position = pointTPMonster02.position;
+        }
     }
 }

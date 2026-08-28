@@ -49,7 +49,7 @@ public class ModeZenManager : MonoBehaviour
             if (premierStage) { premierStage = false; return; }
 
             stageActuel++;
-            Debug.Log($"[ModeZenManager] Transition — prochain stage : {(stageActuel < stages.Count ? stages[stageActuel] : "VICTOIRE")}");
+            Debug.Log($"[ModeZenManager] Transition â†’ prochain stage : {(stageActuel < stages.Count ? stages[stageActuel] : "VICTOIRE")}");
 
             if (stageActuel >= stages.Count)
             {
@@ -62,7 +62,7 @@ public class ModeZenManager : MonoBehaviour
         }
 
         if (stages.Contains(scene.name))
-            Debug.Log($"[ModeZenManager] Stage chargé : {scene.name}");
+            Debug.Log($"[ModeZenManager] Stage chargÃ© : {scene.name}");
     }
 
     IEnumerator AttendrePuisLancerStage()
@@ -84,22 +84,4 @@ public class ModeZenManager : MonoBehaviour
         Debug.Log("[ModeZenManager] VICTOIRE !");
         SceneManager.LoadScene("SceneVictoireZen");
     }
-
-#if UNITY_EDITOR
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            stageActuel = stages.Count - 1;
-            SceneManager.LoadScene("SceneTransitionZen");
-        }
-
-        // F4 — saute directement à SceneVictoireZen
-        if (Input.GetKeyDown(KeyCode.F4))
-        {
-            Debug.Log("[ModeZenManager] DEBUG F4 — SceneVictoireZen !");
-            SceneManager.LoadScene("SceneVictoireZen");
-        }
-    }
-#endif
 }

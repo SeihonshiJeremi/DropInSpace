@@ -5,13 +5,11 @@ using UnityEngine.InputSystem;
 
 public class swipeMovementDIS : MonoBehaviour
 {
-    float timer = 0.250f;
-    bool xMovement;
-    bool yMovement;
-    bool xMove;
-    bool xMoveNegate;
-    bool yMove;
-    bool yMoveNegate;
+    [Header("Sensibilité")]
+    public float swipeResistance = 40f;   // Plus bas = plus réactif
+
+    [Header("Respawn (NE PAS TOUCHER)")]
+    public float timeDesacTouche = 3.0f;
 
     public GameObject movementPlayer;
     public static swipeMovementDIS instance;
@@ -19,21 +17,41 @@ public class swipeMovementDIS : MonoBehaviour
     public event Swipe swipePerformed;
 
     [SerializeField] private InputAction position, press;
-    [SerializeField] private float swipeResistance = 100;
+
     private Vector2 initialPos;
     private Vector2 currentPos => position.ReadValue<Vector2>();
 
-    public float timeDesacTouche = 3.0f;
-
-    // CORRIG� : cache rollingCube
     private rollingCube playerRolling;
+    private bool isDragging = false;
 
     private void Awake()
     {
         position.Enable();
         press.Enable();
-        press.performed += _ => { initialPos = currentPos; };
-        press.canceled += _ => DetectSwipe();
+
+        press.started += _ =>
+        {
+            initialPos = currentPos;
+            isDragging = true;
+        };
+
+        press.canceled += _ =>
+        {
+            isDragging = false;
+
+            // Event swipe pour compat externe
+            Vector2 delta = currentPos - initialPos;
+            if (delta.magnitude > swipeResistance && swipePerformed != null)
+            {
+                Vector2 direction = Vector2.zero;
+                if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
+                    direction.x = Mathf.Sign(delta.x);
+                else
+                    direction.y = Mathf.Sign(delta.y);
+                swipePerformed(direction);
+            }
+        };
+
         instance = this;
     }
 
@@ -42,64 +60,50 @@ public class swipeMovementDIS : MonoBehaviour
         playerRolling = movementPlayer.GetComponent<rollingCube>();
     }
 
-    private void DetectSwipe()
+    void FixedUpdate()
     {
+        // ─── COOLDOWN RESPAWN (INTACT) ───
+        if (timeDesacTouche > 0)
+        {
+            timeDesacTouche -= Time.deltaTime;
+            return;
+        }
+
+        if (!isDragging) return;
+
+        // ─── STICK VIRTUEL : initialPos NE BOUGE PAS ───
+        // Tant que le doigt reste dans une direction, Drop continue d'avancer
+        // rollingCube._isMoving empêche naturellement les doubles mouvements
         Vector2 delta = currentPos - initialPos;
-        Vector2 direction = Vector2.zero;
 
-        if (Mathf.Abs(delta.x) > swipeResistance && xMovement)
+        if (delta.magnitude > swipeResistance)
         {
-            direction.x = Mathf.Clamp(delta.x, -1, 1);
-            if (direction.x > 0) xMove = true;
-            if (direction.x < 0) xMoveNegate = true;
-            yMovement = false;
-        }
-        else yMovement = true;
-
-        if (Mathf.Abs(delta.y) > swipeResistance && yMovement)
-        {
-            direction.y = Mathf.Clamp(delta.y, -1, 1);
-            if (direction.y > 0) yMove = true;
-            if (direction.y < 0) yMoveNegate = true;
-            xMovement = false;
-        }
-        else xMovement = true;
-
-        if (direction != Vector2.zero && swipePerformed != null)
-            swipePerformed(direction);
-    }
-
-    public void FixedUpdate()
-    {
-        // CORRIG� : timer s'arr�te � 0
-        if (timeDesacTouche > 0) timeDesacTouche -= Time.deltaTime;
-
-        if (Input.touchCount > 0)
-        {
-            xMove = xMoveNegate = yMove = yMoveNegate = false;
-        }
-
-        // CORRIG� : un seul timer partag� correctement
-        if (timeDesacTouche <= 0)
-        {
-            if (xMove || xMoveNegate || yMove || yMoveNegate)
+            // Direction dominante (comme un D-pad)
+            if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
             {
-                timer -= Time.deltaTime;
-                if (timer < 0)
-                {
-                    if (xMove) playerRolling.AssembleRight();
-                    else if (xMoveNegate) playerRolling.AssembleLeft();
-                    else if (yMove) playerRolling.AssembleForward();
-                    else if (yMoveNegate) playerRolling.AssembleBack();
-                    timer = 0.250f;
-                }
+                if (delta.x > 0) playerRolling.AssembleRight();
+                else playerRolling.AssembleLeft();
             }
+            else
+            {
+                if (delta.y > 0) playerRolling.AssembleForward();
+                else playerRolling.AssembleBack();
+            }
+            // ← PAS DE RECENTRAGE : initialPos reste fixe
+            // Le doigt doit juste rester dans la direction voulue
         }
     }
 
+    // ─── BLOCAGE APRÈS RESPAWN (INTACT) ───
     public void tDesacTouche()
     {
-        xMove = xMoveNegate = yMove = yMoveNegate = false;
+        isDragging = false;
         timeDesacTouche = 3.0f;
+    }
+
+    // ─── RESET FORCÉ (INTACT) ───
+    public void ForceResetPress()
+    {
+        isDragging = false;
     }
 }

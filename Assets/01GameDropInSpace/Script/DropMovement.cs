@@ -4,25 +4,31 @@ using UnityEngine.EventSystems;
 public class DropMovement : MonoBehaviour
 {
     [Header("Boutons et positions cibles")]
-    public RectTransform[] boutons;
+    public RectTransform[] boutons;       // Non utilisé maintenant (déprécié)
     public float speed = 5f;
     public Canvas canvas;
+    
+    [Header("Menus")]
     public GameObject menuLayout;
+    public GameObject demoLayout;
 
     private Vector3 targetPosition;
     private bool menuActif = false;
 
     void Start()
     {
-        targetPosition = transform.position; // centre au d�part
+        targetPosition = transform.position; // centre au départ
     }
 
     void Update()
     {
-        // V�rifie si le menu vient de s'activer
-        if (!menuActif && menuLayout != null && menuLayout.activeInHierarchy)
+        // Vérifie si l'un des deux menus vient de s'activer
+        if (!menuActif)
         {
-            menuActif = true;
+            if (menuLayout != null && menuLayout.activeInHierarchy)
+                menuActif = true;
+            else if (demoLayout != null && demoLayout.activeInHierarchy)
+                menuActif = true;
         }
 
         if (menuActif)
@@ -49,6 +55,8 @@ public class DropMovement : MonoBehaviour
         Vector3 center = (corners[0] + corners[2]) / 2f;
         Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(null, center);
         Camera cam = Camera.main;
+        
+        // Utilisation de la profondeur actuelle de Drop
         float depth = Mathf.Abs(cam.transform.position.z - transform.position.z);
         return cam.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, depth));
     }

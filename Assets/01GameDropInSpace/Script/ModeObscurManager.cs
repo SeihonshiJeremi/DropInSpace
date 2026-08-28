@@ -36,17 +36,21 @@ public class ModeObscurManager : MonoBehaviour
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Nettoie les autres modes
+        if (ModeInfiniManager.Instance != null)
+            Destroy(ModeInfiniManager.Instance.gameObject);
+
+        // Configure l'état global
+        GameStateManager.Instance.SetMode("Obscur");
+        GameStateManager.Instance.SetScore(0);
+        GameStateManager.Instance.SetLifeBar(3);
     }
 
     void Start()
     {
         meilleurScore = PlayerPrefs.GetInt(PREFS_MEILLEUR, 0);
-
-        if (ModeInfiniManager.Instance != null)
-            Destroy(ModeInfiniManager.Instance.gameObject);
-
         PlayerPrefs.SetInt("ModeObscurActif", 1);
-        PlayerPrefs.SetInt("ModeInfiniActif", 0);
         PlayerPrefs.Save();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -82,10 +86,8 @@ public class ModeObscurManager : MonoBehaviour
     {
         Debug.Log($"[ModeObscurManager] Scene chargee : {scene.name} — premierStage={premierStage} stageActuel={stageActuel}");
 
-        // Premier chargement — c'est SceneTransitionDark au lancement
         if (premierStage) { premierStage = false; return; }
 
-        // SceneTransitionDark entre deux stages — attend et lance le suivant
         if (scene.name == "SceneTransitionDark")
         {
             StartCoroutine(AttendrePuisLancerSuivant());
@@ -140,6 +142,9 @@ public class ModeObscurManager : MonoBehaviour
         string stage = tousLesStages[stageActuel];
         stageActuel++;
 
+        // Sauvegarde du score cumulé pour la prochaine scène
+        GameStateManager.Instance.SetScore(scoreCumule);
+        GameStateManager.Instance.SaveToPrefs();
         PlayerPrefs.SetInt("ScoreTemporaire", scoreCumule);
         PlayerPrefs.SetInt("ScoreDepart", scoreCumule);
         PlayerPrefs.SetInt("ModeObscurActif", 1);
@@ -151,8 +156,9 @@ public class ModeObscurManager : MonoBehaviour
 
     private void Victoire()
     {
-        //Debug.Log($"[ModeObscurManager] VICTOIRE ! Score final : {scoreCumule}");
+        Debug.Log($"[ModeObscurManager] VICTOIRE ! Score final : {scoreCumule}");
         Time.timeScale = 1f;
+        GameStateManager.Instance.MarkVictory("Obscur");
         PlayerPrefs.SetInt("ScoreObscurFinal", scoreCumule);
         PlayerPrefs.SetInt("VictoireObscur", 1);
         PlayerPrefs.SetInt("ModeObscurActif", 0);
@@ -164,6 +170,7 @@ public class ModeObscurManager : MonoBehaviour
     private void GameOver()
     {
         PlayerPrefs.SetInt("ModeObscurActif", 0);
+        GameStateManager.Instance.ResetSession();
         PlayerPrefs.Save();
         Destroy(gameObject);
     }
