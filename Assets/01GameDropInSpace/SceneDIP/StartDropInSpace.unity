@@ -1470,7 +1470,7 @@ GameObject:
   - component: {fileID: 90035549}
   - component: {fileID: 90035548}
   m_Layer: 5
-  m_Name: PanelOptions
+  m_Name: PanelOptionsDemo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3415,7 +3415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &200303246
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5092,7 +5092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &333294122
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7907,7 +7907,7 @@ GameObject:
   - component: {fileID: 456242900}
   - component: {fileID: 456242899}
   m_Layer: 5
-  m_Name: SCORE
+  m_Name: EXPLORATION DEMO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7952,7 +7952,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SCORE
+  m_text: "EXPLORATION \n\nDEMO (3 min)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 82c46a3292d2960469b4a18bfa615aa2, type: 2}
   m_sharedMaterial: {fileID: -1103339136579998314, guid: 82c46a3292d2960469b4a18bfa615aa2,
@@ -9060,7 +9060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &534030999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10974,7 +10974,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -453.2, y: 0.00012207031}
+  m_AnchoredPosition: {x: -571.82, y: 0.00012207031}
   m_SizeDelta: {x: 1214.1201, y: 688}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &678028096
@@ -13095,7 +13095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &842088645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13433,7 +13433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 175.3, y: 0}
+  m_AnchoredPosition: {x: 133.7, y: 0}
   m_SizeDelta: {x: 1214.1201, y: 688}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &864372457
@@ -14371,7 +14371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 453.2, y: 0.00012207031}
+  m_AnchoredPosition: {x: 571.82, y: 0.00012207031}
   m_SizeDelta: {x: 1214.1201, y: 688}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943675132
@@ -14508,7 +14508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &947824089
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16221,81 +16221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab182fb5cc33fc4eb0b6eba97ecce3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1055283759
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1055283760}
-  - component: {fileID: 1055283762}
-  - component: {fileID: 1055283761}
-  m_Layer: 5
-  m_Name: PanelAchievements
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1055283760
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055283759}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1263053020}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1055283761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055283759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1055283762
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055283759}
-  m_CullTransparentMesh: 1
 --- !u!1 &1058841403
 GameObject:
   m_ObjectHideFlags: 0
@@ -17076,7 +17001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "PLAY \n\nDEMO\n"
+  m_text: "ARCADE \n\nDEMO\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 82c46a3292d2960469b4a18bfa615aa2, type: 2}
   m_sharedMaterial: {fileID: -1103339136579998314, guid: 82c46a3292d2960469b4a18bfa615aa2,
@@ -18699,7 +18624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1209527606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19469,7 +19394,7 @@ GameObject:
   - component: {fileID: 1240609894}
   - component: {fileID: 1240609893}
   m_Layer: 5
-  m_Name: BtnArcadeDemo
+  m_Name: BtPlayDemo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19593,7 +19518,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1986031722}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnArcadeClick
+        m_MethodName: OnPlayDemoClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19756,9 +19681,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 361990023}
-  - {fileID: 1933316688}
   - {fileID: 90035547}
-  - {fileID: 1055283760}
   - {fileID: 1030245464}
   m_Father: {fileID: 401703924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22166,7 +22089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -175.3, y: 0}
+  m_AnchoredPosition: {x: -133.7, y: 0}
   m_SizeDelta: {x: 1214.1201, y: 688}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1410479036
@@ -26077,7 +26000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1651775050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28379,7 +28302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1807248039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30113,7 +30036,7 @@ GameObject:
   - component: {fileID: 1909409445}
   - component: {fileID: 1909409444}
   m_Layer: 5
-  m_Name: BtnScoreDemo
+  m_Name: BtnEXPLORATIONdemo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30237,7 +30160,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1986031722}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnExplorationClick
+        m_MethodName: OnExplorationDemoClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30869,81 +30792,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923971564}
-  m_CullTransparentMesh: 1
---- !u!1 &1933316687
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1933316688}
-  - component: {fileID: 1933316690}
-  - component: {fileID: 1933316689}
-  m_Layer: 5
-  m_Name: PanelScore
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1933316688
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933316687}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1263053020}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1933316689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933316687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1933316690
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933316687}
   m_CullTransparentMesh: 1
 --- !u!1 &1940157881
 GameObject:
@@ -31951,16 +31799,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   demoMode: 0
   menuLayout: {fileID: 165622041}
-  demoLayout: {fileID: 0}
+  demoLayout: {fileID: 361990022}
   panelArcade: {fileID: 997593979}
   panelScore: {fileID: 1857031856}
   panelOptions: {fileID: 640400664}
   panelAchievements: {fileID: 1238599423}
-  panelScoreDemo: {fileID: 1933316687}
+  panelScoreDemo: {fileID: 1896492662}
   panelOptionsDemo: {fileID: 90035546}
   btnArcade: {fileID: 1577292428}
   btnArcadeClassic: {fileID: 636301104}
-  btnLangue: {fileID: 1896492662}
+  btnFocus: {fileID: 0}
+  btnFocusDemo: {fileID: 1626674693}
   btnDemoArcade: {fileID: 1240609891}
   btnDemoScore: {fileID: 1022485321}
   btnDemoOptions: {fileID: 152534772}
@@ -32206,7 +32055,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1986031722}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnExplorationClick
+        m_MethodName: OnOptionsDemoClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

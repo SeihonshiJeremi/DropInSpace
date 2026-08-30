@@ -25,7 +25,8 @@ public class MainMenuManager : MonoBehaviour
     [Header("Boutons par défaut — Menu Principal")]
     public GameObject btnArcade;
     public GameObject btnArcadeClassic;
-    public GameObject btnLangue;
+    public GameObject btnFocus;
+    public GameObject btnFocusDemo;
 
     [Header("Boutons par défaut — Démo")]
     public GameObject btnDemoArcade;
@@ -233,9 +234,19 @@ public class MainMenuManager : MonoBehaviour
         RefreshFocus();
     }
 
+    public void OnPlayDemoClick()
+    {
+        SceneManager.LoadScene("SceneTransition01-01Demo");
+    }
+
     public void OnExplorationClick()
     {
         SceneManager.LoadScene("SceneTransitionExploration");
+    }
+
+    public void OnExplorationDemoClick()
+    {
+        SceneManager.LoadScene("SceneTransitionExplorationDemo");
     }
 
     public void OnScoreClick()
@@ -255,7 +266,15 @@ public class MainMenuManager : MonoBehaviour
         panelScore.SetActive(false);
         panelOptions.SetActive(true);
         panelAchievements.SetActive(false);
-        SetSelection(btnLangue);
+        SetSelection(btnFocus);
+        RefreshFocus();
+    }
+
+    public void OnOptionsDemoClick()
+    {
+        demoLayout.SetActive(false);
+        panelOptionsDemo.SetActive(true);
+        SetSelection(btnFocusDemo);
         RefreshFocus();
     }
 
