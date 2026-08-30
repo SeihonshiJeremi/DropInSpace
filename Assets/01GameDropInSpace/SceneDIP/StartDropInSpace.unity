@@ -2738,7 +2738,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1986031722}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnOptionsClick
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7634,7 +7634,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1986031722}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnOptionsClick
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15809,7 +15809,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1986031722}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnScoreClick
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30461,7 +30461,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1986031722}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnOptionsClick
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31964,6 +31964,18 @@ MonoBehaviour:
   btnDemoArcade: {fileID: 1240609891}
   btnDemoScore: {fileID: 1022485321}
   btnDemoOptions: {fileID: 152534772}
+  btnDiscord: {fileID: 0}
+  btnSteam: {fileID: 0}
+  btnX: {fileID: 0}
+  btnYouTube: {fileID: 0}
+  btnDiscordDemo: {fileID: 436236869}
+  btnSteamDemo: {fileID: 152534777}
+  btnXDemo: {fileID: 1022485326}
+  btnYouTubeDemo: {fileID: 1914522526}
+  urlDiscord: https://discord.gg/jwzve576x
+  urlSteam: https://store.steampowered.com/app/YOUR_STEAM_APP_ID_HERE
+  urlX: https://x.com/HelieAndDrop
+  urlYouTube: https://www.youtube.com/@HelieAndDrop
 --- !u!4 &1986031723
 Transform:
   m_ObjectHideFlags: 0

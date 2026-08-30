@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "DropInSpace.slnx"
+    "dotnet.defaultSolution": "DIS_2025 (ok).slnx"
 }
