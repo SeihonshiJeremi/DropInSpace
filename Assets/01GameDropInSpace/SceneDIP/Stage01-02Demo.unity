@@ -1060,7 +1060,7 @@ PrefabInstance:
     - target: {fileID: 8171668962618649847, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: scene
-      value: SceneTransitionGameOver
+      value: SceneTransitionEndGameDemo
       objectReference: {fileID: 0}
     - target: {fileID: 8171668962618649847, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}

@@ -51,7 +51,29 @@ public class GameStateManager : MonoBehaviour
         InitializeStageNames();
         LoadFromPrefs();
 
+        // ─── ABONNEMENT AU CHARGEMENT DE SCÈNE (pour détruire le timer démo) ───
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         Debug.Log("[GameStateManager] Initialisé et persistant");
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // ─── DESTRUCTION DU TIMER DÉMO AU RETOUR MENU ────────────────────
+    void OnSceneLoaded(Scene sceneChargee, LoadSceneMode mode)
+    {
+        if (sceneChargee.name == "StartDropInSpace")
+        {
+            var loadSceneDemo = FindObjectOfType<loadSceneAutoSpaceHubDemo>();
+            if (loadSceneDemo != null)
+            {
+                Debug.Log("[GameStateManager] Retour à StartDropInSpace — destruction de loadSceneAutoSpaceHubDemo");
+                Destroy(loadSceneDemo.gameObject);
+            }
+        }
     }
 
     void LoadFromPrefs()

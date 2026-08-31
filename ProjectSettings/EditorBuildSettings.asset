@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/01GameDropInSpace/SceneDIP/SceneTransition02-02.unity
     guid: d7400b1432d94bb40b1029870175a700
   - enabled: 1
+    path: Assets/01GameDropInSpace/SceneDIP/SceneTransitionEndGameDemo.unity
+    guid: 2c3fa5e78021df1c4bb9868d109dec37
+  - enabled: 1
     path: Assets/01GameDropInSpace/SceneDIP/SceneTransitionExplorationDemo.unity
     guid: 77ef353ac2e1de3a9a0ed926abc994bc
   - enabled: 1

@@ -66,21 +66,25 @@ public class loadSceneAutoSpaceHubDemo : MonoBehaviour
         }
     }
 
-    // Reset complet : clear PlayerPrefs + relance le jeu
+    // Reset complet : clear des préférences de SESSION uniquement
+    // (on préserve les réglages audio du joueur : Volume, Musique, Effets)
     void ResetDemo()
     {
         demoTimerActive = false;
 
-        // --- CLEAR ALL PLAYERPREFS ---
-        PlayerPrefs.DeleteAll();
+        // --- CLEAR PLAYERPREFS CIBLÉ (session uniquement) ---
+        PlayerPrefs.DeleteKey("ModeExploration");
+        PlayerPrefs.DeleteKey("ModeInfiniActif");
+        PlayerPrefs.DeleteKey("ModeObscurActif");
+        PlayerPrefs.DeleteKey("ModeZenActif");
+        PlayerPrefs.DeleteKey("ValeurScene");
         PlayerPrefs.Save();
 
-        Debug.Log("[loadSceneAutoSpaceHubDemo] RESET — PlayerPrefs nettoyés, reload scène");
+        Debug.Log("[loadSceneAutoSpaceHubDemo] RESET — PlayerPrefs session nettoyés "
+                  + "(préférences audio conservées), reload scène");
 
+        // Le GameStateManager détruira cet objet au chargement de StartDropInSpace
         SceneManager.LoadScene(resetSceneName);
-
-        // Détruit ce GameObject pour qu'un nouveau soit fraîchement créé au prochain lancement
-        Destroy(gameObject);
     }
 
     public void boolScene()

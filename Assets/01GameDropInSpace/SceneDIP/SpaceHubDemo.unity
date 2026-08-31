@@ -4196,11 +4196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7d198878573267692932436e602906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  scene: StartDropInSpace
+  scene: SceneTransitionEndGameDemo
   loadSceneTime: 180
   okChange: 0
   demoDuration: 180
-  resetSceneName: StartDropInSpace
+  resetSceneName: SceneTransitionEndGameDemo
 --- !u!4 &1111353475
 Transform:
   m_ObjectHideFlags: 0
@@ -4326,7 +4326,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155215516}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bb9b49ad17d53340a501868543d0ea9, type: 3}
   m_Name: 
