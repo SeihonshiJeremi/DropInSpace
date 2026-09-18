@@ -134,9 +134,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4283539414624576488, guid: 39f147e56283a2f40b6c429f6f7df4ca,
         type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: afec32ed3cff31b758949a87f1f24866, type: 3}
+    - target: {fileID: 4283539414624576488, guid: 39f147e56283a2f40b6c429f6f7df4ca,
+        type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 07938d78a2a34ff4ebdb0761cc5251e9, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4283539415247346363, guid: 39f147e56283a2f40b6c429f6f7df4ca,
         type: 3}
       propertyPath: m_fontAsset

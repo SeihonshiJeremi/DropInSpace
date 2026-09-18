@@ -5,7 +5,7 @@ using TMPro;
 /// <summary>
 /// Tutoriel integre au premier stage joue.
 /// Affiche des messages sequentiels pendant le jeu.
-/// Ne reapparait jamais une fois vu — fonctionne en Arcade ET en Exploration.
+/// Ne reapparait jamais une fois vu â€” fonctionne en Arcade ET en Exploration.
 /// A placer sur un GameObject dans TOUS les stages.
 /// </summary>
 public class TutorialManager : MonoBehaviour
@@ -22,7 +22,7 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        // Si le tutoriel a deja ete vu — on ne l'affiche pas
+        // Si le tutoriel a deja ete vu â€” on ne l'affiche pas
         if (PlayerPrefs.GetInt(PREFS_KEY, 0) == 1)
         {
             if (tutorialPanel != null) tutorialPanel.SetActive(false);
@@ -41,21 +41,21 @@ public class TutorialManager : MonoBehaviour
         // Attend 1 seconde avant le premier message
         yield return new WaitForSeconds(1.0f);
 
-        // Message 1 — Deplacer Drop
-        yield return AfficherMessage("Deplace-toi !");
+        // Message 1 â€” Deplacer Drop
+        yield return AfficherMessage("Move around !");
 
-        // Message 2 — Colorier les cubes
-        yield return AfficherMessage("Colorie les cubes !");
+        // Message 2 â€” Colorier les cubes
+        yield return AfficherMessage("Color the cubes !");
 
-        // Message 3 — Eviter les ennemis (attend qu'un ennemi soit proche)
+        // Message 3 â€” Eviter les ennemis (attend qu'un ennemi soit proche)
         yield return new WaitForSeconds(2.0f);
-        yield return AfficherMessage("Evite les ennemis !");
+        yield return AfficherMessage("Avoid the enemies !");
 
-        // Message 4 — Timer
+        // Message 4 â€” Timer
         yield return new WaitForSeconds(3.0f);
-        yield return AfficherMessage("Fais vite !");
+        yield return AfficherMessage("Be quick !");
 
-        // Tutoriel termine — on le marque comme vu
+        // Tutoriel termine â€” on le marque comme vu
         PlayerPrefs.SetInt(PREFS_KEY, 1);
         PlayerPrefs.Save();
     }
@@ -95,7 +95,7 @@ public class TutorialManager : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / dureeAnim;
 
-            // Effet de rebond leger — depasse un peu puis revient
+            // Effet de rebond leger â€” depasse un peu puis revient
             float scale = Mathf.SmoothStep(0f, 1f, t) * 1.1f;
             if (t > 0.8f) scale = Mathf.Lerp(1.1f, 1.0f, (t - 0.8f) / 0.2f);
 

@@ -59,6 +59,16 @@ public class MainMenuManager : MonoBehaviour
     public string urlX = "https://x.com/HelieAndDrop";
     public string urlYouTube = "https://www.youtube.com/@HelieAndDrop";
 
+    // ═══════════════════════════════════════════════════════
+    // ⚠️ NOUVEAU : SONS DU MENU
+    // ═══════════════════════════════════════════════════════
+    
+    [Header("Sons du Menu")]
+    public AudioClip soundSelect;      // Son quand on se déplace entre les boutons
+    public AudioClip soundClick;       // Son quand on appuie sur un bouton
+    
+    private AudioSource audioSource;   // Composant pour lire les sons
+
     private SelectionManager selectionManager;
     private MenuFocusHandler focusHandler;
 
@@ -77,6 +87,18 @@ public class MainMenuManager : MonoBehaviour
         // ═══════════════════════════════════════════════════
 
         InitializeSocialButtons();
+        
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Initialisation de l'AudioSource
+        // ═══════════════════════════════════════════════════
+        
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // Si aucun AudioSource existe, on en crée un automatiquement
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
     }
 
     void Update()
@@ -146,24 +168,44 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnDiscordClick()
     {
-        Debug.Log("[MainMenuManager] Overture Discord: " + urlDiscord);
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
+        Debug.Log("[MainMenuManager] Ouverture Discord: " + urlDiscord);
         OpenURL(urlDiscord);
     }
 
     public void OnSteamClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         Debug.Log("[MainMenuManager] Ouverture Steam: " + urlSteam);
         OpenURL(urlSteam);
     }
 
     public void OnXClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         Debug.Log("[MainMenuManager] Ouverture X: " + urlX);
         OpenURL(urlX);
     }
 
     public void OnYouTubeClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         Debug.Log("[MainMenuManager] Ouverture YouTube: " + urlYouTube);
         OpenURL(urlYouTube);
     }
@@ -180,6 +222,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void InitDemoMode()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         demoMode = true;
 
         // Éteint tout le menu normal
@@ -225,6 +272,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnArcadeClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         menuLayout.SetActive(false);
         panelArcade.SetActive(true);
         panelScore.SetActive(false);
@@ -236,21 +288,41 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnPlayDemoClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         SceneManager.LoadScene("SceneTransition01-01Demo");
     }
 
     public void OnExplorationClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         SceneManager.LoadScene("SceneTransitionExploration");
     }
 
     public void OnExplorationDemoClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         SceneManager.LoadScene("SceneTransitionExplorationDemo");
     }
 
     public void OnScoreClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         menuLayout.SetActive(false);
         panelArcade.SetActive(false);
         panelScore.SetActive(true);
@@ -261,6 +333,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnOptionsClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         menuLayout.SetActive(false);
         panelArcade.SetActive(false);
         panelScore.SetActive(false);
@@ -272,6 +349,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnOptionsDemoClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         demoLayout.SetActive(false);
         panelOptionsDemo.SetActive(true);
         SetSelection(btnFocusDemo);
@@ -280,6 +362,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnAchievementsClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         menuLayout.SetActive(false);
         panelArcade.SetActive(false);
         panelScore.SetActive(false);
@@ -307,16 +394,31 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnDemoArcadeClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         SceneManager.LoadScene("SceneArcadeDemo");
     }
 
     public void OnDemoExplorationClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         SceneManager.LoadScene("SceneTransitionExplorationDemo");
     }
 
     public void OnDemoScoreClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         if (demoLayout != null) demoLayout.SetActive(false);
         if (panelScoreDemo != null) panelScoreDemo.SetActive(true);
         if (panelOptionsDemo != null) panelOptionsDemo.SetActive(false);
@@ -326,6 +428,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnDemoOptionsClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         if (demoLayout != null) demoLayout.SetActive(false);
         if (panelScoreDemo != null) panelScoreDemo.SetActive(false);
         if (panelOptionsDemo != null) panelOptionsDemo.SetActive(true);
@@ -339,6 +446,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnBackClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
         if (demoMode)
             CloseAllDemoPanels();
         else
@@ -347,6 +459,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnQuitClick()
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son d'appui
+        // ═══════════════════════════════════════════════════
+        OnButtonClick();
+        
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -356,6 +473,11 @@ public class MainMenuManager : MonoBehaviour
 
     void SetSelection(GameObject bouton)
     {
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT AUDIO : Son de déplacement
+        // ═══════════════════════════════════════════════════
+        OnButtonSelect(bouton);
+        
         if (selectionManager != null)
         {
             selectionManager.premierBouton = bouton;
@@ -367,5 +489,35 @@ public class MainMenuManager : MonoBehaviour
     {
         if (focusHandler != null)
             focusHandler.RefreshFocusOnPanelOpen();
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // ⚠️ NOUVEAU : GESTION DES SONS
+    // ═══════════════════════════════════════════════════════
+
+    void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
+    void OnButtonSelect(GameObject bouton)
+    {
+        // Son quand on se déplace entre les boutons
+        if (soundSelect != null)
+        {
+            PlaySound(soundSelect);
+        }
+    }
+
+    void OnButtonClick()
+    {
+        // Son quand on appuie sur un bouton
+        if (soundClick != null)
+        {
+            PlaySound(soundClick);
+        }
     }
 }

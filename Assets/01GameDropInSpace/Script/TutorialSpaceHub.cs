@@ -4,9 +4,11 @@ using UnityEngine.InputSystem;
 using TMPro;
 
 /// <summary>
-/// Tutoriel du SpaceHub.
-/// Detecte automatiquement si le joueur utilise une manette ou le clavier
-/// et affiche le bon message de controles.
+/// SpaceHub tutorial.
+/// Automatically detects:
+///   - Gamepad or keyboard
+///   - AZERTY or QWERTY layout
+/// And displays the correct controls message in English.
 /// </summary>
 public class TutorialSpaceHub : MonoBehaviour
 {
@@ -14,9 +16,9 @@ public class TutorialSpaceHub : MonoBehaviour
     public GameObject tutorialPanel;
     public TMP_Text tutorialText;
 
-    [Header("Parametres")]
-    public float delaiAvantAffichage = 2.0f;
-    public float dureeAffichage = 5.0f;
+    [Header("Settings")]
+    public float delayBeforeDisplay = 2.0f;
+    public float displayDuration = 5.0f;
 
     private const string PREFS_KEY = "TutorialSpaceHubVu";
 
@@ -29,23 +31,23 @@ public class TutorialSpaceHub : MonoBehaviour
         }
 
         if (tutorialPanel != null) tutorialPanel.SetActive(false);
-        StartCoroutine(LancerTutoriel());
+        StartCoroutine(LaunchTutorial());
     }
 
-    IEnumerator LancerTutoriel()
+    IEnumerator LaunchTutorial()
     {
-        yield return new WaitForSeconds(delaiAvantAffichage);
+        yield return new WaitForSeconds(delayBeforeDisplay);
 
-        string message = DetecterControle();
+        string message = DetectControls();
 
         if (tutorialPanel != null) tutorialPanel.SetActive(true);
         if (tutorialText != null)
         {
             tutorialText.text = message;
-            StartCoroutine(AnimerTexte());
+            StartCoroutine(AnimateText());
         }
 
-        yield return new WaitForSeconds(dureeAffichage);
+        yield return new WaitForSeconds(displayDuration);
 
         if (tutorialPanel != null) tutorialPanel.SetActive(false);
 
@@ -53,39 +55,74 @@ public class TutorialSpaceHub : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    private string DetecterControle()
+    // ═══════════════════════════════════════════════════════
+    // KEYBOARD LAYOUT DETECTION (AZERTY / QWERTY)
+    // ═══════════════════════════════════════════════════════
+
+    private bool IsAzertyKeyboard()
+    {
+        // Method 1: ask Unity directly for the active layout
+        var kb = Keyboard.current;
+        if (kb != null && !string.IsNullOrEmpty(kb.keyboardLayout))
+        {
+            string layout = kb.keyboardLayout.ToLower();
+            if (layout.Contains("azerty") || layout.Contains("french") ||
+                layout.Contains("belgian") || layout.Contains("swiss"))
+                return true;
+        }
+
+        // Method 2 (fallback): guess via the system language
+        return Application.systemLanguage == SystemLanguage.French;
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // CONTROLS DETECTION (GAMEPAD / KEYBOARD)
+    // ═══════════════════════════════════════════════════════
+
+    private string DetectControls()
     {
         var gamepads = Gamepad.all;
         if (gamepads.Count > 0)
         {
-            string nomManette = gamepads[0].name.ToLower();
+            string gamepadName = gamepads[0].name.ToLower();
 
-            if (nomManette.Contains("dualsense") || nomManette.Contains("ps5"))
-                return "Oriente avec le stick gauche\nAccelere avec Croix\nEngage le Warp Roll avec Rond !";
-            else if (nomManette.Contains("dualshock") || nomManette.Contains("ps4"))
-                return "Oriente avec le stick gauche\nAccelere avec Croix\nEngage le Warp Roll avec Rond !";
-            else if (nomManette.Contains("switch") || nomManette.Contains("nintendo"))
-                return "Oriente avec le stick gauche\nAccelere avec B\nEngage le Warp Roll avec A !";
+            if (gamepadName.Contains("dualsense") || gamepadName.Contains("ps5"))
+                return "Steer with the left stick\nAccelerate with Cross\nEngage Warp Roll with Circle!";
+            else if (gamepadName.Contains("dualshock") || gamepadName.Contains("ps4"))
+                return "Steer with the left stick\nAccelerate with Cross\nEngage Warp Roll with Circle!";
+            else if (gamepadName.Contains("switch") || gamepadName.Contains("nintendo"))
+                return "Steer with the left stick\nAccelerate with B\nEngage Warp Roll with A!";
             else
-                // Xbox par defaut
-                return "Oriente avec le stick gauche\nAccelere avec A\nEngage le Warp Roll avec B !";
+                // Xbox by default
+                return "Steer with the left stick\nAccelerate with A\nEngage Warp Roll with B!";
         }
 
-        return "Oriente avec les fleches ou ZQSD\nAccelere avec Espace\nEngage le Warp Roll avec E !";
+        // ─── KEYBOARD: adapt to the player's layout! ───
+        if (IsAzertyKeyboard())
+        {
+            // French player on AZERTY — show the keys engraved on HIS keyboard
+            return "Steer with arrow keys or ZQSD\nAccelerate with Space\nEngage Warp Roll with E!";
+        }
+        else
+        {
+            // QWERTY player
+            return "Steer with arrow keys or WASD\nAccelerate with Space\nEngage Warp Roll with E!";
+        }
     }
 
-    IEnumerator AnimerTexte()
+    IEnumerator AnimateText()
     {
-        float dureeAnim = 0.4f;
+        float animDuration = 0.4f;
         float elapsed = 0f;
 
         tutorialText.transform.localScale = Vector3.zero;
 
-        while (elapsed < dureeAnim)
+        while (elapsed < animDuration)
         {
             elapsed += Time.deltaTime;
-            float t = elapsed / dureeAnim;
+            float t = elapsed / animDuration;
 
+            // Light bounce effect — overshoot slightly then settle back
             float scale = Mathf.SmoothStep(0f, 1f, t) * 1.1f;
             if (t > 0.8f) scale = Mathf.Lerp(1.1f, 1.0f, (t - 0.8f) / 0.2f);
 
@@ -99,6 +136,6 @@ public class TutorialSpaceHub : MonoBehaviour
     public void ResetTutorial()
     {
         PlayerPrefs.DeleteKey(PREFS_KEY);
-        Debug.Log("Tutoriel SpaceHub remis a zero !");
+        Debug.Log("SpaceHub tutorial reset!");
     }
 }

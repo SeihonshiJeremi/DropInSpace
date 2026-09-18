@@ -28,6 +28,38 @@ public class airShipController : MonoBehaviour
     public Transform dropModel;
     public ParticleSystem tonneauParticles; // Assigner dans l'Inspector
 
+    // ═══════════════════════════════════════════════════════
+    // ⚠️ AJOUT SUSPENSION : DÉRIVE EN APESANTEUR
+    // ═══════════════════════════════════════════════════════
+
+    [Header("Suspension dans le vide")]
+    public float vitesseRotationIdle = 15f;      // Degrés/seconde de la dérive lente
+    public float vitesseRetourIdle = 4f;          // Vitesse du retour à plat quand on bouge
+    public float amplitudeFlottement = 0.3f;      // Amplitude du léger balancement haut/bas
+    public float frequenceFlottement = 1.0f;      // Vitesse du balancement
+
+    private bool estEnSuspension = false;         // Est-ce que Drop est en train de dériver ?
+    private float tempsSansInput = 0f;            // Chronomètre depuis le dernier input
+    public float delaiAvantSuspension = 1.0f;     // Temps d'inactivité avant que la dérive commence
+
+    // ═══════════════════════════════════════════════════════
+    // ⚠️ AJOUT AUDIO : SONS DE DÉPLACEMENT
+    // ═══════════════════════════════════════════════════════
+
+    [Header("Sons de Déplacement")]
+    public AudioClip soundMove;              // Son en boucle pendant que Drop avance
+    public AudioClip soundDash;              // Son bref au moment du dash
+    public AudioClip soundTonneau;           // Son bref au moment du tonneau
+
+    [Header("Réglages du son de déplacement")]
+    public float volumeMin = 0.05f;          // Volume minimum (presque silencieux)
+    public float volumeMax = 0.35f;          // Volume maximum à pleine vitesse
+    public float pitchMin = 0.8f;            // Pitch minimum (son grave)
+    public float pitchMax = 1.4f;            // Pitch maximum (son aigu à fond les gaz !)
+
+    private AudioSource loopAudioSource;     // Source pour le son en boucle
+    private AudioSource oneShotAudioSource; // Source pour les sons brefs (dash, tonneau)
+
     // Nouveau Input System
     private DIS_Controls controls;
     private Vector2 moveInput;
@@ -65,6 +97,17 @@ public class airShipController : MonoBehaviour
     {
         Physics.gravity = new Vector3(0, 0, 0);
         if (speedParticle != null) speedParticle.Stop();
+
+        // ⚠️ AJOUT AUDIO : Création des deux AudioSources
+        loopAudioSource = gameObject.AddComponent<AudioSource>();
+        loopAudioSource.clip = soundMove;
+        loopAudioSource.loop = true;
+        loopAudioSource.playOnAwake = false;
+        loopAudioSource.volume = volumeMin;
+        if (soundMove != null) loopAudioSource.Play();
+
+        oneShotAudioSource = gameObject.AddComponent<AudioSource>();
+        oneShotAudioSource.playOnAwake = false;
     }
 
     void Update()
@@ -84,11 +127,23 @@ public class airShipController : MonoBehaviour
         transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position += transform.right * activeStrafeSpeed * Time.deltaTime;
 
+        // ⚠️ AJOUT AUDIO : Le son suit la vitesse réelle de Drop !
+        UpdateMoveSound();
+
+        // ═══════════════════════════════════════════════════
+        // ⚠️ AJOUT SUSPENSION : Détection d'inactivité
+        // ═══════════════════════════════════════════════════
+        UpdateSuspension();
+
         if (dashPressed)
         {
             dashPressed = false;
             ChangePhysicGravity();
             if (speedParticle != null) speedParticle.Play();
+
+            // ⚠️ AJOUT AUDIO : son de dash
+            if (soundDash != null)
+                oneShotAudioSource.PlayOneShot(soundDash);
         }
 
         if (dashReleased)
@@ -130,12 +185,101 @@ public class airShipController : MonoBehaviour
         if (tonneauPressed && !estEnTonneau)
         {
             tonneauPressed = false;
+
+            // ⚠️ AJOUT AUDIO : son de tonneau
+            if (soundTonneau != null)
+                oneShotAudioSource.PlayOneShot(soundTonneau);
+
             StartCoroutine(FaireTonneau());
         }
 
         // Relance automatiquement si le bouton est maintenu
         if (tonneauHeld && !estEnTonneau)
             StartCoroutine(FaireTonneau());
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // ⚠️ AJOUT SUSPENSION : MÉTHODE PRINCIPALE
+    // ═══════════════════════════════════════════════════════
+
+    void UpdateSuspension()
+    {
+        // On ne fait rien tant que Drop fait un tonneau (le tonneau gère déjà sa rotation)
+        if (estEnTonneau) return;
+
+        // Est-ce que le joueur touche à quelque chose ?
+        bool joueurInactif =
+            moveInput == Vector2.zero
+            && !dashHeld
+            && !tonneauHeld;
+
+        if (joueurInactif)
+        {
+            tempsSansInput += Time.deltaTime;
+
+            // Après le délai, la dérive commence
+            if (tempsSansInput >= delaiAvantSuspension)
+            {
+                estEnSuspension = true;
+
+                if (dropModel != null)
+                {
+                    // Rotation lente et irrégulière = impression d'apesanteur
+                    // Chaque axe tourne à une vitesse différente, c'est ça qui
+                    // donne le côté "objet qui flotte" plutôt que "métronome" !
+                    dropModel.Rotate(
+                        vitesseRotationIdle * 0.6f * Time.deltaTime,   // tangage doux
+                        vitesseRotationIdle * Time.deltaTime,          // lacet
+                        vitesseRotationIdle * 0.3f * Time.deltaTime,   // roulis très léger
+                        Space.Self
+                    );
+                }
+
+                // Léger balancement haut/bas, comme une goutte qui flotte 💧
+                Vector3 posBase = transform.position;
+                float flottement = Mathf.Sin(tempsSansInput * frequenceFlottement * Mathf.PI) * amplitudeFlottement * Time.deltaTime;
+                transform.position += transform.up * flottement;
+            }
+        }
+        else
+        {
+            // Le joueur a repris le contrôle
+            tempsSansInput = 0f;
+
+            if (estEnSuspension && dropModel != null)
+            {
+                // Retour progressif à plat : Slerp = interpolation de rotation,
+                // contrairement au Snap instantané de FaireTonneau
+                dropModel.localRotation = Quaternion.Slerp(
+                    dropModel.localRotation,
+                    Quaternion.identity,
+                    vitesseRetourIdle * Time.deltaTime
+                );
+
+                // Quand on est presque à plat, on termine proprement
+                if (Quaternion.Angle(dropModel.localRotation, Quaternion.identity) < 0.5f)
+                {
+                    dropModel.localRotation = Quaternion.identity;
+                    estEnSuspension = false;
+                }
+            }
+            else
+            {
+                estEnSuspension = false;
+            }
+        }
+    }
+
+    // ⚠️ AJOUT AUDIO : MÉTHODE QUI FAIT VIVRE LE SON
+    void UpdateMoveSound()
+    {
+        if (loopAudioSource == null || soundMove == null) return;
+
+        float vitesseTotale = activeForwardSpeed / 200f + Mathf.Abs(activeStrafeSpeed) / strafeSpeed * 0.3f;
+        vitesseTotale = Mathf.Clamp01(vitesseTotale);
+
+        loopAudioSource.volume = Mathf.Lerp(volumeMin, volumeMax, vitesseTotale);
+        loopAudioSource.pitch = Mathf.Lerp(pitchMin, pitchMax, vitesseTotale);
     }
 
     IEnumerator FaireTonneau()
@@ -155,44 +299,36 @@ public class airShipController : MonoBehaviour
 
         // FOV de depart
         float fovDepart = Camera.main.fieldOfView;
-        float fovMax = fovDepart + 20f; // Augmente de 20 pendant la boucle
+        float fovMax = fovDepart + 20f;
 
         while (elapsed < tonneauDuree)
         {
             elapsed += Time.deltaTime;
             float t = elapsed / tonneauDuree;
 
-            // Angle qui fait le tour complet de 0 a 360
             float angle = angleDepart + (360f * t);
             float angleRad = angle * Mathf.Deg2Rad;
 
-            // Petit saut
             float saut = Mathf.Sin(t * Mathf.PI) * hauteurSaut;
 
-            // Position en cercle + saut
             Vector3 offset = transform.up * (Mathf.Sin(angleRad) * rayonBase + saut)
                            + transform.forward * (Mathf.Cos(angleRad) * rayonBase);
 
             transform.position = centreDeRotation + offset;
 
-            // FOV � monte puis redescend avec la boucle
             Camera.main.fieldOfView = Mathf.Lerp(fovDepart, fovMax, Mathf.Sin(t * Mathf.PI));
 
-            // Rotation visuelle de Drop
             if (dropModel != null)
                 dropModel.Rotate(tonneauSpeed * Time.deltaTime, 0f, 0f, Space.Self);
 
             yield return null;
         }
 
-        // Remet le FOV a sa valeur de depart
         Camera.main.fieldOfView = fovDepart;
 
-        // Arrete les particules
         if (tonneauParticles != null)
             tonneauParticles.Stop();
 
-        // Remet la rotation du modele a zero
         if (dropModel != null)
             dropModel.localRotation = Quaternion.identity;
 

@@ -1317,6 +1317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectionManager
   premierBouton: {fileID: 0}
+  navigationBloquee: 0
 --- !u!95 &4283539415060524464
 Animator:
   serializedVersion: 7
@@ -1459,7 +1460,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3245771755884211493, guid: ae7b178cca63e8c458d3830a42b6182c,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 4ef669badb9916f41aa37ddae3772eba, type: 3}
+  m_Resource: {fileID: 8300000, guid: cb18d41de839f928a8892e7e04cb899c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

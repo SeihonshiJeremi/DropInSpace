@@ -9983,7 +9983,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &590791604
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23211,7 +23211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1461687561
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23751,7 +23751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndScreenDialogue
   dialogueText: {fileID: 1688211595}
   phrases:
-  - APPUYEZ SUR N'IMPORTE QUELLE TOUCHE
+  - PRESS   ANY   KEY   !
   typingSpeed: 0.05
 --- !u!1 &1489520455
 GameObject:
@@ -26490,7 +26490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: APPUYEZ SUR N'IMPORTE QUELLE TOUCHE
+  m_text: PRESS ANY KEY !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -31874,6 +31874,8 @@ MonoBehaviour:
   urlSteam: https://store.steampowered.com/app/YOUR_STEAM_APP_ID_HERE
   urlX: https://x.com/HelieAndDrop
   urlYouTube: https://www.youtube.com/@HelieAndDrop
+  soundSelect: {fileID: 8300000, guid: 77851ec4c44c51a44b3a4c5f0e91355a, type: 3}
+  soundClick: {fileID: 8300000, guid: 77851ec4c44c51a44b3a4c5f0e91355a, type: 3}
 --- !u!4 &1986031723
 Transform:
   m_ObjectHideFlags: 0
@@ -39143,7 +39145,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5686148324044582761, guid: 357d70af82bc1c146ae284a7fe622190,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 3a856eaaf79e26a4bb69feeff41015e9, type: 3}
+  m_Resource: {fileID: 8300000, guid: 9b601b101255cdb26b824954faf614ee, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

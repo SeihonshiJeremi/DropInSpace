@@ -1626,6 +1626,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa2f54c38d82484a88334a9e3cb7eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swipeResistance: 100
+  timeDesacTouche: 3
   movementPlayer: {fileID: 8171668963167490806}
   position:
     m_Name: Position
@@ -1661,8 +1663,6 @@ MonoBehaviour:
       m_Action: Press
       m_Flags: 0
     m_Flags: 0
-  swipeResistance: 100
-  timeDesacTouche: 3
 --- !u!1 &4347148781404731241
 GameObject:
   m_ObjectHideFlags: 0
@@ -10789,10 +10789,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointTP: {fileID: 8171668962394441392}
-  Player: {fileID: 8171668963167490806}
   pointTPMonster: {fileID: 8171668961921471980}
-  Monster: {fileID: 8171668962225139031}
   pointTPMonster02: {fileID: 8171668962957244125}
+  Player: {fileID: 8171668963167490806}
+  Monster: {fileID: 8171668962225139031}
   Monster02: {fileID: 8171668962227664594}
 --- !u!64 &8171668962402686490
 MeshCollider:
@@ -11526,14 +11526,14 @@ MonoBehaviour:
   ObjectTimerStart: {fileID: 8171668963167490806}
   scene: SceneTransition01-02
   m_MyAudioSourceBonbon: {fileID: 8171668963116097297}
-  audioStage: {fileID: 8300000, guid: 31c6ce06c8233a7499e2bcba41f8cb66, type: 3}
-  clipNoTime: {fileID: 8300000, guid: b8c8150df19402c47bd63692aeb08704, type: 3}
+  audioStage: {fileID: 8300000, guid: 4c761e255342d1d4babad2cf898b7ab7, type: 3}
+  clipNoTime: {fileID: 8300000, guid: 869d22e71ac436037ae867553c1b9263, type: 3}
   chAudio: 0
   itemAudio: 0
   itemAudioBonbon: 0
-  ItemTimeDiv2: {fileID: 8300000, guid: 852f383ba8552a24aa4da41afdd17b06, type: 3}
-  ItemStop: {fileID: 8300000, guid: 8d9fbbdfb147e694c8bbc4fe80cc9f5d, type: 3}
-  ItemInvincibility: {fileID: 8300000, guid: 08eeac164abf5cb4c8e69a8ac85d622c, type: 3}
+  ItemTimeDiv2: {fileID: 8300000, guid: c7728157cc1338756a4d4bbf3c9846d2, type: 3}
+  ItemStop: {fileID: 8300000, guid: 4d863f9977720b7d38cc8fa8e466bd38, type: 3}
+  ItemInvincibility: {fileID: 8300000, guid: a0dc43202b134338ea408bc67dcf0e1d, type: 3}
   ItemBonbon: {fileID: 8300000, guid: ebd3e72ca836b4048a71d8dc996e20f0, type: 3}
   transitionExploration: 0
   sceneTransitionExploration: SpaceHub
@@ -11550,7 +11550,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3245771755884211493, guid: ae7b178cca63e8c458d3830a42b6182c,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: b03239186a1234f4198318f83e41f77e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 4c761e255342d1d4babad2cf898b7ab7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -11804,6 +11804,7 @@ MonoBehaviour:
   distancePivot: 14.58
   hauteurCamera: 17.08
   dureeRotation: 0.4
+  tactileSwipeResistance: 60
   dropScript: {fileID: 8171668963167490807}
 --- !u!1 &8171668962728042003
 GameObject:
@@ -12998,6 +12999,7 @@ MonoBehaviour:
   timeDesacTouche: 3
   item: {fileID: 8171668962449687056}
   cameraAnglePalier: 0
+  respawnCooldownDuration: 0.5
 --- !u!54 &8171668963167490808
 Rigidbody:
   m_ObjectHideFlags: 0

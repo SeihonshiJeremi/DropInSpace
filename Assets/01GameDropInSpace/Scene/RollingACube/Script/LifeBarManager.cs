@@ -70,24 +70,27 @@ public class LifeBarManager : MonoBehaviour
         }
     }
 
-    public void Reset()
-    {
-        reset = reset - 1;
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-    }
+public void Reset()
+{
+    reset = reset - 1;
+    Debug.Log($"[LifeBar] Reset() appelé — reset passe à {reset}");
+    setLifeBar();
+    Scene scene = SceneManager.GetActiveScene();
+    SceneManager.LoadScene(scene.name);
+}
 
-    public void setLifeBar()
-    {
-        PlayerPrefs.SetInt("LifeBar", reset);
-    }
+public void setLifeBar()
+{
+    PlayerPrefs.SetInt("LifeBar", reset);
+    Debug.Log($"[LifeBar] setLifeBar() — PlayerPrefs['LifeBar'] = {reset}");
+}
 
-    public void getLifeBar()
-    {
-        reset = PlayerPrefs.GetInt("LifeBar", reset);
-        // Synchronise aussi avec GameStateManager
-        GameStateManager.Instance.SetLifeBar(reset);
-    }
+public void getLifeBar()
+{
+    reset = PlayerPrefs.GetInt("LifeBar", reset);
+    Debug.Log($"[LifeBar] getLifeBar() — lu depuis PlayerPrefs : {reset}");
+    GameStateManager.Instance.SetLifeBar(reset);
+}
 
     public void resetPrefsLifeBar()
     {

@@ -7,16 +7,16 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Affiche la progression en mode Exploration directement dans le SpaceHub.
-/// Tout est visible en permanence — pas de bouton nécessaire.
+/// Tout est visible en permanence ï¿½ pas de bouton nï¿½cessaire.
 /// </summary>
 public class ExplorationUIManager : MonoBehaviour
 {
     public static ExplorationUIManager Instance;
 
     [Header("Compteur")]
-    public TMP_Text textCompteur;           // "3 / 8 planètes explorées"
+    public TMP_Text textCompteur;           // "3 / 8 planï¿½tes explorï¿½es"
 
-    [Header("Carte des planètes (8 images)")]
+    [Header("Carte des planï¿½tes (8 images)")]
     public Image[] iconesPlanetes;
     public Color couleurComplete = Color.white;
     public Color couleurInComplete = new Color(0.3f, 0.3f, 0.3f, 0.8f);
@@ -36,7 +36,7 @@ public class ExplorationUIManager : MonoBehaviour
     void Start()
     {
         if (panneauVictoire != null) panneauVictoire.SetActive(false);
-        // CORRIGÉ : affichage immédiat au chargement
+        // CORRIGï¿½ : affichage immï¿½diat au chargement
         MettreAJourUI();
     }
 
@@ -48,7 +48,7 @@ public class ExplorationUIManager : MonoBehaviour
         bool[] progression = ExplorationManager.Instance.GetProgression();
 
         if (textCompteur != null)
-            textCompteur.text = visitees + " / 8 planètes explorées";
+            textCompteur.text = visitees + " / 8 Explored Planets";
 
         for (int i = 0; i < iconesPlanetes.Length && i < 8; i++)
         {
@@ -64,7 +64,7 @@ public class ExplorationUIManager : MonoBehaviour
         {
             panneauVictoire.SetActive(true);
             if (textVictoire != null)
-                textVictoire.text = "Toutes les planètes ont été explorées !\nDrop a découvert l'univers entier.";
+                textVictoire.text = "Toutes les planï¿½tes ont ï¿½tï¿½ explorï¿½es !\nDrop a dï¿½couvert l'univers entier.";
         }
     }
 

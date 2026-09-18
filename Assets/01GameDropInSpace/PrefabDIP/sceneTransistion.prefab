@@ -303,7 +303,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3245771755884211493, guid: ae7b178cca63e8c458d3830a42b6182c,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 07938d78a2a34ff4ebdb0761cc5251e9, type: 3}
+  m_Resource: {fileID: 8300000, guid: 4fc0faed2a16e51129a11300690a4e96, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -591,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectionManager
   premierBouton: {fileID: 0}
+  navigationBloquee: 0
 --- !u!1 &4283539415247346366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: rollingAcube
-  loadSceneTime: 8
+  loadSceneTime: 7.5
   okChange: 0
 --- !u!1 &4283539415685264770
 GameObject:

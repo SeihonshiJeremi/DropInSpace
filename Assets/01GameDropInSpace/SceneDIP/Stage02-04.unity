@@ -1272,7 +1272,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioStage
       value: 
-      objectReference: {fileID: 8300000, guid: 2a0853548d0d4384598747f882135842, type: 3}
+      objectReference: {fileID: 8300000, guid: 4c761e255342d1d4babad2cf898b7ab7, type: 3}
     - target: {fileID: 8171668962618649847, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: timerNiveau
@@ -1304,12 +1304,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 2a0853548d0d4384598747f882135842, type: 3}
+      objectReference: {fileID: 8300000, guid: 4c761e255342d1d4babad2cf898b7ab7, type: 3}
     - target: {fileID: 8171668963110616250, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 2a0853548d0d4384598747f882135842, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8171668963116097297, guid: ecda096af8564b040830d87d114a67e9,
         type: 3}
       propertyPath: OutputAudioMixerGroup
