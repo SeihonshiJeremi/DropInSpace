@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using OpenTrophy;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject btnArcadeClassic;
     public GameObject btnFocus;
     public GameObject btnFocusDemo;
+    [SerializeField] Button btnAchievements;
 
     [Header("Boutons par défaut — Démo")]
     public GameObject btnDemoArcade;
@@ -74,6 +76,7 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
+        btnAchievements.onClick.AddListener(Trophy.ShowLinkPanel);
         selectionManager = Object.FindFirstObjectByType<SelectionManager>();
         focusHandler = Object.FindFirstObjectByType<MenuFocusHandler>();
 
@@ -284,6 +287,7 @@ public class MainMenuManager : MonoBehaviour
         panelAchievements.SetActive(false);
         SetSelection(btnArcadeClassic);
         RefreshFocus();
+        Trophy.Unlock("testdis");
     }
 
     public void OnPlayDemoClick()
@@ -345,6 +349,8 @@ public class MainMenuManager : MonoBehaviour
         panelAchievements.SetActive(false);
         SetSelection(btnFocus);
         RefreshFocus();
+
+        //Trophy.AddProgress("option");
     }
 
     public void OnOptionsDemoClick()
@@ -358,6 +364,8 @@ public class MainMenuManager : MonoBehaviour
         panelOptionsDemo.SetActive(true);
         SetSelection(btnFocusDemo);
         RefreshFocus();
+        Trophy.AddProgress("option");
+
     }
 
     public void OnAchievementsClick()

@@ -400,10 +400,10 @@ RectTransform:
   - {fileID: 1272192516}
   m_Father: {fileID: 165622042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 996.8333, y: -990.07825}
+  m_SizeDelta: {x: 1943.6666, y: 50.03129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &36050261
 MonoBehaviour:
@@ -1099,10 +1099,10 @@ RectTransform:
   - {fileID: 420603245}
   m_Father: {fileID: 952057447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1626.3889, y: -112.51565}
+  m_SizeDelta: {x: 634.55554, y: 225.0313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65789559
 MonoBehaviour:
@@ -1183,25 +1183,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1986031721}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1986031722}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnAchievementsClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2297,10 +2285,10 @@ RectTransform:
   - {fileID: 198446055}
   m_Father: {fileID: 952057447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 971.8333, y: -112.51565}
+  m_SizeDelta: {x: 634.55554, y: 225.0313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &118152190
 MonoBehaviour:
@@ -12187,10 +12175,10 @@ RectTransform:
   - {fileID: 1428726385}
   m_Father: {fileID: 952057447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 317.27777, y: -112.51565}
+  m_SizeDelta: {x: 634.55554, y: 225.0313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737970035
 MonoBehaviour:
@@ -14745,10 +14733,10 @@ RectTransform:
   - {fileID: 65789558}
   m_Father: {fileID: 165622042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 996.8333, y: -832.54694}
+  m_SizeDelta: {x: 1943.6666, y: 225.0313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952057448
 MonoBehaviour:
@@ -20961,10 +20949,10 @@ RectTransform:
   - {fileID: 339589538}
   m_Father: {fileID: 1764915358}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1462.75, y: -337.51566}
+  m_SizeDelta: {x: 961.8333, y: 675.0313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1350959485
 MonoBehaviour:
@@ -23190,6 +23178,37 @@ Transform:
   - {fileID: 6599487299642830953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1459075118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1459075119}
+  m_Layer: 0
+  m_Name: openTrophy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1459075119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459075118}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1461687560
 GameObject:
   m_ObjectHideFlags: 0
@@ -24859,10 +24878,10 @@ RectTransform:
   - {fileID: 1872076917}
   m_Father: {fileID: 1764915358}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 480.91666, y: -337.51566}
+  m_SizeDelta: {x: 961.8333, y: 675.0313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1577292430
 MonoBehaviour:
@@ -27519,10 +27538,10 @@ RectTransform:
   - {fileID: 1350959484}
   m_Father: {fileID: 165622042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 996.8333, y: -362.51566}
+  m_SizeDelta: {x: 1943.6666, y: 675.0313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1764915359
 MonoBehaviour:
@@ -31859,6 +31878,7 @@ MonoBehaviour:
   btnArcadeClassic: {fileID: 636301104}
   btnFocus: {fileID: 0}
   btnFocusDemo: {fileID: 1626674693}
+  btnAchievements: {fileID: 65789561}
   btnDemoArcade: {fileID: 1240609891}
   btnDemoScore: {fileID: 1022485321}
   btnDemoOptions: {fileID: 152534772}
@@ -42484,3 +42504,4 @@ SceneRoots:
   - {fileID: 1270741100}
   - {fileID: 6599487299590468735}
   - {fileID: 1719828082}
+  - {fileID: 1459075119}

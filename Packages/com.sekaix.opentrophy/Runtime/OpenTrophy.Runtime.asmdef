@@ -1,0 +1,9 @@
+{
+    "name": "OpenTrophy.Runtime",
+    "rootNamespace": "OpenTrophy",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "autoReferenced": true
+}

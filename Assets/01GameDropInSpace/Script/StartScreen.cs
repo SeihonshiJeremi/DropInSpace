@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using OpenTrophy;
 
 public class StartScreen : MonoBehaviour
 {
@@ -191,6 +192,8 @@ public class StartScreen : MonoBehaviour
             // ─── MODE NORMAL ───
             if (demoMenuCanvas != null) demoMenuCanvas.SetActive(false);
             if (mainMenuCanvas != null) mainMenuCanvas.SetActive(true);
+            
+            
         }
 
         yield return null;

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f54f749a10b89e991fc3e0d5b26120, type: 3}
+  m_Name: OpenTrophySettings
+  m_EditorClassIdentifier: OpenTrophy.Runtime::OpenTrophy.OpenTrophySettings
+  serverUrl: https://opentrophy.sekaix.fr
+  gameKey: otg_xXyuxAXI6fUPuWXEIfjVe6cZFs3tJ9aOCv02g9JjbmQ
+  localSecret: UvfoFxONdIvyHNgTaXprKaxWdpmlu0Yb
+  embeddedDefinitions: '{"id":"4wngacqlaai","title":"Drop In Space","language":"fr","published":false,"beta":true,"revision":"2026-11-07T21:14:27.819Z","groups":[{"id":10,"name":"Jeu
+    de base","i18n":{},"base":true,"trophies":[{"key":"testdis","name":"Start Drop
+    In Space","description":"test","i18n":{},"tier":"bronze","hidden":false,"target":null,"iconUrl":null,"lockedIconUrl":null},{"key":"option","name":"Maitre
+    des Options","description":"Option master","i18n":{},"tier":"silver","hidden":false,"target":10,"iconUrl":null,"lockedIconUrl":null}]}]}'
+  language: 
+  showToasts: 1
+  toastCorner: 0
+  toastSeconds: 5
+  toastSound: {fileID: 8300000, guid: 77851ec4c44c51a44b3a4c5f0e91355a, type: 3}
+  toastVolume: 0.8
+  verboseLog: 0
+  texts:
+    trophyUnlocked: "Troph\xE9e obtenu"
+    platinumUnlocked: Platine obtenu
+    hiddenTrophy: "Troph\xE9e cach\xE9"
+    linkTitle: Compte OpenTrophy
+    linkIntro: "Lie ton compte pour retrouver tes troph\xE9es sur le site et sur
+      tes autres appareils. Tes troph\xE9es d\xE9j\xE0 gagn\xE9s seront envoy\xE9s."
+    linkButton: Lier mon compte
+    linkCodeHelp: 'Ouvre la page et saisis ce code, ou clique sur le bouton :'
+    openPage: Ouvrir la page
+    waiting: "En attente de ta validation sur le site\u2026"
+    linkedAs: "Compte li\xE9 : {0}"
+    unlink: "D\xE9lier ce compte"
+    cancel: Annuler
+    close: Fermer
+    offline: "Serveur injoignable. Tes troph\xE9es restent enregistr\xE9s sur cet
+      appareil."
+    expired: "Le code a expir\xE9. Redemande-en un."
+    error: "La liaison a \xE9chou\xE9. R\xE9essaie plus tard."
+    pending: '{0} en attente d''envoi'

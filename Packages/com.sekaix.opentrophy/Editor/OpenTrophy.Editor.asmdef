@@ -1,0 +1,8 @@
+{
+    "name": "OpenTrophy.Editor",
+    "rootNamespace": "OpenTrophy.Editor",
+    "references": ["OpenTrophy.Runtime"],
+    "includePlatforms": ["Editor"],
+    "excludePlatforms": [],
+    "autoReferenced": true
+}

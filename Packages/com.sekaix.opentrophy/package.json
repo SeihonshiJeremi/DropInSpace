@@ -1,0 +1,12 @@
+{
+  "name": "com.sekaix.opentrophy",
+  "version": "1.1.0",
+  "displayName": "OpenTrophy",
+  "description": "Trophées à la PlayStation pour ton jeu (bronze, argent, or, platine, trophées cachés, extensions), avec le service OpenTrophy. Fonctionne hors ligne et sans compte : les trophées sont gardés sur l'appareil dans un fichier chiffré, puis envoyés dès que le joueur a lié son compte.",
+  "unity": "2021.3",
+  "author": { "name": "SekaiX" },
+  "keywords": ["trophies", "achievements", "opentrophy"],
+  "samples": [
+    { "displayName": "Démo", "description": "Une scène vide suffit : ajoute TrophyDemo à un objet pour débloquer des trophées avec des boutons.", "path": "Samples~/Demo" }
+  ]
+}
