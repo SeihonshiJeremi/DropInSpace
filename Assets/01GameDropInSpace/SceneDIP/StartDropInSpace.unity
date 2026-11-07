@@ -34481,7 +34481,7 @@ MonoBehaviour:
   startText: {fileID: 1688211595}
   mainMenuCanvas: {fileID: 1881178612}
   demoMenuCanvas: {fileID: 1263053019}
-  demoMode: 1
+  demoMode: 0
   dropModel: {fileID: 6599487300093446327}
   warpParticles: {fileID: 296257837}
   vitesseClignotement: 1.2
